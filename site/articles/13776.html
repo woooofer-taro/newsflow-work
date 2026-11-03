@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>InfraTrustのレポート、重要なネットワークインフラにおける悪用された欠陥に警告 - BleepingComputer — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">InfraTrustのレポート、重要なネットワークインフラにおける悪用された欠陥に警告 - BleepingComputer</h1>
+  <div class="r-orig">InfraTrust report warns of exploited flaws in critical network infrastructure - BleepingComputer</div>
+  <div class="r-meta"><span class="site">F5 (news)</span><span>2026-10-29 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>攻撃者は重要なネットワークインフラ全体の脆弱性を積極的に悪用しており、「PHP2Shell」と呼ばれるPHPの欠陥により、ファイアウォール、VPN、アプリケーションデリバリーコントローラー、その他のアプライアンスのWeb管理インターフェースが危険にさらされています。</p>
+<p>この調査結果は、Eclypsiumの月次レポート「October InfraTrust Pulse」によるものです。このレポートは、ネットワーク機器、サーバー、ファームウェア、チップ、その他のインフラストラクチャに影響するセキュリティアドバイザリを追跡しています。</p>
+<p>9月18日から10月14日までの間に、InfraTrustは18のベンダーに関する133件の新しいセキュリティアドバイザリを追跡し、それらは2,813件の脆弱性を対象としていました。</p>
+<p>これらのアドバイザリのうち、37件は重大（critical）と評価され、5件は最大CVSSスコアが10.0でした。また58件は、認証なしでリモートから悪用される可能性がありました。</p>
+<p>新たに公開された16件のアドバイザリには、CISAの「Known Exploited Vulnerabilities」カタログ（KEV）に掲載された脆弱性が含まれていました。これらは実際に悪用されていたものです。</p>
+<p>このレポートはまた、ファイアウォール、VPNゲートウェイ、アプリケーションデリバリーコントローラー、ネットワーク接続ストレージ（NAS）デバイスなど、多くのネットワーク機器が管理インターフェースにPHPを組み込んでいると警告しています。</p>
+<p>ベンダーはPHPをアプライアンスのファームウェアにコンパイルして組み込むため、顧客は通常、最新のPHPセキュリティアップデートを自分でインストールできず、代わりに各ベンダーが更新されたファームウェアをリリースするのを待つ必要があります。</p>
+<p>そのためInfraTrustは、PHP2Shellのパッチを待つ間、管理者はPHPベースの管理インターフェースがインターネットに公開されないようにすることを推奨しています。</p>
+<h2>攻撃を受けている重要インフラ</h2>
+<p>最も深刻な脆弱性の一部は、企業ネットワークの境界にあるシステムや、他のインフラを管理するために使われるシステムに影響します。</p>
+<p>攻撃者がこれらの機器を狙うのは、企業環境への初期侵入口となり得るほか、さらなる攻撃の踏み台としても利用できるためです。</p>
+<p>InfraTrustが取り上げた、実際に悪用されている脆弱性は次のとおりです。</p>
+<ul><li><strong>Citrix NetScaler ADC and Gateway:</strong> CVE-2026-88771およびCVE-2026-88772は9月27日に公開されましたが、パッチfuture未適用の機器に対する攻撃はそれ以前に確認されていました。SAML向けに構成された機器に影響する別のNetScaler脆弱性CVE-2026-88779も、悪用が検知された後にCISAのKEVカタログに追加されました。</li><li><strong>Ivanti Connect Secure:</strong> CVE-2026-104935により、認証のないリモートの攻撃者が、脆弱なVPNゲートウェイ上で任意のコマンドを実行できます。Ivantiは、アドバイザリを公開した時点で、一部の限られた顧客が悪用されたと述べていました。その後CISAがKEVに追加しました。</li><li><strong>Check Point Security Management Server:</strong> CVE-2026-93616により、認証のない攻撃者が、管理およびログシステム上でスクリプトをアップロードして実行できます。Check Point Researchは、9月12日にSparkの顧客を狙ってこの脆弱性を悪用する標的型攻撃を確認しました。</li><li><strong>Cisco Catalyst SD-WAN Manager:</strong> CVE-2026-76504により、認証のない攻撃者が認証を回避し、管理APIへの管理者アクセスを取得できます。Ciscoは9月に積極的な悪用を把握しました。</li><li><strong>Arista VeloCloud Orchestrator:</strong> CVE-2026-93952は、SD-WANエッジデバイスの設定に使われるシステムに影響する最高深刻度の脆弱性です。Aristaはこれが積極的に悪用されていると述べており、その後10月22日に同製品における別の悪用された脆弱性（CVE-2026-114625）を公表しました。</li><li><strong>FortiMail:</strong> CVE-2026-104286は重大なパストラバーサルの欠陥で、認証のない攻撃者がWebインターフェースを通じて任意のファイルを書き込めます。Fortinetは攻撃で悪用されたことを確認しました。</li><li><strong>Cisco Secure Email Gateway:</strong> CVE-2026-76519により、悪意のあるメール添付ファイルが、脆弱なシステム上で任意のファイル書き込みと、root権限でのコマンド実行につながる可能性があります。Ciscoは10月に悪用を把握しました。</li><li><strong>F5 BIG-IP APM:</strong> CVE-2026-94127は重大なヒープオーバーフローで、OAuth認可サーバーとして構成されたシステム上で、認証のないリモートからのコード実行を許す可能性があります。F5は、この脆弱性が悪用されたと述べています。</li><li><strong>PAN-OS管理インターフェース:</strong> Palo Alto Networksは、ファイアウォールへの攻撃においてCVE-2026-0322が悪用されたと報告しました。これにより、ネットワークアクセスを持つ認証済みの管理者が、root権限でコードを実行できます。</li></ul>
+<h3>PHP2Shellが示すもう一つの問題</h3>
+<p>InfraTrustはまた、最近公表されたPHP2Shellの脆弱性が、ネットワークインフラにおける別の弱点を露呈していると警告しています。多くの機器がPHPを管理インターフェースに直接組み込んでいるためです。</p>
+<p>2つのPHPの欠陥、CVE-2026-109618とCVE-2026-109619は、認証のないリモートからのコード実行を可能にするもので、PHPプロジェクトは10月21日に修正しました。</p>
+<p>これらの脆弱性への注目の多くはPHPで書かれたWebサイトやWebアプリケーションに向けられてきましたが、PHPはファイアウォール、アプリケーションデリバリーコントローラー、VPN機器、ネットワーク接続ストレージの管理インターフェースにも使われています。</p>
+<p>影響を受ける機器では、ベンダーがPHPをファームウェアに直接コンパイルしているため、管理者は通常PHPを自分で更新できません。代わりに顧客は、修正版PHPを含むファームウェアやソフトウェアを各ベンダーが再構築してリリースするまで待つ必要があります。</p>
+<p>開示直後、Palo Alto Networks、F5、NetScaler、Check Point、QNAPは、自社製品の一部が影響を受けることを確認し、一方で機器向けの修正を開発し続けていました。</p>
+<p>このレポートはまた、インフラベンダーが製品に組み込むその他のソフトウェアコンポーネントにも同様の問題があることを指摘しています。</p>
+<p>CVE-2026-31431は、Linuxカーネルの権限昇格の欠陥で、「Copy Fail」として知られていますが、現在は8ベンダーの29件のアドバイザリに現れています。先月は6ベンダーの19件でした。</p>
+<p>InfraTrustはまた、組み込みコンポーネントにおける古い悪用済みの脆弱性も確認しました。その中には、HP LaserJet Enterprisesプリンターに影響するAndroidカーネルの欠陥や、Dell Data Lakehouseソフトウェアにおける2020年のjQueryの脆弱性が含まれます。</p>
+<p>InfraTrustは、NetScalerとIvanti Connect Secureのパッチを優先的に適用することを管理者に推奨しています。これらのリモートアクセスゲートウェイは、企業ネットワークへの入口となり得るためです。次に、インターネットに面した機器については、Fortinetの10月22日のFortiOS、FortiManager、FortiAnalyzerのセキュリティアップデートを推奨しています。</p>
+<p>さらにレポートは、Check Point Security Management Server、Cisco Catalyst SD-WAN Manager、VeloCloud Orchestrator、FortiMail、Cisco Secure Email Gateway、影響を受けるBIG-IP APMシステム、PAN-OS管理インターフェースに注力するよう推奨しています。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.bleepingcomputer.com/news/security/infratrust-report-warns-of-exploited-flaws-in-critical-network-infrastructure/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('13776'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
