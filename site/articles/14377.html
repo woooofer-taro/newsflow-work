@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>GDライブラリ：Junos OSはどのようにして攻撃にさらされたのか？ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">GDライブラリ：Junos OSはどのようにして攻撃にさらされたのか？</h1>
+  <div class="r-orig">GD library: How did it open the Junos OS to attacks?</div>
+  <div class="r-meta"><span class="site">TechTarget</span><span>2026-11-05 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>GD library: How did it open the Junos OS to attacks? - TechTarget</h2>
+<p><strong>Juniper Networks Inc. と US-CERT は、Junos オペレーティングシステムで使用されている GD グラフィックスライブラリの深刻な脆弱性に関するセキュリティアドバイザリを発行した。GD ライブラリ（LibGD）は、他のベンダーにも問題を引き起こしている。単純な画像ライブラリが、どのようにして Junos を攻撃にさらしたのか？ 企業は GD ライブラリのようなオープンソースの画像ライブラリを避けるべきか？</strong></p>
+<p>ルーターやネットワーク機器に、通常であればより従来型のサーバーでしか見られないと予想される脆弱性があると聞くのは、興味深いことだ。この出来事は、包括的な脆弱性管理プログラムを持つ必要性を裏付けている。</p>
+<p>同様に、攻撃対象領域と複雑さを減らすために、デバイスには絶対に必要な機能だけが含まれると期待するのは妥当に思える。たとえば、システムに Web サーバーがインストールされていなければ、その Web サーバーを保護したり、更新をインストールしたりする必要はない。</p>
+<p>ルーターやネットワーク機器は標準的なサーバーと同じ機能を多く持つため、同様の脆弱性を抱えうる。ルーターやネットワーク機器は通常 Web サーバーとは考えられていないが、従来のコマンドラインのオプションと並んで、デバイスを管理するための Web インターフェースを持つことが多い。</p>
+<p>Juniper Networks は、動的な画像を作成するためのオープンソースのコードライブラリである GD ライブラリの深刻な脆弱性に関するセキュリティアドバイザリを発行した。この脆弱性は、同社のルーターやネットワーク機器で使用されている Juniper の Junos OS に影響を与えた。</p>
+<p>Juniper Networks が挙げた回避策は、オンボードの PHP スクリプトの使用を中止することと、Web 管理へのアクセスを制限することである。ルーターやネットワーク機器へのアクセスを制限することは、標準的なベストプラクティスだからだ。Juniper Networks は、画像を生成する独自のソフトウェアを開発するか、商用ライブラリのライセンスを取得することで、この脆弱性を回避できた可能性がある。</p>
+<p>しかし、ソフトウェア開発の複雑さと、同社の中核的な能力がネットワーキングにあることを考えると、GD ライブラリのような十分にテストされ広く使われているオープンソースライブラリを使うことは非常に妥当である。ライブラリの種類にかかわらず、Jupiter Networks は、ソフトウェア開発ライフサイクルの一環として、それを更新し、セキュリティ脆弱性を監視する必要がある。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.techtarget.com/news/GD-library-How-did-it-open-the-Junos-OS-to-attacks/841020/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14377'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
