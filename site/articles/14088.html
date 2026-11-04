@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>EKS オートモード Gateway API: Ingress NGINX 終了 [2026] — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">EKS オートモード Gateway API: Ingress NGINX 終了 [2026]</h1>
+  <div class="r-orig">EKS Auto Mode Gateway API: Ingress NGINX Exit [2026]</div>
+  <div class="r-meta"><span class="site">shattered.io</span><span>2026-11-02 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>EKS Auto Mode Gateway API: Ingress NGINX 終了 [2026] - shattered.io</h2>
+<p>Amazon EKS Auto Mode が、Kubernetes Gateway API をネイティブに扱えるようになった。AWS は 2026年10月28日にこの変更を発表し、今回のリリースにより、Auto Mode は、別途インストールしたコントローラーなしで、Gateway および HTTPRoute リソースからロードバランシングをプロビジョニング・管理できる。このタイミングは偶然ではない。コミュニティの Ingress NGINX コントローラーは 7か月前の 2026年3月24日に終了しており、マネージド Kubernetes を提供するすべてのベンダーが、顧客にサポート対象の移行先を用意しようと急いでいる。</p>
+<p>プラットフォームチームにとってのメッセージは率直だ。膨大な数のクラスターのトラフィックを処理してきたコントローラーは、もはやバグ修正もセキュリティパッチも受け取れない。そして、それに代わる API は、最大のクラウド上でファーストパーティの受け皿を得た。EKS Auto Mode の Gateway API サポートは、移行という雑務を製品機能に変えるが、ルーティングルール、証明書、アノテーションを書き直す作業がなくなるわけではない。</p>
+<p>以下では、AWS が何をリリースしたか、その費用、Microsoft と Alibaba Cloud が同じ終了にどう対応したか、そして古いコントローラーを使い続けているチームのリスクがどこにあるかを扱う。先に API を実際に試したい読者は、使い捨てクラスター上で 12ステップの Kubernetes Gateway API チュートリアルに取り組むことができる。</p>
+<h2>2026年10月28日に AWS がリリースしたもの</h2>
+<p>発表は短く、その範囲は意図的に絞られている。AWS がコンピュート、スケーリング、コアアドオン、ネットワークインフラを管理する運用モードである EKS Auto Mode は、Kubernetes の Gateway API オブジェクトを AWS のアプリケーションロードバランシングに変換できるようになった。チームは Gateway と 1つ以上の HTTPRoute リソースを作成する。Auto Mode がその背後のロードバランサーを構築・維持する。</p>
+<p>AWS はこの機能を自らの言葉で次のように説明している。「Amazon EKS Auto Mode は Kubernetes Gateway API をサポートするようになり、顧客がアプリケーションへのトラフィックの到達方法を定義するための、標準的でポータブルな方法を提供します。」(Amazon Web Services、2026年10月28日)。「ポータブル」という言葉に重みがある。Auto Mode 向けに書かれた Gateway マニフェストは、他の準拠した実装でこの API を使ったことがある人にとって見慣れたものに見えるはずだ。</p>
+<p>AWS が挙げるサポート対象のユースケースは次のとおり。</p>
+<ul><li>HTTP および gRPC のルーティング</li><li>クロスネームスペースのルーティング</li><li>重み付けトラフィック分割</li><li>ヘッダーベースのルーティング</li><li>AWS Certificate Manager による TLS 証明書の自動検出</li></ul>
+<p>AWS によると、この機能は Auto Mode に含まれており、Auto Mode 自体が稼働するすべての AWS リージョンで利用できる。既存の Kubernetes Ingress リソースは新しい Gateway API オブジェクトと並行して引き続き動作するため、1回のメンテナンスウィンドウで切り替える必要はない。マネージドの選択肢がどう並ぶかをより広く見るには、EKS Auto Mode、GKE Autopilot、AKS Automatic の比較を参照。</p>
+<h2>Ingress NGINX の終了がタイミングを強いた理由</h2>
+<p>Ingress NGINX は、長年 Kubernetes における HTTP ルーティングの定番の答えだった。チュートリアルはこれをインストールし、Helm チャートはこれを前提とし、クラウドベンダーはそのマネージド版を提供した。2026年3月24日、Kubernetes SIG Network と Security Response Committee はこのプロジェクトを終了させた。その日以降、メンテナーはリリースの発行を止め、既存のインストールはセキュリティ面で保守されなくなった。</p>
+<p>終了（retired）という言葉は慎重に扱う必要がある。既存のインストールは動作し続け、Helm チャートとコンテナイメージも利用可能なままである。終わったのは上流による保守だ。Kubernetes は Ingress API 自体も終了させていない。この混同があまりに多いため、複数の移行ガイドがこの区別を繰り返している。Kubernetes Ingress 全体がなくなったという主張は、公式ドキュメントに裏付けがない。</p>
+<p>まだ動いていることとまだ安全であることの間のこの隔たりに、リスクがある。パブリックなエッジに置かれ、信頼できない HTTP を解析し、TLS 素材を保持するコントローラーは、まさに迅速にパッチを当てたいコンポーネントだ。ingress-nginx における CVE-2026-4342 として追跡されている CVSS 8.8 の欠陥は、パッチのパイプラインが枯渇したときにこの露出がどう現れるかを示している。それ以前に、Kubernetes プロジェクトは ingress-nginx の CVE-2025-1974 脆弱性に関する告知をすでに公開しており、このコントローラーが重大なバグを抱えたときに何が起こるかを運用者に伝えていた。</p>
+<p>AWS は Ingress NGINX を終了させていない。同社はそれを所有していない。Auto Mode の Gateway API サポートは、上流の決定に対するベンダーの対応であり、AWS 自身の移行資料も同じ区別をしている。</p>
+<h2>Ingress NGINX から Gateway API へのタイムライン</h2>
+<p>この順序が重要なのは、最初の警告から最後のリリースまでの間に顧客に与えられた猶予がいかに少なかったかを示すからだ。以下は公式ページで確認された日付付きの出来事である。</p>
+<p>表を上から下へ読むと、パターンは明らかだ。最初に警告が来て、次にツール、3番目に終了、最後にマネージドサービスの答えが来た。AWS は自社のガイダンスをネイティブ機能にするのに 7か月を要した。</p>
+<h2>EKS Auto Mode が今あなたに代わって扱うもの</h2>
+<p>Auto Mode の中核的な売りは、AWS がクラスターの差別化にならない部分を運用することだ。AWS のドキュメントによると、顧客は VPC CNI、CoreDNS、kube-proxy、CloudWatch Observability エージェントなどのアドオンをインストールも管理もしない。Gateway API サポートは、この取り決めをトラフィックの入口にまで広げる。コントローラーのロジックは、自分でパッチを当てる Deployment ではなく、マネージド層の内部にある。</p>
+<p>AWS は運用上の変化を次のように要約した。「このリリースにより、EKS Auto Mode の顧客は、別個のコントローラーをインストールまたは設定することなく、次世代の Kubernetes トラフィック管理標準を採用できます。」(Amazon Web Services、2026年10月28日)。実際の効果は、アップグレードのマトリクスにおけるコンポーネントが 1つ減ることだ。</p>
+<h3>アノテーションに代わるルーティング機能</h3>
+<p>アノテーションは Ingress 時代の圧力弁だった。各コントローラーが独自のものを考案したため、マニフェストは特定の実装に固着し、移行は痛みを伴った。Gateway API は、重み、ヘッダーマッチ、クロスネームスペースの権限を型付きフィールドに押し込む。最小限の重み付き分割は、プレースホルダー名を使って標準 API に対して書くと次のようになる。</p>
+<p>```<br>apiVersion: gateway.networking.k8s.io/v1<br>kind: HTTPRoute<br>metadata:<br>name: checkout<br>spec:<br>parentRefs:</p>
+<ul><li>name: web-gateway</li></ul>
+<p>rules:</p>
+<ul><li>backendRefs:</li><li>name: checkout-v1</li></ul>
+<p>port: 8080<br>weight: 90</p>
+<ul><li>name: checkout-v2</li></ul>
+<p>port: 8080<br>weight: 10<br>```</p>
+<h3>AWS Certificate Manager による TLS 検出</h3>
+<p>証明書の自動検出は、更新忘れという、よくある障害の原因を取り除く。すでにクラスター内に発行者を運用しているチームは、引き続きそうすることができ、Let's Encrypt を使った cert-manager のチュートリアルがそのルートを扱っている。AWS 内で運用しているチームは ACM でより短い経路を得られるが、その代償として証明書が 1つのクラウドに結びつく。</p>
+<h2>Kubernetes プロジェクトが運用者に伝えたこと</h2>
+<p>上流の警告は、解釈の余地をほとんど残さなかった。2026年1月の共同声明で、Kubernetes Steering Committee と Security Response Committee は次のように書いた。「2026年3月、Kubernetes は、クラウドネイティブ環境の約半数にとって重要なインフラである Ingress NGINX を終了させます。」</p>
+<p>同じ声明は、終了が実際には何を意味するかを明記した。「プロジェクトが終了した後は、バグ修正、セキュリティパッチ、いかなる種類の更新のためのリリースも、もはや行われません。」(Kubernetes Steering Committee and Security Response Committee、2026年1月29日)。</p>
+<p>そして、インシデントレポートのように読める一文が続いた。「この状況の深刻さはいくら強調しても足りません。また、Gateway API や数多くのサードパーティ Ingress コントローラーのような代替への移行を、直ちに開始することの重要性もいくら強調しても足りません。」(Kubernetes Steering Committee and Security Response Committee、2026年1月29日)。</p>
+<p>ガバナンス組織がこのように書くことはまれだ。その口調は、多くのクラスターに載ったコントローラーがパッチなしでパブリックなエッジに残り続けるという現実的な恐れを反映している。AWS が Auto Mode のサポートをリリースした時点で、これらの引用が警告していた期限はすでに 7か月前に過ぎていた。</p>
+<h2>料金: Auto Mode における Gateway API サポートの費用</h2>
+  </article>
+  <nav class="r-foot">
+    <a href="https://shattered.io/eks-auto-mode-gateway-api-ingress-nginx-retirement-migration-2026/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14088'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
