@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>CiscoとOpenAI、脅威検知のためにネットワークデータとオブザーバビリティデータを統合 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">CiscoとOpenAI、脅威検知のためにネットワークデータとオブザーバビリティデータを統合</h1>
+  <div class="r-orig">Cisco and OpenAI Combine Network and Observability Data for Threat Detection</div>
+  <div class="r-meta"><span class="site">TOKENPOST</span><span>2026-11-06 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>Cisco と OpenAI、脅威検知のためにネットワークデータとオブザーバビリティデータを組み合わせる</h2>
+<p>このアプローチは、セキュリティテレメトリをオブザーバビリティデータと組み合わせる。発表では、検知や修復に関する数値的な結果は示されなかった。</p>
+<p>Cisco と OpenAI は、Cisco のネットワークインテリジェンスと OpenAI のモデルを組み合わせ、企業のセキュリティチームが複数のシグナルにまたがる活動を結び付けて脅威を検知できるよう支援している。</p>
+<p>発表では、検知速度や修復に関する数値的な結果は示されなかった。</p>
+<p>このアプローチは、セキュリティテレメトリをオブザーバビリティデータと組み合わせ、ある活動が悪意ある干渉によるものか、それとも正当な目標を意図しない方法で追求する自律型エージェントによるものかを、防御側が評価できるよう支援するものである。両方の種類の情報を考慮することは、そうでなければ評価が難しい可能性のある活動を解釈するための文脈をチームに与えることを意図している。</p>
+<p>Cisco の社長兼最高製品責任者である Jeetu Patel は、このアプローチを「マシンの速度と規模」で動作するものと表現した。</p>
+<p>この展開は、ゼロデータ保持、顧客データの境界、分離を含む OpenAI のエンタープライズ向けプライバシーアプローチによって支えられている。これらは、Cisco に固有の確認済みの構成の詳細ではなく、この展開を支えるプライバシーアプローチの要素として説明されている。</p>
+<p>発表では、セキュリティ上の利点は定性的に説明され、検知や修復に関する数値的な性能結果は示されなかった。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.tokenpost.com/news/technology/48241" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14496'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
