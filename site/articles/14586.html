@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cisco Catalyst C1300-24XTS レビュー 小型の24ポート10GbEスイッチ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Cisco Catalyst C1300-24XTS レビュー 小型の24ポート10GbEスイッチ</h1>
+  <div class="r-orig">Cisco Catalyst C1300-24XTS Review A Neat 24-port 10GbE Switch</div>
+  <div class="r-meta"><span class="site">ServeTheHome</span><span>2026-11-07 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>Cisco Catalyst C1300-24XTS レビュー ネat な24ポート10GbEスイッチ - ServeTheHome</h2>
+<p>本日は Cisco Catalyst C1300-24XTS を取り上げる。このスイッチが興味深いのは、24個の独立した10GbEポートを備え、それが12x 10Gbase-T ポートと12x SFP+ ケージに均等に分かれているからである。このポート構成は、10GBase-T対応のサーバーやワークステーションと、ファイバー接続のストレージやアップリンクが混在している管理者にとって重要である。我々はこれまでに C1300-16XTS、C1300-12XS、C1300-12XT-2X、C1300-8FP-2G を含む、これらのスイッチを数多く検証してきた。24ポートモデルは本当に素晴らしいものであり、数か月間問題なく稼働しているので、ようやくレビューの時が来た。ハードウェアを見ていこう。</p>
+<h2>Cisco Catalyst C1300-24XTS ハードウェア概要</h2>
+<p>Cisco Catalyst C1300-24XTS は、金属製シャーシの1Uラックマウントスイッチである。本体の寸法は444.3mm x 273mm x 43.94mm で、重量は4.2kgである。これまでレビューしてきた多くの低ポート数モデルとは異なり、これはラックを埋めるフル1Uのユニットであり、我々がテストした他のユニットよりもはるかに幅が広い。</p>
+<p>フロントパネルの左側には、管理用インターフェースのまとまりがある。これらにはコンソールインターフェースにアクセスするためのいくつかの方法が含まれる。Cisco はこれを非常に簡単にしている。</p>
+<p>12個の銅線データポートは1から12までの番号が付けられ、10GBase-T に対応している。これらはフロントパネル上に6個ずつ2列に配置されている。SFP+ と 10Gbase-T を備えたスイッチについてよく見かける質問は、それらがコンボジャックかどうかであるが、これらはコンボジャックではない。</p>
+<p>それらの隣には、13から24までの番号が付けられた12個の SFP+ ケージがあり、4個ずつ3つのバンクに配置されている。これらはアップリンクやストレージネットワーク向けのファイバー接続の選択肢を提供する。また、この分散配置の方式を採ることで、Cisco は SFP+ 光モジュールや DAC をスイッチに挿入しやすくしており、冷却も多少容易になっている。</p>
+<p>フロントパネルの右端には、1GEで動作する専用の RJ45 コネクタがある。このポートは、左側のコンソールコネクタおよび24個のデータポートの両方から物理的に分離されている。これはアウトオブバンド管理アクセスを提供し、管理者がメインのデータプレーンとは独立してスイッチにアクセスできるようにする。</p>
+<p>ラックイヤーは両方がこのユニットに付属しており、12ポートおよび16ポートのモデルで見たものとは少し異なる。</p>
+<p>シャーシの側面には、ネジと取り付け位置とともに、大きな穴あきのベント部分がある。このスイッチでは両側面に通気口がある。</p>
+<p>背面に移ると、ベント、製品ラベル、ユニットを固定するためのロックポイントまたはスロット、そして単一のAC電源入力がある。ここには冗長な電源入力はないため、A+B電源供給を行うには、外部の自動切替PDUが必要となる。</p>
+<p>次に、スイッチの内部を見て、Cisco がそこで何をしたかを確認しよう。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.servethehome.com/cisco-catalyst-c1300-24xts-review-a-neat-24-port-10gbe-switch-marvell/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14586'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
