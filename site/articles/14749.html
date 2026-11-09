@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cisco SD-WANへの攻撃、ネットワーク制御を標的に変える — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Cisco SD-WANへの攻撃、ネットワーク制御を標的に変える</h1>
+  <div class="r-orig">Cisco SD-WAN Attack Turns Network Control Into a Target</div>
+  <div class="r-meta"><span class="site">BankInfoSecurity</span><span>2026-11-10 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>ガバナンス＆リスク管理、ネットワークファイアウォール、ネットワークアクセス制御、パッチ管理</p>
+<h2>Cisco SD-WAN 攻撃がネットワーク制御を標的に変える</h2>
+<p>INE の Rohit Pardasani 氏が語る認証バイパス、KeyDrift、防御策</p>
+<p>Cisco Catalyst SD-WAN コントローラーは、組織に分散ネットワークの一元的な制御をもたらすが、その集中は同時に攻撃者にとって価値の高い標的も生み出す、と INE の上級テクニカルインストラクターである Rohit Pardasani 氏は述べた。</p>
+<p>攻撃者は認証バイパスの欠陥を悪用し、ユーザー名とパスワードによる認証を経ることなく SD-WAN コントローラーにアクセスした。その後、KeyDrift マルウェアを展開し、起動スクリプトを改変して永続性を維持し、正規の Cisco プロセスの内部に悪意ある活動を隠蔽した。Cisco Talos は、攻撃者を UAT-11473 と特定した。これは Volt Typhoon として一般に追跡されている活動に関連するクラスターである。</p>
+<p>「この攻撃者たちがやったのは、インフラ内のすべてのデバイスにアクセスするために、ネットワークの頭脳を狙ったことです」と Pardasani 氏は述べた。攻撃者はまた、通信の保護に使われる暗号鍵を標的にし、マルウェアをより古く、疑わしくないものに見せかけるためにタイムスタンプ改ざんを適用した。</p>
+<p>このような攻撃を防ぐには、「基本を行うことが大いに役立つので、これを管理するのにそれほど多くのエンジニアは必要ありません」と Pardasani 氏は述べた。組織は重要なパッチを直ちに適用し、SD-WAN の管理プレーンと制御プレーンへのインターネットアクセスを遮断しなければならない。</p>
+<p>ISMG によるこのビデオインタビューで、Pardasani 氏は次の点についても議論した。</p>
+<ul><li>ネットワークトラフィックや CPU 使用率の急増など、すでにアクセスを得た攻撃者を見つけるための戦略；</li><li>Cisco のハードニングガイダンスが重要である理由；</li><li>セキュリティ責任者が SD-WAN コントローラーについてエンジニアに尋ねるべき質問。</li></ul>
+<p>Pardasani 氏は、ネットワーク業界で 20 年以上の経験があり、そのうち 15 年は Cisco ネットワークに特化している。ルーティングとスイッチング、サービスプロバイダー、セキュリティ、音声、コラボレーションの 5 つの Cisco Certified Internetwork Expert 認定を保持している。教室での経験や、企業およびサービスプロバイダー環境での実務に基づき、エンジニアの Cisco ネットワーキングとセキュリティのスキル向上を支援している。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.bankinfosecurity.com/cisco-sd-wan-attack-turns-network-control-into-target-a-33325" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14749'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

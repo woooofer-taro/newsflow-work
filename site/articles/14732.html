@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cisco、フロンティアAIのレッドチーミングとエージェント可観測性のツールを発表 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Cisco、フロンティアAIのレッドチーミングとエージェント可観測性のツールを発表</h1>
+  <div class="r-orig">Cisco unveils frontier AI red teaming and agent observability tools</div>
+  <div class="r-meta"><span class="site">Crypto Briefing</span><span>2026-11-10 07:00</span><span>発表</span></div>
+  <article class="r-body">
+<h2>Cisco、フロンティアAIのレッドチーミングおよびエージェント可観測性ツールを発表</h2>
+<p>写真: Tima Miroshnichenko / Pexels</p>
+<p>ネットワーク大手は、企業が自律型ソフトウェアにより多くの業務を任せるようになるなか、攻撃シミュレーションとエージェント監視をAI Defenseプラットフォームに追加する</p>
+<p>Ciscoは、企業が導入し始めているAIエージェントを保護することを目的とした、AIレッドチーミングおよびエージェント監視ツールを導入した。考え方は、他者に攻撃される前に自社のAIを攻撃し、稼働後も監視を続けるというものだ。</p>
+<p>このタイミングは重要である。企業は質問に答えるチャットボットから、行動を起こすエージェントへと移行しており、ツールやデータにアクセスできるエージェントは、テキストを書くだけのモデルよりもはるかに大きな標的となる。</p>
+<h2>Ciscoが展開するもの</h2>
+<p>新機能は、AIモデルおよびアプリケーション向けの同社のセキュリティプラットフォームであるCisco AI Defenseの中に組み込まれている。</p>
+<p>Ciscoの方式はアルゴリズム型であり、人間のテスターだけに頼るのではなく、自動化されたシステムがモデルやエージェントの脆弱性を探るという意味である。このプラットフォームは200を超えるリスクカテゴリにわたってスキャンする。</p>
+<p>これらのカテゴリには、プロンプトインジェクションとデータ流出が含まれる。プロンプトインジェクションとは、攻撃者がAIの入力に指示を紛れ込ませ、その動作を乗っ取ることである。データ流出とは、機密情報が静かに外へ出ていくことを丁寧に言い換えた言葉である。</p>
+<p>レッドチーミングはマルチエージェントシステム上で動作するため、複数のAI攻撃者が協力し、進行しながら戦術を調整する。</p>
+<p>Ciscoはこのテストを、同社のIntegrated AI Security &amp; Safety Frameworkに結び付けている。このフレームワークはNISTおよびMITREの標準に準拠している。</p>
+<p>監視の側面は、別の問題に対処する。エージェントを公開前にテストすることは有用だが、エージェントは実環境では異なる振る舞いをするため、チームは、展開後にそれらのエージェントが実際に何をしているかを把握する必要がある。</p>
+<h2>このプラットフォームの経緯</h2>
+<p>Cisco AI Defenseは2025年1月に最初にローンチされた。2026年2月10日のアップデートは、プラットフォーム登場以来最大の拡張と説明された。これにより、エージェントとモデルを対象とするアルゴリズム型レッドチーミング機能が導入された。</p>
+<p>2026年3月23日、Ciscoは無料のセルフサービス型Explorer Editionをローンチした。組織はこれを使って、初期費用なしで、最短20分でAIモデルやエージェントを評価できる。</p>
+<p>Explorer Editionは、開発者がエージェントを構築するために使うツールキットである主要なエージェント型フレームワークをサポートしている。また、エージェントを外部サービスやデータに接続するシステムにも対応している。</p>
+<p>2026年6月、CiscoはExplorer EditionにAgent ValidationとAgent Harness Testingを追加した。これらの機能は、ツールルートやコンテンツチャネルを含む、エージェント特有の脆弱性を対象としている。</p>
+<p>メール、文書、またはウェブページを読むエージェントは、そのコンテンツに隠された悪意あるテキストによって操作される可能性があり、これは間接プロンプトインジェクションとして知られている。Ciscoの新しいテストは、さまざまなコンテンツチャネルを通じたまさにその種の攻撃を探る。</p>
+<h2>エージェントがセキュリティの計算を変える理由</h2>
+<p>誤った回答をする単体のモデルは、きまりが悪い程度で済む。不適切な指示に従う自律型エージェントは、ファイルを送信したり、ツールを呼び出したり、業務システム内で行動を起こしたりする可能性があり、これは別の種類の問題である。</p>
+<p>Ciscoは、AI Defenseをライフサイクル全体にわたるアプローチを軸に位置付けている。同社のフレームワークは、発見・検知・防御の順序に従う。すなわち、使用中のAI資産を見つけ、それらに対する脅威を発見し、その脅威を阻止する。</p>
+<p>このプラットフォームはまた、同社のセキュリティ研究グループであるCisco Talosからのリアルタイムの脅威インテリジェンスも取り込む。これにより、テストには、時代遅れになりやすい静的なチェックリストではなく、最新の攻撃手法のフィードが提供される。</p>
+<p>Ciscoは、この戦略をさまざまな業界イベントで強調しており、フロンティアAIから生じる新たなリスクに対処する方法として、また企業が自社の展開を信頼できるようにする手段として売り込んでいる。</p>
+<p><strong>開示:</strong> この記事はDiego Almada Lopezによって編集された。当社のコンテンツの作成およびレビュー方法の詳細については、編集方針を参照のこと。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://cryptobriefing.com/cisco-ai-red-teaming-agent-observability/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14732'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
