@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>CISAが悪用されている4件の脆弱性をKEVに追加、11月12日をパッチ適用期限に設定 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">CISAが悪用されている4件の脆弱性をKEVに追加、11月12日をパッチ適用期限に設定</h1>
+  <div class="r-orig">CISA Adds Four Exploited Flaws to KEV, Sets Nov. 12 Patch Deadline</div>
+  <div class="r-meta"><span class="site">eSecurity Planet</span><span>2026-11-11 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>CISA（Cybersecurity and Infrastructure Security Agency）は11月9日、GPUStack、FreeSWITCH、OpenSSH、IBM Aspera Faspex に影響を与える、実際に悪用されている4件の脆弱性を Known Exploited Vulnerabilities（KEV）カタログに追加した。</p>
+<p>対象となる連邦文民機関は、11月12日までにこれらの欠陥を修正し、必要なフォレンジック・トリアージを完了しなければならない。CISA の発表によると、これらの脆弱性により、攻撃者は認証を回避したり、管理者アクセスを取得したり、影響を受けるシステム上でコマンドを実行したりできる可能性がある。</p>
+<p>4件すべてで悪用が確認されているが、CISA は攻撃者を特定しておらず、影響を受けた組織の数も公表していない。管理者は脆弱なシステムを優先して対応し、不正アクセスがないか確認すべきである。特に、攻撃者がアカウントや認証情報を作成し、それらがパッチ適用後も有効なままとなっている可能性がある場合は注意が必要である。</p>
+<h2>CISA の KEV カタログに追加された4件の悪用された脆弱性</h2>
+<p><strong>GPUStack: CVE-2026-102895</strong></p>
+<p>2.2.0 より前のバージョンの GPUStack には、リモートの攻撃者に認証情報なしで管理者アクセスを与えうる重大な認証バイパスが存在する。</p>
+<p>GPUStack のアドバイザリによると、このアプリケーションはリモートからのリクエストを、信頼されたローカルトラフィックとして誤って扱う可能性があった。攻撃者は、特定のリバースプロキシ構成を悪用するか、`X-GPUStack-Real-IP` ヘッダーを操作することで、これを悪用できた。</p>
+<p>悪用に成功すると、攻撃者は管理者用 API キーを作成し、AI 推論バックエンドを変更し、クラウドの認証情報にアクセスし、ワーカーシステム上でコマンドを実行できる。</p>
+<p>ベンダーは、GPUStack 2.1.1 のデプロイメントに対する攻撃を文書化しており、そこでは悪意のある推論バックエンドがリバースシェルの起動に使用された。</p>
+<p><strong>FreeSWITCH: CVE-2026-116779</strong></p>
+<p>FreeSWITCH 1.11.2 以前には、SIP MESSAGE の処理に影響する重大なコマンドインジェクションの欠陥が存在する。</p>
+<p>SignalWire のアドバイザリは、巧妙に細工されたメッセージがアプリケーションの内部 API コマンドインターフェースに到達しうると説明している。</p>
+<p>影響を受けるプロファイルに SIP MESSAGE を送り込める攻撃者は、コマンドを実行したり、設定ファイルや認証情報にアクセスしたり、通話を操作したりできる可能性がある。認証設定によっては、悪用に SIP アカウントへのアクセスが必要となる場合がある。</p>
+<p>SignalWire は、実環境での悪用を確認している。この脆弱性の CVSS スコアは 9.8 で、FreeSWITCH 1.11.3 で修正された。</p>
+<p><strong>OpenSSH: CVE-2026-123158</strong></p>
+<p>この OpenSSH の脆弱性により、Pluggable Authentication Modules（PAM）なしで musl libc を使用する特定の Linux システムで、認証バイパスが可能となる場合がある。</p>
+<p>影響を受ける構成には Alpine Linux 環境が含まれる。この欠陥はすべての OpenSSH インストールに影響するわけではない。</p>
+<p>CISA の KEV 掲載は、実際に悪用されていることを確認している。この脆弱性は、eSecurity Planet の最近の Alpine Linux SSH 認証バイパスに関する報告でも取り上げられた。</p>
+<p>管理者は、影響の有無を判断する前に、Linux ディストリビューション、OpenSSH のバージョン、認証設定を確認すべきである。</p>
+<p><strong>IBM Aspera Faspex: CVE-2026-123218</strong></p>
+<p>IBM Aspera Faspex 5.0.0 から 5.0.19 には、攻撃者が完全な管理者権限を取得できる可能性のある重大な認可バイパスが存在する。</p>
+<p>IBM はこの脆弱性を CVSS 9.8 と評価している。</p>
+<p>IBM のセキュリティ情報は、認証済みユーザーが関与する攻撃を説明しているが、その CVSS ベクターは権限が不要であると指定している。この情報はその食い違いを説明していない。</p>
+<p>IBM は Faspex 5.0.19 PL1 でこの脆弱性を修正した。管理者はまた、デプロイされている `faspex-core` コンテナイメージも確認しなければならない。</p>
+<p>CISA の KEV への追加は、この欠陥が悪用されたことを確認している。</p>
+<h2>脆弱性の修正方法と侵害の確認方法</h2>
+<p>CISA の11月12日の期限は、Binding Operational Directive 26-04 に基づき、対象となる連邦文民機関に適用される。民間組織は同じ期限に拘束されないが、4件の脆弱性すべてが悪用されているため、修正を優先すべきである。</p>
+<p>管理者は、影響を受けるベンダーの指示に従い、侵害の可能性を調査すべきである。</p>
+<p><strong>1. GPUStack: アップグレードと管理者アクセスの確認</strong></p>
+<ul><li>GPUStack 2.2.0 以降にアップグレードする。</li><li>パッチ適用までは、`force_auth_localhost=true` を有効にし、API アクセスを制限し、信頼されていないクライアントが `X-GPUStack-Real-IP` ヘッダーを供給できないようにする。</li><li>管理者アカウント、API キー、推論バックエンド、ワーカー設定を確認する。</li><li>不正な API キーを無効化し、漏えいした可能性のあるクラウドまたはワーカーの認証情報をローテーションする。</li></ul>
+<p>GPUStack のアドバイザリは、攻撃者が永続的な管理者キーを作成できることを確認している。ソフトウェアをアップグレードしても、それらの認証情報が自動的に無効化されるわけではない。</p>
+<p><strong>2. FreeSWITCH: パッチ適用と SIP 設定の点検</strong></p>
+<ul><li>FreeSWITCH 1.11.3 以降にアップグレードする。</li><li>明示的に必要な場合を除き、SIP プロファイルで `enable-chat-api-proto` が無効のままであることを確認する。</li><li>その機能が不要な場合は、`enable-chat=false` で受信 SIP チャットを無効にする。</li><li>SIP MESSAGE トラフィック、設定変更、不審なプロセスの活動を確認する。</li></ul>
+<p>SignalWire は、MESSAGE の認証だけでは脆弱性は解消されないと警告している。管理者はまた、不要なアカウントを削除し、公開されている SIP プロファイルを確認すべきである。</p>
+<p><strong>3. OpenSSH: 影響を受ける Linux 構成の特定</strong></p>
+<ul><li>PAM なしで musl libc を使用している OpenSSH のインストールを確認する。</li><li>オペレーティングシステムまたはディストリビューションのメンテナが提供するセキュリティ更新を適用する。</li><li>インターネットに面した SSH サービスを優先する。</li><li>認証ログで、異常なログイン試行や予期しない成功セッションを確認する。</li></ul>
+<p>組織は、すべての OpenSSH インストールが脆弱であるとみなすのではなく、自組織のシステムが影響を受ける構成要件を満たすかどうかを確認すべきである。</p>
+<p><strong>4. IBM Aspera Faspex: 修正済みリリースのインストール</strong></p>
+<ul><li>Faspex 5.0.19 PL1 にアップグレードする。</li><li>`faspex-core` コンテナがイメージバージョン `5.0.19 (1ce4b13, Fix Pack: 1)` を使用していることを確認する。</li><li>管理者アカウント、権限の変更、異常なファイル転送の活動を確認する。</li><li>不正な設定変更や、新たに作成された特権アカウントを調査する。</li></ul>
+<p>IBM はこの脆弱性に対する回避策を挙げておらず、セキュリティ更新が必須の修正手段となる。</p>
+<p><strong>5. 証拠の保全と修正の検証</strong></p>
+<p>CISA は、BOD 26-04 に基づき、4件の KEV エントリについてフォレンジック・トリアージを要求している。管理者は、関連するログとシステムの証拠を保全し、影響を受けるすべてのインスタンスに更新がインストールされていることを確認し、不正アクセスの兆候を調査すべきである。</p>
+<p>同様の調査手順は、CISA が11月6日に KEV に追加した、最近の SonicWall SSLVPN 認証バイパスの後にも推奨された。</p>
+<p>インターネットに面したインフラについては、セキュリティチームはパッチが利用可能になる前の期間も確認すべきである。以前の Citrix NetScaler の悪用では、管理者は修正とあわせて、フォレンジック証拠を保全し、侵害を調査する必要があった。</p>
+<p>FreeSWITCH の修正は KEV 掲載前に利用可能だったが、GPUStack で文書化された悪用には悪意のあるバックエンドの作成が含まれていた。脆弱なバージョンを実行しているシステムは、CISA が警告を出す前に侵害されていた可能性がある。</p>
+<p>組織は、更新を完了し、影響を受けるシステムで不正な活動がないか確認し、侵害時に確立された認証情報やアクセスを無効化すべきである。</p>
+<p><strong>あわせて読む：</strong> <strong>CISA は以前、LiteLLM、Kestra、SonicWall を含む、AI インフラとエンタープライズソフトウェアに影響する7件の悪用された脆弱性を追加した。</strong></p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.esecurityplanet.com/vulnerabilities/news-cisa-kev-gpustack-freeswitch-openssh-ibm-november-2026/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14879'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

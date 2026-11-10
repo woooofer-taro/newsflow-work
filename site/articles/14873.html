@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>量子の脅威からWANを守る 第2部: CNSA 2.0の青写真 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">量子の脅威からWANを守る 第2部: CNSA 2.0の青写真</h1>
+  <div class="r-orig">Safeguard Your WAN from Quantum Threats, Part 2: The CNSA 2.0 Blueprint</div>
+  <div class="r-meta"><span class="site">Cisco Blogs</span><span>2026-11-11 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>CNSA 2.0：企業の対応を促す期限</h2>
+<p>Cisco Live の基調講演で、Chuck Robbins は「量子は次の大きな技術的破壊である」と述べた。私がネットワークアーキテクトと行うほぼすべてのポスト量子暗号（PQC）のセッションで、この現実が議論を支配している。量子の実際の恩恵が訪れるより先に、セキュリティ上のリスクが到来しつつあるのだ。</p>
+<p>このシリーズのパート1では、脅威アクターが HNDL 攻撃を実行している状況を取り上げた。これは、暗号化されたデータを今日盗み出し、暗号解読に関連する量子コンピュータ（CRQC）がそれを破れる日、しばしば「Q-Day」と呼ばれる日を待つというものである。企業ネットワークの目標は、PQC への完全な移行でなければならない。</p>
+<p>国家安全保障局（NSA）の Commercial National Security Algorithm Suite 2.0（CNSA 2.0）の義務化の下で、国家安全保障システムは、すべての新規購入を 2027 年までに量子安全にし、2031 年までに完全に移行することを確保しなければならない。この義務化は連邦ネットワークを直接規定するものだが、商用企業、とりわけ、データの機密性とハードウェアの寿命が数十年にわたらなければならない金融、医療、公益事業、運輸において、事実上の*デファクト*のタイムラインを設定している。</p>
+<h2>量子レジリエンスのためのブループリント</h2>
+<p>組織がこの移行を進めるのを支援するため、Cisco は Cisco 8000 Series Secure Routers 向けに、量子レジリエンスに関する業界初の包括的なブループリントを導入する（図1）。</p>
+<h3>図1. Cisco の多層量子防御：ハードウェアのルート・オブ・トラスト → セキュア WAN 全体にわたるコントロールプレーンおよびデータプレーン通信</h3>
+<p>従来の公開鍵暗号（RSA および楕円曲線）に依存するすべてのネットワーク層は、近代化しなければならない。当社のブループリントは、3 つの中核的な柱にわたって途切れのない信頼の連鎖を提供する。</p>
+<ol><li><strong>ハードウェアのルート・オブ・トラスト：</strong> 最初のデバイス電源投入時から、基盤となるブートローダーとオペレーティングシステムを保護する。</li><li><strong>コントロールプレーンおよびデータプレーンの暗号化：</strong> 通過トラフィックを、受動的な盗聴および HNDL による傍受から保護する。</li><li><strong>暗号アジリティと可視性：</strong> 実践的な段階的移行と、暗号の状態を監査、追跡、検証するためのリアルタイムのエンドツーエンドの可視性。</li></ol>
+<p>オープンな NIST および IETF の標準のみに基づいて構築されたこのアーキテクチャは、プラットフォーム、製品、プロトコル、アプリケーションを網羅する企業ルーティングスタック全体にわたる完全なマルチベンダー相互運用性とともに、市場をリードする量子保護を提供する。</p>
+<h2>IOS XE における包括的なポスト量子機能</h2>
+<p>Cisco IOS XE ソフトウェアのリリース 26.1 および 26.2 から、最新の NIST 標準化アルゴリズムを、お客様の WAN が日常的に依存するプロトコルに直接統合した。</p>
+<h3><strong>*転送中データのための ML-KEM（FIPS 203）暗号化</strong>*</h3>
+<p>*転送中データのための ML-KEM（FIPS 203）暗号化*</p>
+<p>転送中のデータを HNDL 攻撃から保護するため、Cisco は Module-Lattice-Based Key-Encapsulation Mechanism（ML-KEM）を実装した。これにより、以下を含む WAN および管理プロトコルの包括的なスイート全体で、量子安全な鍵交換が確保される。</p>
+<ul><li>エンタープライズ WAN および SD-WAN：IKEv2 IPsec、DMVPN、FlexVPN、Catalyst SD-WAN IPsec</li><li>ラインレートのリンクセキュリティ：LAN および WAN MACsec（IEEE 802.1AE）</li><li>セキュアな管理：SSH および TLS 1.3 コントロールセッション</li></ul>
+<h3><strong>*PKI ベースの VPN のための ML-DSA（FIPS 204）認証</strong>*</h3>
+<p>従来のデジタル署名（RSA/ECDSA）は、リアルタイムの量子偽造に対して脆弱である。Cisco IOS XE リリース 26.2 で、Cisco は PKI ベースのサイト間 VPN を保護するために Module-Lattice-Based Digital Signature Algorithm（ML-DSA）を統合した。ML-DSA を採用することで、組織は、ルーターのアイデンティティ、証明書登録（EST/SCEP）、IKEv2 トンネル認証が量子によるなりすましの影響を受けないことを確保でき、妥協のないゼロトラストの姿勢を維持できる。</p>
+<h3><strong>*ハードウェアの完全性のための量子安全なセキュアブート</strong>*</h3>
+<p>*ハードウェアの完全性のための量子安全なセキュアブート*</p>
+<p>ハードウェアのライフサイクル管理は、量子移行における重大な脆弱性である。今日導入するルーターは、Q-Day が到来したときにもおそらくネットワーク内に残っているだろう。攻撃者がファームウェア検証を侵害すれば、OS より下層の永続的な制御を得る。</p>
+<p>ルーターの運用寿命全体にわたって不変のハードウェアの完全性を確保するため、Cisco は Cisco 8000 Series Secure Routers 向けに、業界初の量子安全なセキュアブートを設計した（図2）。</p>
+<h3>図2. 途切れのないブートの信頼の連鎖：ハードウェアアンカー <strong>-&gt;</strong> LMS 署名済み ROMMON <strong>-&gt;</strong> ML-DSA 署名済み IOS XE</h3>
+<ul><li><strong>LMS（NIST SP 800-208）署名済み ROMMON：</strong> ステートフルなハッシュベースの Leighton-Micali Signatures（LMS）を用いて ROMMON ソフトウェアに署名し検証することで、基盤となるハードウェアのブートローダーを保護する</li></ul>
+<ul><li><strong>ML-DSA（FIPS 204）署名済み IOS XE：</strong> OS のリロードのたびに、ML-DSA を用いて IOS XE ソフトウェアイメージを認証する</li></ul>
+<h3>ハイブリッド PQC によるアーキテクチャ上の混乱ゼロ</h3>
+<p>企業のアーキテクトは、スイッチを切り替えるだけでグローバル WAN を一夜にして移行することはできない。相互運用性と後方互換性が不可欠である。</p>
+<p>Cisco は RFC 9370 に基づくハイブリッド PQC を提供する。これは、従来の鍵交換（Diffie-Hellman / ECDH など）とポスト量子 KEM（ML-KEM-768/1024）を、単一のハンドシェイクの中で組み合わせるものである（図3）。</p>
+<h3>図3. ハイブリッド PQC のデュアル鍵交換（従来方式 + ML-KEM）による、単一の量子レジリエントなセッション鍵の導出</h3>
+<p>このハイブリッド方式により、お客様のインフラストラクチャは既存の FIPS 140-3 の義務への厳格な準拠を維持しながら、量子保護をシームレスに重ねることができ、データの欠落を防ぎ、マルチベンダーネットワーク全体で段階的かつリスクのない移行を確保する。</p>
+<h3>NetOps と SecOps のための新しい考え方</h3>
+<p>AI 駆動の攻撃ツールが脆弱性の発見を加速させるにつれ、攻撃者は暗号上の弱点をますます標的にするようになる。先手を打つために、NetOps チームと SecOps チームは暗号アジリティへ転換する必要がある。これは、ハードウェアを交換することなく、ソフトウェア設定を通じて暗号アルゴリズムを迅速に採用、更新、ローテーションする運用上の能力である。</p>
+<p>当社は、Cisco 8000 Series Secure Routers を、現在では必須となった暗号アジリティの未来のために、強力で柔軟、かつ目的に特化して構築した（図4）。</p>
+<h3>図4. ブランチ、キャンパスエッジ、データセンターにわたる Cisco 8000 Series Secure Routers ファミリー</h3>
+<p>量子時代における Cisco 8000 Series Secure Routers のセキュリティ上の利点には、以下が含まれる。</p>
+<ul><li><strong>長期的なデータの機密性を守るための、harvest now, decrypt later（HNDL）によるデータ窃取に対する即時の保護</strong></li><li><strong>現在の FIPS 140-3 準拠と量子安全性をシームレスに橋渡しする、段階的移行のためのハイブリッド PQC</strong></li><li><strong>デュアルハンドシェイクの鍵交換中も性能が低下しないことを保証する、高い演算能力による高速化されたハイブリッド暗号</strong></li><li><strong>データプレーンのスループットを損なうことなく、ラインレートのペイロード暗号化という重い処理を担うよう構築された専用の暗号エンジン</strong></li><li><strong>量子安全なファームウェアおよびソフトウェア検証のための基盤となるルート・オブ・トラストを確立する、不変のトラストアンカー</strong></li><li><strong>より広範なマルチベンダーのエコシステム全体で動作することが検証された、標準ベースの相互運用性</strong></li><li><strong>進化する量子時代のために設計された、段階的な防御強化のロードマップを備えた、暗号アジリティの未来に向けた構築</strong></li></ul>
+<h3>行動すべき時は今：3 ステップの移行計画</h3>
+<p>量子の脅威は遠い仮定の話ではなく、今日のデータの機密性に対する現実のリスクである。ネットワークおよびセキュリティのリーダーは、今すぐ 3 つの実践的なステップを取るべきである。</p>
+<ol><li><strong>暗号のインベントリを監査する：</strong> 従来の公開鍵アルゴリズムが、保持期間の長い高価値の企業データを保護している箇所を特定する。Cisco IQ Quantum Readiness Assessment から始めることができる。</li><li><strong>WAN エッジを優先する：</strong> 外部の信頼できない WAN およびクラウド相互接続リンク全体に、量子安全な転送暗号化（ML-KEM）を導入することから始める。</li></ol>
+  </article>
+  <nav class="r-foot">
+    <a href="https://blogs.cisco.com/networking/safeguard-your-wan-from-quantum-threats-part-2-the-cnsa-2-0-blueprint" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14873'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
