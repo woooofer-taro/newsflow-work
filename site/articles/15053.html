@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Red Hat、AIエージェントの「航空管制官」になる競争に参入 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Red Hat、AIエージェントの「航空管制官」になる競争に参入</h1>
+  <div class="r-orig">Red Hat joins race to be ‘air traffic controller’ for AI agents</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-13 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>今週のKubeConでRedHatは、企業がAIエージェントを利用、管理、保護するのに役立つRHELとOpenShiftプラットフォームの複数のアップグレードを発表した。</h2>
+<p>今週ソルトレイクシティで開催されているKubeCon会議でのRed Hatの大きなニュースは、OpenShift 5向けのエージェント型AI管理ツール（MCPサーバーとMCPゲートウェイを含む）の一般提供開始であり、RHELとDeveloper Hub向けのMCPサポートも近日中に提供される。</p>
+<p>AIモデルがより賢く、より高性能になるにつれ、AIエージェントの管理は今日の企業にとって最大の関心事の一つである。適切な制御がなければ、AIエージェントは重大な害をもたらす可能性がある。さらに、主要なエンタープライズプラットフォームプロバイダーはすべてエージェント機能を展開している。企業は、AWS、Azure、Google Cloudで、Salesforce、SAP、Databricksで、OpenAIやAnthropicで、その他数十のプラットフォームでエージェントを構築できる。多くの企業が複数のエージェントビルダーを使用しており、それらすべてを調整することが現在、重大な課題になりつつある。</p>
+<p>中央のコントロールプレーンを決定することは、今日企業ができる最大の決定の一つであり、現在、Red Hatは、MCPサポート、ガードレール、その他のエージェント管理機能のおかげで、その選択肢の一つになる道を進んでいる。</p>
+<p>「誰もがAIエージェントの『航空管制官』になりたがっている」と、Dell'Oro Groupのアナリスト、Mauricio Sanchez氏は言う。「彼らはみな、企業がエージェントを展開する際に、それを安全に行えるよう支援する、安全なインフラストラクチャソフトウェア層になりたいのだ。」</p>
+<p>Red Hatを使う利点は、クラウドとオンプレミスにまたがって動作し、さまざまなハイパースケーラー、AI企業、エンタープライズソフトウェアプロバイダーのAIシステムと連携するため、企業がベンダーロックインを避けるのに役立つことである。しかし、専門家によれば、その機能は他の一部のプレーヤーに後れを取っており、他のプラットフォームでホストされているエージェントに対して提供できる監視の範囲には限界がある。</p>
+<p>「サーバーとソフトウェアインフラストラクチャに多額の投資をしている企業は、Red Hatのような企業を間違いなく候補に入れるべきだ」とSanchez氏は言う。「自前のサーバー、ストレージ、コンピュートインフラストラクチャをホストし続ける企業は、それを運用するためのソフトウェアが必要になるが、AnthropicやハイパースケーラーはエージェンティックAI時代にそれを手助けしてはくれない。」</p>
+<p>Red Hatがエージェント型AI管理をさらに担えるかどうかについては、分野が急速に進化しているため、依然として未解決の問題である。「レースはまだ決着していない」とSanchez氏は言う。「レースの第1イニングであり、業界がどこへ向かうのかを見るのは非常に興味深いだろう。」</p>
+<p>エージェント型AIシステムは通常、すべてがAPI駆動の世界で構築されるため、機会は存在する。特にAIエージェントは、他のオープン標準の中でも、MCP（Model Context Protocol）サーバーを介してデータ、ツール、その他のシステムに接続する。</p>
+<p>「すべてをAPI経由で行えるわけではない部分がまだ存在する」とSanchez氏は言う。「しかし、AIコミュニティが受け入れてきたことが一つあるとすれば、すべてがAPI駆動でなければならないということであり、制御できない部分があるなら、それはそれらのAPIがいつ追加されるかという問題にすぎない。」</p>
+<p>しかし、Red Hatには多くの競合がある。</p>
+<p>たとえばMicrosoftは、Azure Agent 365でこの分野で非常に強いと、ソフトウェアテスト会社Leapworkの開発者リレーション担当バイスプレジデントであるDonovan Brady氏は言う。「基本的に、どこにデプロイされたどんなエージェントにも対応するエージェントサポートがある」と彼は言う。「Red Hatには、それと同じ単一のコントロールプレーンは間違いなくない。」</p>
+<h2>MCPツール</h2>
+<p>今週のOpenShift 5の発表で、Red Hatは、MCPゲートウェイがAIエージェントとそれらが呼び出すツールの間に位置し、各エージェントの資格情報に基づいて各エージェントが見られるものをフィルタリングすると述べた。また、プロンプトインジェクションをブロックし機密データを保護できるNvidiaのオープンソースツールキットであるNeMo Guardrailsも含まれる。このゲートウェイでは、企業がシステムを変更するあらゆるエージェントの操作に人間の承認を必須とすることもできる。</p>
+<p>さらに、OpenShift向けの新しいMCPサーバーは、エージェントのアクセスを既存のIDシステムおよびKubernetesのロールベースの権限に結び付け、エージェントの活動の監査証跡を備える。テクノロジープレビューのエージェントサンドボックスもあり、信頼できないエージェントのコードを仮想マシン内に隔離できる。</p>
+<p>「自律型エージェントに初日から本番環境の鍵を渡す者はいない。Red Hatはそれを理解しているようだ」と、Moor Insights &amp; Strategyのアナリスト、Matt Kimball氏は言う。「同社のエージェント戦略は、エージェントが自分で行動することではない。エージェントに管理されたアクセスを与え、修復では人間を関与させ続け、エージェントが何をしたか、そしてそれにいくらかかったかを確認できるようにすることだ。」</p>
+<p>Red Hatはまた、今後数週間のうちにRHEL向けのMCPサーバーが登場すると発表した。その目的は、企業がAIエージェントを使ってRHELの問題を診断する方法を、無制限のアクセスを与えることなく提供することである。</p>
+<p>Red Hat Developer Hub 2.1にもMCPサーバーが登場する予定で、今月後半に一般提供される見込みである。これはオープンソースのBackstageプロジェクト上に構築されたエンタープライズ開発者ポータルであり、開発者、AI開発ツール、AIエージェントに、企業のソフトウェアカタログ、ライブの運用データ、ドキュメント、セルフサービスワークフローを含むエンタープライズコンテキストへのアクセスを提供する。</p>
+<p>「Red Hat Developer Hub 2.1は、開発者とAIエージェントをそのコンテキストに接続するための管理された基盤を提供し、組織がセキュリティ、一貫性、制御を犠牲にすることなくソフトウェア開発を加速するのを支援する」と、Red Hatの開発者ツール担当プロダクト責任者であるBalaji Sivasubramanian氏は言う。</p>
+<p>MCPにより、AIエージェントはエンタープライズシステムにアクセスし、ゴールデンパスのトリガーやKubernetesデプロイメントの問題のデバッグなどの操作を行えるとRed Hatは述べている。</p>
+<p>「MCPは、あらゆる現代的なプラットフォームにとって最低条件だ」と、IDCのアナリスト、Jim Mercer氏は言う。</p>
+<p>Red Hatの発表の重要性は、MCPサポートがエージェント機能をOpenShift自体の外にまで拡張することにあると彼は言う。「Red Hatは、OpenShift 5を単なるインフラストラクチャプラットフォームではなく、エージェント運用プラットフォームとして位置付けているようだ」と彼は言う。</p>
+<p>これは約7年ぶりの主要リリースであり、この発表はRed Hatの顧客にとって重要だと彼は付け加える。OpenShift 4は2019年に登場した。この新リリースにより、Mercer氏は「OpenShiftはKubernetesとハイブリッドクラウドインフラストラクチャだけでなく、仮想化、AIインフラストラクチャ、エージェント運用、エンタープライズセキュリティでもますます競合している」と言う。</p>
+<h2>アシスタントのアップグレード、耐量子暗号、移行する企業向けの無償仮想化</h2>
+<p>その他のAIニュースとして、Red HatはOpenShift LightSpeedを会話型アシスタントのチャットボットから、クラスターの問題を診断し、修正を提案し、アップデートのリスクを評価できる本格的なAIエージェントへと格上げした。さらに、テクノロジープレビューでは、より多くのトラブルシューティングタスクを引き受けることもでき、すべての変更の承認には引き続き人間が関与する。</p>
+<p>しかし、今週のメニューにあったのはAIだけではなかった。Red Hat OpenShift 5は、ソブリン展開向けの強化されたマルチテナンシーも追加し、ポスト量子暗号のサポートを拡張する。</p>
+<p>Red Hatはまた、対象となる3年契約に対してOpenShift Virtualizationを1年間無償で提供しており、この動きは、移行期間中に二重の支払いをすることなくVMwareプラットフォームから離れたいVMwareの顧客を引き付けるためのものかもしれない。</p>
+<p>OpenShift Virtualizationは、オンプレミス展開におけるVMwareの代替として「技術的に実行可能」だと、LeapworkのBrady氏は言う。「しかし、それはまったく異なるプラットフォームであり、データセンターの構築と運用の方法を完全に再設計する必要がある」と彼は言う。「かなりの時間と労力と費用がかかる話になる。それだけの価値はないかもしれない。」</p>
+<p>ABI Researchのシニアリサーチディレクターであるデ​ィミトリス・マヴラキス（Dimitris Mavrakis）氏も、仮想化テクノロジースタックの切り替えが多大な労力を要することに同意する。「1年間の無償ライセンスという論拠が、移行の最も強力な触媒になるとは考えていない」と彼は言う。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4247825/red-hat-joins-race-to-be-air-traffic-controller-for-ai-agents.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15053'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
