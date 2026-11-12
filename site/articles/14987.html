@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AMD、新型256コアEPYCサーバーCPUでIntelとNvidiaに挑む — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">AMD、新型256コアEPYCサーバーCPUでIntelとNvidiaに挑む</h1>
+  <div class="r-orig">AMD takes on Intel and Nvidia with new 256-core EPYC server CPUs</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-12 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>AMD、新しい256コアEPYCサーバーCPUでIntelとNvidiaに挑む</h2>
+<h2>AMDは、新しいサーバープロセッサがAIエージェントのワークロードに対してより高い性能とより優れた効率を提供できると主張しているが、CIOはそれらの利点をインフラとライセンスのコストと比較検討すべきである。</h2>
+<p>企業がAIエージェントの導入とAIインフラの拡張を急ぐ中、AMDは、エンタープライズCPUにおけるIntelの優位とデータセンターコンピューティングにおけるNvidiaの野心の双方に挑むべく、新世代のEPYCサーバープロセッサを発表した。第6世代EPYCのラインアップは、ソケットあたり最大256コアを備え、PCIe Gen 6とDDR5メモリをサポートしており、AMDは性能、効率、AIスループットの大幅な向上をうたっている。</p>
+<p>「第6世代AMD EPYCにより、顧客は実績のあるx86基盤を標準としつつ、ワークロードに最適化されたソリューションを選択して、より多くのエージェントを実行し、アクセラレータ搭載インフラにデータを供給し続け、依存するビジネスクリティカルなアプリケーションを稼働させることができます」と、AMDのコンピュート＆エンタープライズAI担当シニアバイスプレジデント兼ゼネラルマネージャーであるDan McNamaraは声明で述べた。</p>
+<p>新しいCPUを搭載したシステムは、大手サーバーメーカーおよび相手先ブランド設計製造業者（ODM）から現在出荷されており、Microsoft AzureとOracle Cloud Infrastructure（OCI）のクラウドインスタンスはまもなく利用可能になる。</p>
+<h2>ハードウェアの仕組み</h2>
+<p>EPYC 9006 SP7シリーズは10種類のプロセッサモデルで構成され、構成は64コアから256コア、ソケットあたり最大512スレッドまでの範囲に及ぶ。このポートフォリオには、多数の同時コンピューティングタスクを必要とするワークロード向けの高密度プロセッサのほか、最大5.3GHzのブースト速度を持つ高周波数バリアントが含まれる。</p>
+<p>SP7シリーズ全体で、プロセッサは16チャネルのDDR5メモリとPCIe Gen 6接続をサポートしており、PCIe Gen 5と比べてレーンあたり2倍の帯域幅を提供する。</p>
+<p>「AMDは単にコア数を増やすのではなく、既存の電力およびインフラの制約内でより多くの計算能力を提供することを目指しています。このため、このプラットフォームは、クラウドコンピューティング、仮想化、ハイパフォーマンスコンピューティング（HPC）、エンタープライズデータベース、データ分析、AIインフラに特に関連性が高くなっています」と、TechInsightsの半導体アナリストであるManish Rawatは述べた。</p>
+<h2>競合とのベンチマーク</h2>
+<p>AMDは新しいプロセッサをIntelのXeonおよびNvidiaのVera CPUと対抗させており、社内および公開されたベンチマーク比較で大幅な性能上の優位があると主張している。</p>
+<p>同社は、フラッグシップの256コアEPYC 9996を搭載したサーバーは、NvidiaのVera CPUを搭載したシステムの最大3.7倍の性能を発揮すると主張している。IntelのXeon 6980Pに対しては、最大2.2倍の性能と2倍のドルあたり性能を実現するという。</p>
+<p>AIエージェントのワークロードについても、AMDは、同社の高密度EPYCプロセッサが、エージェントサンドボックスをホストする場合、CPUワットあたりのエージェント数でNvidia Veraの最大3.3倍、Intel Xeon 6980Pの2.5倍を実現できると主張している。一方、高周波数プロセッサは、CPUオフロード推論ワークロードにおいて、前世代のEPYCプロセッサの最大1.8倍のLLM出力スループットを実現できるという。</p>
+<p>AMD EPYC、Intel Xeon、Nvidia Veraは、進化するデータセンターCPU市場に対する3つの異なるアプローチを表していると、Rawatは付け加えた。「AMDは高いコア密度、メモリ性能、電力効率で競争し、Intelは確立されたエンタープライズエコシステム、プラットフォーム互換性、顧客との関係を活用しています。Nvidiaは、AIおよびアクセラレーテッドコンピューティングインフラ向けに設計されたArmベースのCPUであるVeraで、異なるアプローチを取っています。幅広い汎用サーバーワークロードを対象とするAMDやIntelとは異なり、NvidiaはVeraを統合されたAIコンピューティングプラットフォームの一部として位置付けています。」</p>
+<p>たとえば、Fab EconomicsのCEOであるDanish Faruquiは、クラウド統合、VDI、AIエージェントのワークロードにはAMDの高コア数EPYCプロセッサを推奨する一方、高周波数のEPYCモデルは、ソフトウェアライセンスコストが懸念されるデータベースやエンタープライズアプリケーションにより適していると述べている。</p>
+<p>メモリ集約型のHPCおよび科学ワークロードにはEPYC 9006を推奨し、緊密に統合されたAIトレーニングおよび推論クラスタにはNvidia Veraを推奨している。Intel Xeon 6は、特に空冷ラックにおいて、既存のx86インフラを維持したい企業にとって引き続き選択肢であると、同氏は述べた。</p>
+<h2>CIOが評価すべきこと</h2>
+<p>新しいEPYCプロセッサを搭載したサーバーを評価するCIOにとって、選択は単に最高のコア数を選ぶのではなく、実行しようとしているワークロードに依存することになる。</p>
+<p>「AIエージェントやクラウドアプリケーションはより多くのコアの恩恵を受ける可能性がある一方、一部のデータベースはより高速な個々のコアを必要とします。性能、電力消費、メモリ容量、ソフトウェア互換性、コストを比較すべきです。最良のプロセッサとは、自社のアプリケーションを最も効率的に実行するものです」と、EIIRTrend &amp; Pareekh ConsultingのCEOであるPareekh Jainは述べた。</p>
+<p>AMDのフラッグシップであるEPYC 9996の価格は約$14,900で、ハイエンドのIntel Xeonプロセッサとおおむね同等であると、Jainは指摘した。Nvidia Veraの価格はそれほど透明ではないと、同氏は指摘した。</p>
+<p>Jainはまた、企業に対し、3年から5年間の総所有コストを計算するよう助言した。</p>
+<p>これには、ハードウェア、電力、冷却、ソフトウェアライセンス、保守、移行のコストが含まれる。AMDのより高い計算容量により、企業は複数の古いサーバーをより少数の新しいサーバーに置き換えられる可能性がある。しかし、高額なソフトウェアライセンスと移行のコストが、これらの節約を減らす可能性がある。3年から6年経過したサーバーを稼働させている、電気料金が高い、またはAIワークロードを拡大している企業には、アップグレードを検討するより強い理由がある。一方、比較的新しいサーバーを持つ企業は、置き換えを正当化するほどの節約が得られない可能性がある。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4247802/amd-takes-on-intel-and-nvidia-with-new-256-core-epyc-server-cpus.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('14987'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
