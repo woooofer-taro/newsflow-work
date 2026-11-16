@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>米航空に混乱を引き起こした不具合、詳細が明らかに — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">米航空に混乱を引き起こした不具合、詳細が明らかに</h1>
+  <div class="r-orig">The malfunction that caused chaos in US aviation the detail was revealed</div>
+  <div class="r-meta"><span class="site">Medianews.az</span><span>2026-11-16 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>米国の航空業界に混乱を招いた不具合、その詳細が明らかに</p>
+<p>米国で数百人の乗客の移動に影響した大規模な航空システム障害は、連邦航空局(FAA)の旧式の通信ネットワークが過負荷になったことが原因で発生した。原因は、アーカンソー州とテキサス州にあるレーダー施設のルーターだった。</p>
+<p>これは「ウォール・ストリート・ジャーナル」が、調査に詳しい情報筋の話として報じたものである。</p>
+<p>同紙によると、アーカンソー州の施設の一つに「HPE Juniper Networks」製の新しいルーターが設置された後、その機器が異常に大量のデータを送信し始めた。テキサス州のルーターが生成したトラフィックと合わせて、これが全米の航空管制官が使用するネットワークの過負荷につながった。</p>
+<p>FAAの技術責任者レベッカ・ガイ氏は、この2つの施設が4〜5秒ごとに約1,000件のリクエストを送信していたと述べた。その結果、米国の22の航空管制センターのうち17が障害の影響を受け、フライトは一時的に停止された。</p>
+<p>専門家らは、ルーターを主要ネットワークから切り離した後、通信の安定性を回復させることができた。FAAはまた、機器に必要以上のデータを送信するマルチキャストのデータ伝送機能を発見した。この機能は、すべてのJuniperルーターで無効化された。</p>
+<p>事案の正確な原因はまだ特定されていない。FAAのブライアン・ベッドフォード長官は、障害が機器の故障、またはその設置および設定時のミスに関連している可能性を排除しなかった。一方、HPE社は、ルーターは正常に動作していたと述べた。</p>
+<p>ショーン・ダフィー米運輸長官は、この事案において意図的な妨害の兆候は検出されなかったと発表した。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://medianews.az/en/abs-aviasiyasinda-xaosa-sebeb-olan-nasazligin-teferruati-aciqlandi" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15224'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
