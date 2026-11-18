@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>アプリ開発者、クラウドを使わない AI ツールとして QVAC に注目 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">アプリ開発者、クラウドを使わない AI ツールとして QVAC に注目</h1>
+  <div class="r-orig">App developers turn to QVAC for AI tooling without the cloud</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-19 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>クラウドなしのAIツールを求めてアプリ開発者がQVACに目を向ける</h2>
+<h2>新しい技術は、断片化したエッジAIエコシステムを克服できる。</h2>
+<p>現在のほとんどの場合、アプリにAIを追加するということは、ユーザーデータをサードパーティのAPIに送信し、リクエストごとに料金を支払い、接続が維持されることを願うことを意味する。</p>
+<p>TetherのQVACは、その逆の前提に基づいて構築されている。AIモデルをユーザーのデバイス上で直接実行する。データがハードウェアから出ることはなく、リクエストごとの費用もレート制限もなく、モデルをダウンロードした後はインターネット接続も不要である。</p>
+<p><strong>QVAC SDK：クラウドなしAIの次のマイルストーン</strong></p>
+<p>llama.cpp、GGML、ONNXのようなオープンソースのツールや標準によって、近年ローカルAIははるかに利用しやすくなり、コンシューマーデバイスに新たな可能性が生まれているが、エッジAIのエコシステムは依然として断片化している。</p>
+<p>こうした背景のもと、2026年にTetherは、機械学習のさまざまな領域にわたる最良のオープンなツールをまとめ上げるソフトウェア開発キット（SDK）をリリースした。</p>
+<p>TetherのQVAC SDKの中核はFabricである。llama.cppをベースに構築されており、エンジンを拡張して、オンデバイスでのファインチューニングと追加のAI機能を可能にする。これにより、これまで高価なハードウェアやクラウドサービスでしか不可能だった、メモリを大量に消費するワークロードへの道が開かれる。</p>
+<p>GGMLのモジュール式フレームワークを土台とするQVAC Fabricは、主に3つのバックエンドを対象としている。ほとんどのコンシューマー向けデスクトップおよびモバイルチップをカバーするVulkan、Apple Silicon向けのMetalとCore ML、そしてハイエンドのNVIDIA GPU環境向けのCUDAである。</p>
+<p>QVAC SDKは、オンデバイスで動作するマルチプラットフォームのAIアプリを構築するための統一されたインターフェースを開発者に提供する。しかし、コンシューマーデバイスへの推論の導入では大きな進歩があったものの、テキスト生成は、現代のAIを有用にするパイプラインの一部にすぎない。</p>
+<p><strong>エッジAIに検索をもたらす</strong></p>
+<p>RAG（検索拡張生成）は、AIが文脈情報を取り込み処理して出力を向上させることを可能にするものである。言語モデルが学習データのみに頼って質問に答える代わりに、RAGは特定の文書群を用いて回答することを可能にする。</p>
+<p>AIアプリにRAGを実装すると、モデル単体を実行する場合と比べて、メモリのオーバーヘッドが大幅に増える。中核となる言語モデルの推論に加えて、RAGには2つ目の埋め込みモデルと、ベクトルインデックスと呼ばれる専用のデータベースシステムが必要である。</p>
+<p>これらのベクトルインデックスは巨大になることがあり、元となるプレーンテキストファイルよりもはるかに大きくなることが多く、コンシューマー向けハードウェアのRAM容量を容易に超えてしまう。その結果、RAGの処理の大半は、ユーザーの個人情報とともにクラウドにオフロードされる。しかし、ベクトルインデックスの利用がプライバシーの犠牲やトークン課金型サブスクリプションへの囚われを意味する必要はない。</p>
+<p>2026年9月、QVAC SDKはTurboVecを統合した。このオープンソースのベクトルインデックスは、埋め込みのメモリ使用量を最大8倍（4ビット量子化）削減する。これによりハードウェア要件が下がり、検索と取得の速度が大幅に向上し、個人情報を漏らすことなくローカルデータベースにアクセスできる、オフラインでクラウド不要のアプリにRAGを組み込む道が開かれる。</p>
+<p><strong>軽量AIモデル</strong></p>
+<p>AIをローカルで実行することは、人々が実際に所有しているハードウェアに収まる場合にのみ機能する。フロンティア規模のシステムは通常、データセンター向けGPUと数百ギガバイトのメモリを必要とする。そのため、QVAC SDKは一般的なオープンソースモデルの量子化版を統合しており、一方でTetherは、スマートフォンやパーソナルコンピューターで動作するよう設計された独自の軽量モデルも開発し、レジストリを通じてピアツーピアで配布している。</p>
+<p>QVAC Psyは、QVAC SDK上で動作する、特化型の低ウェイトモデルのファミリーである。特別に選別された学習データを用いて、各モデルは、はるかに大きなAIプラットフォームと同等またはそれ以上の水準で特定のタスクを実行するよう学習されている。たとえば、わずか8億パラメータでありながら、Tetherのアフリカ言語向け翻訳モデルの最小バリアントは、主要なベンチマークにおいて、Googleの270億パラメータのTranslateGemmaを上回った。</p>
+<p>これらのコンパクトなモデルを、QVAC SDKに詰め込まれた他のメモリ節約機能と組み合わせることで、Tetherは、ローカルAIが性能に妥協することを意味しないことを証明している。そして、アプリが大規模なデータセンターを必要とせずに実世界での有用性を提供できるようになれば、ユーザーはインターネット接続なしで、無制限で安全な知能を無料で享受できる。</p>
+<p><strong>ローカルAIを検討すべき理由</strong></p>
+<p>Tetherのツールには、AIの構築と利用のあり方を変える可能性があり、開発者とエンドユーザーの双方に利点がある。</p>
+<p>継続的なAPI費用や高価なクラウドホスティングの負担がなければ、独立系のクリエイターや小規模なスタジオは、これまでエンタープライズ規模の予算を必要としたAI機能を実装できる。一方、機密情報をローカルのハードウェア上で直接処理することは、プライバシーの懸念に対処し、GDPRやHIPAAのような規制への準拠を容易にする助けとなり、医療、法務、金融の分野における安全なAIアプリへの扉を開く。</p>
+<p>継続的なAPI料金をなくし、アプリケーションのデータを完全に管理する準備ができているなら、QVAC SDKをダウンロードして、クラウドを拒否する開発者たちの成長するコミュニティに加わろう。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4250425/app-developers-turn-to-qvac-for-ai-tooling-without-the-cloud.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15576'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
