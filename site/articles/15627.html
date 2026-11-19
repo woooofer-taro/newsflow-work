@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cato Networks、有害なAIエージェントの動作をブロックするAgentSenseを発表 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Cato Networks、有害なAIエージェントの動作をブロックするAgentSenseを発表</h1>
+  <div class="r-orig">Cato Networks launches AgentSense to block harmful AI agent actions</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-19 13:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>新しいSASE機能は、信頼できないコンテンツがAIエージェントにどのように影響するかを追跡し、エージェントが行動する前に介入できる。</h2>
+<p>Cato Networksは今週、クラウドベースのセキュアアクセスサービスエッジ（SASE）プラットフォームに組み込まれた新しいセキュリティ機能AgentSenseを発表した。同社は、この機能により、信頼できないコンテンツによって促されたAIエージェントの有害な行動を阻止できるとしている。</p>
+<p>「エージェントにより大きな自律性を与えるには、行動が害をもたらす前に介入できるセキュリティが必要だ」と、Cato の CEO 兼共同創業者である Shlomo Kramer 氏はプレスリリースで述べた。「AgentSenseに対する我々のビジョンは、企業が重要な業務プロセスをエージェントに任せつつ、その動作に対する制御を保持できるという確信を持てるようにすることだ。」</p>
+<p>最初のリリースは間接的プロンプトインジェクションを対象としている。これは、エージェントが業務中に読み取る素材に埋め込まれた指示に遭遇するものである。これはウェブページ、メール、文書、またはエージェントが使用するツールからの応答で起こり得る。Catoによれば、会社のデータやツールへの正当なアクセス権を持つエージェントは、ユーザーの元の依頼が日常的なものであっても、機密情報の公開や無許可の変更を行うよう誘導される可能性がある。</p>
+<h2>AgentSenseが行動を評価する方法</h2>
+<p>Kramer 氏は発表時のブリーフィングで、エージェントは「まさに適切な権限を持っていても、悪いことをする可能性がある」と説明した。</p>
+<p>これに対処するため、Catoは、AIセッション内で信頼できる指示と信頼できないコンテンツを区別する Untrusted Influence Detection を開発した。この機能は、そのコンテンツが提案された行動にどのように影響するかを追跡し、実行前にその行動をブロックできる。Catoは、この方法により、既知の攻撃パターンの範囲外にある試みも検知できると述べた。</p>
+<p>同社の説明によれば、AgentSenseは複数のAIエージェントにわたって機能し、管理者はCato SASEプラットフォームのトグルで有効にできる。AgentSenseには3つの組み込みルールが付属しており、高リスクな操作に向けてエージェントを誘導する信頼できない入力、外部に公開されようとしている機密情報、および信頼できない入力によって引き起こされる重要なリソースへの変更を対象としている。</p>
+<p>Catoが説明した例の1つでは、開発者がClaude Codeにテスト環境の構築を依頼した。タスクのための情報を収集している間に、エージェントは機密性の高いローカルファイルを変更するよう指示するウェブページを読み取った。AgentSenseは提案された変更をそのウェブページまでさかのぼって追跡し、Claude Codeがファイルを変更する前にブロックしたため、セットアップは未完了のままとなった。</p>
+<p>Catoは、Agent Dojoベンチマークでの自社テストにおいて、AgentSenseが攻撃成功率を、追加の保護がない場合の約19%から0.05%に下げ、追加された遅延は3%未満だったと報告した。Catoが計画しているDrift Detection機能は、エージェントの行動が依然としてユーザーの元のタスクに資するものであるかどうかも確認する。その目標は、「エージェントが任されたそもそもの目的から逸脱する行動をブロックする」ことだと、Kramer 氏はブリーフィング中に述べた。</p>
+<p>同社はまた、エージェントがアクセスできるデータを含め、エージェントが到達できるリソースに関する制御も計画している。AgentSenseはCatoの顧客が利用でき、Cato AI Usageライセンスには追加料金なしで含まれる。</p>
+<p>発表に合わせて、Catoは、AgentSenseで保護されたAIエージェントのワークフローをテストする公開チャレンジを開始した。同社によれば、チャレンジを完了した資格のある最初の3人の参加者にはそれぞれ10,000ドルが贈られ、同社は参加者の発見をガードレールの評価と改善に使用するとしている。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4250389/cato-networks-launches-agentsense-to-block-harmful-ai-agent-actions.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15627'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
