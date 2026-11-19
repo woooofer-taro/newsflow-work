@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>スケールアップ、スケールアウト、スケールアクロスネットワーキングとは何か？ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">スケールアップ、スケールアウト、スケールアクロスネットワーキングとは何か？</h1>
+  <div class="r-orig">What is scale-up, scale-out and scale-across networking?</div>
+  <div class="r-meta"><span class="site">SDxCentral</span><span>2026-11-19 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>スケールアップ、スケールアウト、スケールアクロスのネットワーキングとは？</h2>
+<p>データセンター事業者がAIデータセンターを構築するにあたり、AIの学習と推論を高速かつ確実に動かし続けるためには、GPUそのものと同じくらい、高帯域・低遅延のネットワークが重要である。</p>
+<p>AIネットワーキングは3つの層で構成される。データセンター内のラック内のハードウェアを接続するスケールアップ、データセンター内のラック同士を接続するスケールアウト、そして別々のデータセンターを接続するスケールアクロスである。</p>
+<p>ここでは、各AIネットワーキング層の仕組み、競争環境、そしてエンタープライズ、ハイパースケーラー、クラウドプロバイダーがAIネットワーキングインフラを導入する際に直面する数多くの選択肢を示す。</p>
+<h2>スケールアップ・ネットワーキングとは？</h2>
+<p>スケールアップ・ネットワーキングは、AI推論ワークロードにとってますます重要になっており、単一のラック内、または数ラックにまたがる最大数百のアクセラレータを接続し、それらを単一の密結合された計算ドメインとして動作させる。</p>
+<p>NvidiaのNVLinkは、独自仕様の高速・低遅延なGPU間インターコネクトであり、NvidiaがGPU市場を支配していることから、現在スケールアップ・ネットワーキングを支配している。</p>
+<p>しかしDell'Oro GroupのVPであるSameh Boujelbeneは、市場の力がオープンな代替技術、特にEthernet for Scale-up Networking（ESUN）やScale Up Ethernet（SUE）といったEthernetベースのソリューションの採用を促していると主張する。これらはいずれもOpen Compute Project Foundationが監督している。</p>
+<p>実際、Broadcomによると、5社を超えるハイパースケーラーが本番環境でEthernetによるスケールアップを使用しており、10社を超えるベンダーパートナーがスケールアップEthernetに基づくラックを構築している。</p>
+<p>NVLinkに対抗するため、AMD、Astera Labs、Intel、AWS、Meta、Microsoftなどの企業からなるグループであるUALink Consortiumは、UALinkと呼ばれるオープンな代替技術を構築している。</p>
+<p>Moor Insights &amp; Strategyのバイスプレジデント兼プリンシパルアナリストであるMatt Kimballは、UALinkはNVLinkと同様の性能を提供し、よりスケーラブルになるよう設計されているが、まだ利用できないと念を押した。今年の春、UALink ConsortiumはUALinkの商用展開を2027年に目標としていると述べた。</p>
+<p>Nvidia以外のGPUを使用している組織は、PCIeスイッチを使ってそれらを接続することもできるが、それは低速な選択肢だとKimballは述べた。</p>
+<p>今後について、Dell'Oro Groupは、2029年までにEthernetが支配的なスケールアップ・ネットワーキング技術になると予測している。BoujelbeneはEthernetの採用は3つの市場の力に後押しされていると述べた。</p>
+<ul><li>AIクラスタの規模が拡大し供給が逼迫するなかでの、ベンダーの多様性の必要性。</li><li>Nvidia以外のGPUやカスタムAIアクセラレータの普及。これがオープンなネットワーキングアーキテクチャへの需要を促している。</li><li>Ethernetの性能、輻輳管理、信頼性の継続的な向上。</li></ul>
+<h2>スケールアウト・ネットワーキング</h2>
+<p>スケールアウト・ネットワーキングは、単一のデータセンター内の複数のラックにまたがる最大数十万のGPUを接続し、それらを大規模なAI計算クラスタとして動作させるとBoujelbeneは述べた。</p>
+<p>スケールアウトは劇的な変革を遂げた。2023年にはInfiniBandが80%を超える市場シェアで支配していた。2025年までに、スケールアップでのEthernetの台頭を導いているのと同じ市場の力、すなわちベンダーの多様性、よりオープンなネットワーキングアーキテクチャへの需要、Ethernetの継続的な改善により、Ethernetが支配的なネットワーキング技術になったと彼女は述べた。</p>
+<p>Ethernetの選択肢には、Nvidiaのハードウェアとソフトウェア向けに最適化されたNvidiaのSpectrum-X、RDMA over Converged Ethernet Version 2（RoCEv2）、そして登場しつつあるUltra Ethernet Consortium（UEC）仕様がある。</p>
+<p>スケールアウト分野で競合するネットワーク機器メーカーには、Arista Networks、Cisco、Dell、Hewlett Packard Enterprise（HPE）があるとKimballは述べた。例えばCiscoとDellは、ネットワーク機器で3つのEthernet規格すべてをサポートしている。シリコン側では、Broadcom、Marvell、Ciscoといったチップメーカーが、RoCEv2とUECをサポートしている。</p>
+<h2>スケールアクロス・ネットワーキング</h2>
+<p>スケールアクロス・ネットワーキングは、データセンターキャンパスの複数の建物にまたがって、あるいはさらに遠く離れた広大な距離にわたって、数十万から場合によっては数百万のGPUを接続し、事業者が相当規模の地理的に分散したAI計算クラスタを構築できるようにする。</p>
+<p>スケールアクロス・ネットワークは主に、大規模なAI学習ワークロードを実行するハイパースケーラーとネオクラウドによって構築されるとKimballは述べた。大企業も、ハイパースケーラーのように運用する場合には必要になるかもしれない。スケールアクロスで競合するベンダーは、Arista、Cisco、HPE/Juniperなど、スケールアウトと同じ顔ぶれである。多くのハイパースケーラーは、独自のカスタムソリューションも使用しているとも彼は述べた。</p>
+<h2>エンタープライズはAIネットワークをどう構築すべきか？</h2>
+<p>Boujelbeneによると、大企業はAIネットワーキングインフラを構築する際、ネットワーキング技術ではなく、AIワークロードの要件から始めるべきである。</p>
+<p>段階的なアプローチを取るべきである。スケールアップでは、どれだけ密結合されたGPU計算が必要かを判断する。スケールアウトでは、AI需要の拡大に応じて拡張できる余地を持つ高性能なEthernetファブリックを構築する。その上で、エンタープライズは、複数の建物、データセンター、またはクラウド環境にまたがってAIリソースを接続する必要性を評価すべきだと彼女は述べた。</p>
+<h2>AIネットワーキング市場はどこへ向かうのか？</h2>
+<p>現在のAIバックエンド・ネットワーキング市場の3分の2以上をスケールアウト・ネットワークが占め、スケールアップは3分の1未満だとBoujelbeneは述べた。</p>
+<p>しかしDell'Oro Groupによると、バックエンド・ネットワーク向けのデータセンタースイッチ支出が2026年から2030年にかけて1兆ドルに近づくなか、スケールアップは2030年までに市場の半分以上を占めると予測されている。</p>
+<p>帯域幅の速度も、今後数年で2倍、さらに4倍になる。</p>
+<p>現在、スケールアップ、スケールアウト、スケールアクロスの3層にわたって、ほとんどのスイッチポートは800 Gb/sである。1.6 Tb/sの速度を持つスイッチは2026年後半に出荷が始まっており、2027年までにポートの半分以上を占めるようになる。3.2 Tb/sの速度を持つスイッチは2028年から2029年に出荷が始まり、2031年までにポートの大半を占めるようになるとBoujelbeneは述べた。</p>
+<p>全体として、ネットワークが高速になればAIの性能も高速になる。</p>
+<p>「高価なGPUリソースの利用率を最大化するには、ネットワークは100%で動作する必要があります」と彼女は述べた。「したがって、ネットワーク速度を上げることは、AIアプリケーションの性能に直接影響します。」</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.sdxcentral.com/sdx-explainers/what-is-scale-up-scale-out-and-scale-across-networking/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15667'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
