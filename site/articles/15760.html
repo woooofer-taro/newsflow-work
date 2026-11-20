@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>F5、AIが発見したNGINXの重大なバグにパッチ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">F5、AIが発見したNGINXの重大なバグにパッチ</h1>
+  <div class="r-orig">F5 Patches Critical AI-Discovered Bugs in NGINX</div>
+  <div class="r-meta"><span class="site">SuaraGarut.ID</span><span>2026-11-20 13:00</span><span>発表</span></div>
+  <article class="r-body">
+<h2>F5、AIが発見したNGINXの重大なバグにパッチを適用</h2>
+<p>研究者らが広く展開されているウェブサーバーに深刻な欠陥を特定したことを受け、NGINXの2件の重大なセキュリティ脆弱性により、数百万のウェブサイトがリモート攻撃にさらされる可能性がある。F5は2026年11月18日水曜日に緊急セキュリティアップデートを公開し、10件の脆弱性に対処した。そのうち2件は、認証されていない攻撃者が影響を受けるサーバー上でコードを実行できるものである。</p>
+<p>F5のセキュリティアドバイザリによると、管理者はオープンソースのNGINXをできるだけ早くバージョン1.31.9にアップグレードすべきである。2件の重大な脆弱性はいずれも、影響を受けるサーバーでHTTP/2が有効になっていることを必要とし、CVSS深刻度スコア9.2が付けられた。</p>
+<p>これらの脆弱性はCVE-2026-123633およびCVE-2026-123007として追跡されている。後者は、2015年にリリースされたNGINX 1.9.5まで遡るバージョンに影響しており、根本的なセキュリティ上の問題が10年以上にわたりソフトウェア内に残っていた可能性があることを意味する。</p>
+<p>F5は、脆弱性が公開された時点で、実際に悪用されている証拠は確認していないと述べた。</p>
+<p>「現時点で、これらの脆弱性のいずれについても、実環境で悪用されている証拠は見つかっていません」と、F5の広報担当者はThe Registerに語った。「引き続き注意深く監視し、新たに分かったことがあればmyF5を通じて更新情報を共有します。」</p>
+<p>NGINXは、インターネット上で最も広く展開されているオープンソースのウェブサーバーの1つである。HTTPSリクエストを処理し、受信トラフィックをアプリケーションやAPIに振り向けており、約2億2500万のウェブサイト、つまり世界のウェブサイト全体のおよそ3分の1を支えている。</p>
+<p>この発見には、Wiz、Ikotas Labs、Metnir、Rapid7、Xintの独立したセキュリティ研究チームが関与した。研究者らは人工知能を使って複数の脆弱性を特定しており、自動化されたセキュリティ分析が長年存在してきたソフトウェアの弱点の発見を加速させていることが浮き彫りになった。</p>
+<p>Wizのエクスポージャー管理およびアプリケーションセキュリティ担当最高技術責任者であるTomer Schwartzは、この発見をサイバーセキュリティの状況が変化している証拠だと述べた。</p>
+<p>「新しい現実を示しています」とSchwartzはThe Registerに語った。</p>
+<p>彼は、AIを活用した研究がこれまで見過ごされてきた弱点を特定する中で、組織はインターネットに接続されたインフラをどのように評価するかを再考しなければならないと述べた。</p>
+<p>「私たちは、インターネットに接続されたすべてのシステムを、潜在的に脆弱であるものとして扱う必要があります」とSchwartzは述べた。「AIは、どの脆弱性が見つかるかだけでなく、長年存在するリスクがどれほど速く現実の脅威になり得るかも変えました。」</p>
+<p>水曜日の技術ブログ記事で、SchwartzとWizの研究者Nir Ohfeldは、2件の重大な脆弱性はいずれもNGINXによるHTTP/2トラフィックの処理におけるメモリ安全性の問題であると説明した。</p>
+<p>「両方の脆弱性は、NGINXがHTTP/2トラフィックを処理する方法におけるメモリ安全性の問題です」とSchwartzとNir Ohfeldは述べた。「CVE-2026-123633では、リクエストがまだ必要としている間に接続のメモリが解放され、use-after-freeが生じます。CVE-2026-123007では、不正なフロー制御の会計処理により、無効なメモリコピーが発生します。」</p>
+<p>Rapid7も、CVE-2026-123007の深刻さを示す概念実証を公開した。一方、Xintは、さらに3件のNGINX脆弱性と、NGINXの欠陥と組み合わせることで影響を受けるホスト上で昇格した権限を得られる可能性のある別のLinuxカーネル脆弱性を特定した。</p>
+<p>Xintの研究者らは、この6件の関連する脆弱性に総称を付けた。</p>
+<p>「nginx2root」と、Xintの研究チームはこの脆弱性群を呼んだ。</p>
+<p>同社は、ZeroDay Cloud 2026の準備中に最初の発見があった後、同社の自動化されたセキュリティスキャン機能がさらにいくつかの弱点の特定に役立ったと述べた。</p>
+<p>「ZeroDay Cloud 2026の準備中に、Xintの研究者がCVE-2026-123007を見つけました」と、同社は水曜日のブログで述べた。「数日後、完全に自動化されたXintのスキャンが、人間の指示なしに他の4件を見つけました。」</p>
+<p>今回のNGINXの開示は、PHP、Apache、Javaを含む、インターネットの基盤技術で最近特定された他の重大な脆弱性に続くものである。セキュリティ研究者は、広く展開されているソフトウェアの欠陥を特定するために、AIを活用した手法をますます使用している。</p>
+<p>Schwartzは、脆弱性発見の速度が増していることが、セキュリティおよびインフラのチームにさらなる圧力を生み出していると警告した。</p>
+<p>「AIはまた、既存のインフラが吸収できるように設計されていた速度よりも速く、脆弱性の発見を加速させています」とSchwartzはThe Registerに語った。「ベンダーが修正を提供した後でも、セキュリティチームは、脆弱なバージョンや構成の特定、パッチのテスト、暫定的な緩和策（HTTP/2の無効化など）の展開、そしてこれらすべてのロールアウトの調整といった点で、多くの手作業に直面します。」</p>
+<p>当面の課題があるにもかかわらず、Schwartzは、AIを活用したセキュリティ研究が、広く使われているソフトウェアのレジリエンスを時間とともに向上させると見ている。</p>
+<p>「長期的には、AIを活用した脆弱性研究が基盤ソフトウェアを強化するでしょう。」</p>
+<p>彼はまた、ソフトウェアのメンテナー、セキュリティ研究者、そしてインターネットインフラの保護に責任を負う組織の間の協力の重要性を強調した。</p>
+<p>「こうした開示の速度と規模を吸収するには、セキュリティ研究者、メンテナー、防御者の間の継続的な協力が不可欠です」とSchwartzは述べた。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://suaragarut.id/en/f5-patches-critical-nginx-bugs" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15760'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

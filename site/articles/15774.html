@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>NGINX、CVE-2026-123633およびCVE-2026-123007のRCE脆弱性にパッチ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">NGINX、CVE-2026-123633およびCVE-2026-123007のRCE脆弱性にパッチ</h1>
+  <div class="r-orig">NGINX Patches CVE-2026-123633 and CVE-2026-123007 RCE Flaws</div>
+  <div class="r-meta"><span class="site">The Cyber Express</span><span>2026-11-20 13:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>NGINX が CVE-2026-123633 と CVE-2026-123007 の RCE 脆弱性にパッチを適用 - The Cyber Express</h2>
+<p>NGINX における 2 件の重大なメモリ安全性の欠陥（CVE-2026-123633 および CVE-2026-123007 として追跡されている）により、認証されていない攻撃者が、HTTP/2 を有効にしているサーバー上でコードを実行できる可能性がある。両方とも CVSS 4.0 スコアは 9.2 である。NGINX を保守する F5 は、2026年11月18日に修正をリリースした。</p>
+<h3><strong>CVE-2026-123633 と CVE-2026-123007 はどのように発見されたか</strong></h3>
+<p>Wiz Research、Ikotas Labs、Metnir、Xint がそれぞれ独立してこれらのバグを発見した。Wiz は、Wiz Atlas ハーネスで両方を発見し、Gemini 4 Carbon と ChatGPT 5.6 Sol を使ってその影響を確認したと述べている。Wiz は 10月21日に use-after-free を報告した。</p>
+<p>その報告には、修正案と ASLR を回避するエクスプロイトが含まれていた。F5 は、別のチームがすでに同じ欠陥を報告していると回答した。F5 は 11月10日にレビュー用のパッチを共有した。Wiz は 11月16日に 2 件目の欠陥を報告し、F5 は翌日、11月18日のリリースで修正されることを確認した。</p>
+<p>Wiz は、この発見を、先月の PHP2Shell の開示、および Calif が前日に公開した Java4Shell と並べて位置づけた。Wiz は、かつてこのようなメモリのバグを隠していた複雑さはもはやそれらを守らない、なぜなら AI がそれらを見つけられるようになったからだ、と主張している。Wiz の見方では、それはバグの開示から悪用までの時間も短縮する。</p>
+<h3><strong>NGINX の露出が重要な理由</strong></h3>
+<p>NGINX は 2億2500万以上のウェブサイトを支えている。NGINX は、リバースプロキシやロードバランサーとして、複数のアプリケーションの前段に置かれることが多い。この欠陥は NGINX 自体にあるため、安全なアプリケーションコードでは防御できない。侵害されたサーバーが 1 台でもあれば、複数のサイトや API がデータ窃取、改ざん、または停止にさらされる可能性がある。</p>
+<h3><strong>2 件のバグの内部</strong></h3>
+<p>CVE-2026-123633 は約 6 年前からあり、バージョン 1.19.7 から 1.31.8 に影響する。これは、リクエストが開始された後も HTTP/2 接続が NGINX の再利用可能な接続のリストに残る場合に発生する。NGINX がアップストリームサーバーへプロキシしている間に接続スロットが不足すると、ngx_drain_connections() がその接続を閉じることがある。その後 GOAWAY フレームの構築に失敗すると、NGINX はリクエストがまだ使用しているメモリを解放する。プロキシ構成が最も大きなリスクにさらされる。</p>
+<p>CVE-2026-123007 は 2015年のバージョン 1.9.5 にさかのぼり、1.31.8 までのリリースに影響する。ストリームがキャンセルされると、NGINX はプロトコルの最大値を確認することなく、未送信のデータ許容量を h2c-&gt;send_window に払い戻す。これにより、WINDOW_UPDATE フレームの境界チェックで符号なしアンダーフローが発生する。</p>
+<p>その膨張した値は後に負の長さとなり、TLS 送信パスでの境界外メモリコピーにつながる。研究者らは、公式の 1.31.7 および 1.31.8 ビルド上で、ASLR 回避を伴うコード実行を達成した。テストサーバーは、バックエンドアプリケーションもサードパーティ製モジュールもなく、HTTPS で通常の静的ファイルを提供する 64 ビットシステムであった。</p>
+<p>Wiz は概念実証エクスプロイトを公開していない。Wiz は、攻撃にはメモリアドレスのリークとヒープの整形が必要であると指摘している。多くの顧客が同一のビルドを実行しているパッケージ製品は、より狙われやすい。HTTP/2 を終端する CDN や WAF は、実装方法によっては、攻撃の一部をブロックする可能性がある。</p>
+<h3><strong>NGINX へのパッチ適用と緩和</strong></h3>
+<p>NGINX OSS では、修正は 1.30.7 stable と 1.31.9 mainline に含まれている。NGINX Plus は R33 および 37.0.0 から影響を受ける。バージョン 37.0.7.1 と 37.2.0.1 は CVE-2026-123633 を修正し、バージョン 37.0.8.1 と 37.3.0.1 は CVE-2026-123007 を修正する。</p>
+<p>すぐにアップグレードできないチームは、一時的に HTTP/2 を無効にすべきである:</p>
+<ol><li>バージョン 1.25.1 以降では、影響を受ける server ブロックに http2 off; を設定する。</li><li>listen ディレクティブから http2 パラメータを削除する。</li><li>アプリケーションの互換性をテストし、NGINX をリロードし、古いワーカーが終了したことを確認する。</li><li>パッチ適用後に HTTP/2 を再度有効にする。</li></ol>
+<p>いくつかの兆候は調査に値する: 予期しないワーカーのクラッシュ、NGINX によって起動されたコマンド、WINDOW_UPDATE フレームの大量送信、および大量のデータを運ぶ長寿命の HTTP/2 接続。</p>
+<p>このリリースでは、他の 8 件の NGINX の欠陥も修正されている:</p>
+<ul><li><strong>9.2 と評価された 3 件の use-after-free:</strong> CVE-2026-121810（HTTP/3 プロキシ）、CVE-2026-123634（DNS リゾルバー）、CVE-2026-113425（auth_http を使用したメールプロキシ）。</li><li><strong>8.7 と評価された 1 件:</strong> CVE-2026-118899、TLS 1.3 をサポートするサーバーに対するサービス拒否。</li><li><strong>6.9 と評価された 3 件:</strong> CVE-2026-120993（proxy_protocol v2）、CVE-2026-125283（try_files を伴う alias）、CVE-2026-123640（ssl_preread）。</li><li><strong>6.3 と評価された 1 件:</strong> CVE-2026-120967、クライアント証明書のバイパス。</li></ul>
+  </article>
+  <nav class="r-foot">
+    <a href="https://thecyberexpress.com/cve-2026-123633-cve-2026-123007/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15774'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
