@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>F5: BIG-IPの5件の重大な脆弱性に対するパッチ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">F5: BIG-IPの5件の重大な脆弱性に対するパッチ</h1>
+  <div class="r-orig">F5: Patches for five critical vulnerabilities in BIG-IP</div>
+  <div class="r-meta"><span class="site">SecNews.gr</span><span>2026-11-21 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p><strong>F5</strong> は、<strong>BIG-IP ソリューション</strong>に存在する<strong>5件の重大な</strong>セキュリティ脆弱性について管理者に警告した。これらは、リモートの攻撃者によって、事前の認証なしでも悪用され、<strong>サービス拒否、または特定の状況下では脆弱なシステム上での任意のコード実行</strong>を引き起こす可能性がある。</p>
+<p>同社は<strong>緊急のセキュリティ修正</strong>（ホットフィックス）をリリースし、顧客に直ちにインストールするよう促している。BIG-IP 製品は、ネットワークトラフィックの管理、アプリケーションの保護、重要なサービスへのアクセス制御のために企業環境で広く使用されているため、この警告は特に重要である。</p>
+<h3><strong>BIG-IP の5件の重大なセキュリティ脆弱性</strong></h3>
+<p>5件の脆弱性は <strong>CVE-2026-121805、CVE-2026-120292、CVE-2026-120285、CVE-2026-116953、CVE-2026-123637</strong> として一覧化されている。すべて重大と評価されており、<strong>スタックベースのバッファオーバーフロー</strong>に関連している。</p>
+<p>この問題は、アクセスポリシーを管理しユーザーを企業リソースに安全に接続するために使用される <strong>BIG-IP Access Policy Manager</strong>（APM）と、管理者がネットワークトラフィックを管理するためのカスタムルールを作成できる <strong>BIG-IP iRules</strong> に影響する。</p>
+<p>これらの脆弱性を悪用すると、BIG-IP 上でトラフィックの処理とルーティングを担う中核プロセスである <strong>Traffic Management Microkernel</strong>（TMM）の<strong>終了</strong>につながる可能性がある。特定の脆弱な構成では、攻撃者がリモートで任意のコードを実行できる可能性がある。</p>
+<p>この可能性は特に懸念される。このような脆弱性の悪用に成功すれば、攻撃者が有効な認証情報を事前に取得することを必要とせずに、重要なネットワークサービスの動作に影響を与える能力を得られる可能性があるためである。</p>
+<h3><strong>BIG-IP APM SAML における追加の脆弱性</strong></h3>
+<p>5件の重大な問題に加えて、F5 は深刻度が高いもう1件の脆弱性、<strong>CVE-2026-126822</strong> についても修正をリリースした。この問題は <strong>BIG-IP APM SAML</strong> に関するもので、<strong>整数アンダーフロー／ラップアラウンドエラー</strong>に起因する。</p>
+<p>認証されていないリモートの攻撃者は、この脆弱性を悪用して<strong>サービス拒否</strong>（DoS）を引き起こし、<strong>TMM プロセスの再起動とネットワークトラフィック管理の一時的な中断</strong>を招くことができる。</p>
+<p>F5 は、この脆弱性は専らデータプレーンに限られ、コントロールプレーンには影響しないと明らかにした。つまり、問題はシステムの中央管理機能ではなく、ネットワークトラフィックの処理に存在するということである。</p>
+<p>同社はまた、修正の代わりとなる回避策は存在しないと強調した。このため、該当するホットフィックスのインストールが、リスクに対処するための推奨される措置である。</p>
+<h3><strong>177,000 以上の BIG-IP インストールが露出</strong></h3>
+<p>潜在的な露出の規模は、インターネット上の露出したインフラと悪意ある活動を監視する組織 <strong>Shadowserver</strong> のデータを考慮すると、さらに懸念されるものとなる。</p>
+<p>そのデータによると、インターネットからアクセス可能な、<strong>177,000 以上の BIG-IP インストールと、14,600 を超える IP アドレス</strong>が BIG-IP APM 機能を備えていると特定されている。</p>
+<p>これらの数値は必ずしも脆弱なシステムに対応するものではない。すでに更新されたインストールの数は不明であり、記録の一部は、研究者が攻撃を監視するために使用するおとりシステムである<strong>ハニーポット</strong>である可能性もある。しかし、これらの製品のオンライン上での存在が大きいことから、修正を直ちに適用することの重要性が高まっている。</p>
+<h3><strong>F5 の脆弱性が魅力的な標的である理由</strong></h3>
+<p>F5 は、これらの脆弱性がすでに実際の攻撃で悪用されたとは報告していないが、過去のインシデントの経緯は、同社の製品がしばしば<strong>サイバー犯罪グループや国家支援の攻撃者の標的</strong>となっていることを示している。</p>
+<p>米国の <strong>CISA</strong> は、2021年11月以降、積極的に悪用されている F5 の脆弱性を7件記録している。実際、そのうち4件はランサムウェアギャングにも使用されている。</p>
+<p>2026年9月、同社は BIG-IP APM の別の重大な脆弱性（<strong>CVE-2026-94127</strong>）を修正していた。この脆弱性は、リモートコード実行を目的としたゼロデイ攻撃で悪用されていた。</p>
+<p>特に重要なのは、約1年前に明らかになったインシデントである。F5 は、国家支援のハッカーが2025年8月に同社のシステムに侵入し、ソースコードと BIG-IP 製品の未知の脆弱性に関する情報にアクセスしたと公表していた。</p>
+<p>このような情報は、公開や修正のリリースの前により標的を絞った攻撃を開発するために利用できるため、攻撃者にとって非常に価値が高い。</p>
+<h3><strong>システム管理者は何をすべきか</strong></h3>
+<p>BIG-IP を使用している組織は、<strong>インストールのバージョンと構成を直ちに確認し</strong>、F5 の公式な指示に従って、利用可能な<strong>ホットフィックス</strong>を適用すべきである。</p>
+<p>加えて、<strong>TMM プロセスの異常な再起動、予期しないネットワークアクティビティ、不正アクセスの兆候</strong>がないか、ログファイルを確認することが推奨される。更新のインストール後も、過去の悪用の試みの可能性を検出するため、システムの監視を継続すべきである。</p>
+<p>F5 は世界中で23,000以上の顧客にサービスを提供しており、これには Fortune Global 500 の80%が含まれる。このことから、同社の製品のセキュリティは、重要な企業およびオンラインインフラにとって特に重要である。</p>
+<p>これまでのところ新たな脆弱性の積極的な悪用が確認されていないことは、油断する理由にはならない。むしろ、過去の経験は、広く使用されているネットワーク機器のセキュリティ上の欠陥は、特に修正の実施が遅い場合に、攻撃ツールへと素早く転用され得ることを示している。</p>
+<p>出典: www.bleepingcomputer.com</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.secnews.gr/en/752824/f5-diorthoseis05-krisimes-eupatheies-big-ip/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15847'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>F5、リモートコード実行につながる5件の重大なBIG-IPの欠陥にパッチを公開 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">F5、リモートコード実行につながる5件の重大なBIG-IPの欠陥にパッチを公開</h1>
+  <div class="r-orig">F5 Patches Five Critical BIG-IP Flaws Open to Remote Code Execution</div>
+  <div class="r-meta"><span class="site">ShiftDelete.Net</span><span>2026-11-21 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>F5がリモートコード実行につながる5件の重大なBIG-IPの脆弱性にパッチを公開</h2>
+<p>F5は、認証されていない攻撃者がトラフィックエンジンをクラッシュさせ、場合によってはコードを実行できる5件の重大なBIG-IPの脆弱性に対するエンジニアリングホットフィックスを出荷した。修正はBIG-IP 17.1、17.5、21.1が対象となる。</p>
+<p>公開 読了時間3分</p>
+<p>F5は、BIG-IPの一連の脆弱性に対する定例外の修正をリリースした。そのうち5件を重大（critical）と評価している。これらの問題は、BIG-IP、BIG-IQ、NGINX製品にわたる22件のアドバイザリを列挙した定例外のセキュリティ通知で、11月18日に公開された。5件の重大なケースのいずれにおいても、F5は、非公開のリクエストによってTraffic Management Microkernel（TMM）が終了する可能性があり、リモートコード実行につながる可能性があるとしている。</p>
+<p>F5は攻撃者をリモートかつ認証不要であると説明している。同社はまた、コントロールプレーンへの露出はないとも述べている。これらはデータプレーンの問題であり、リスクは管理インターフェースにあるのではなく、BIG-IPシステムがライブトラフィックを処理する方法にあることを意味する。</p>
+<h2>5件の重大な脆弱性</h2>
+<p>重大なバグのうち4件は、BIG-IP管理者がトラフィックの処理方法をカスタマイズするために使うスクリプトである特定のiRulesに依存している。CVE-2026-120285は、HTTPプロファイルと、PSC::ip_addressコマンドを使用するiRuleを持つ仮想サーバーに影響する。CVE-2026-120292は、HTTPプロファイルと、MR::message routeコマンドを使用するiRuleが関係する。CVE-2026-116953は、GENERICMESSAGE::routeコマンドでクライアントトラフィックを処理するiRulesに影響し、CVE-2026-121805は、PEM::subscriberコマンドを使用するiRulesに影響する。</p>
+<p>5件目のCVE-2026-123637は、BIG-IP Access Policy Manager（APM）にある。APMがプロビジョニングされており、Client InformationエージェントとEndpoint Securityエージェントを含むリクエスト単位のポリシーが仮想サーバーに適用されている場合に該当する。</p>
+<p>アドバイザリはこれらのバグをCriticalとし、CVSS v3.1で9.8、CVSS v4.0で9.3のスコアとしている。F5はCVE-2026-121805をスタックベースのバッファオーバーフローに分類しており、この一連の脆弱性を最初に報じたBleepingComputerは、5件すべてをスタックベースのバッファオーバーフローと説明している。</p>
+<p>6件目の、重要度の高い（high-severity）バグであるCVE-2026-126822は、仮想サーバーにSAML Service Providerとして構成されたアクセスプロファイルがある場合のBIG-IP APMに影響する。F5はこれを整数アンダーフローに分類し、CVSS v3.1で7.5、CVSS v4.0で8.7と評価している。アドバイザリによれば、リモートかつ認証不要の攻撃者がサービス拒否を引き起こせる。</p>
+<h2>影響を受けるバージョン</h2>
+<p>BIG-IPのAPMおよびiRuleの脆弱性について、F5は、バージョン21.1.0、バージョン17.5.0から17.5.1、および17.1.0から17.1.3が脆弱であることが判明しているとしている。修正はエンジニアリングホットフィックスとして提供される。21.1ブランチ向けはBIGIP-21.1.0.4.0.19.3-ENG、17.5向けはBIGIP-17.5.1.11.0.61.12-ENGとBIGIP-17.5.1.10.0.80.35-ENG、17.1向けはBIGIP-17.1.3.7.0.21.4-ENGとBIGIP-17.1.3.6.0.14.20-ENGである。F5は、すでに稼働しているバージョンまたはホットフィックスに応じてどのビルドをインストールすべきかを説明する別のガイドを公開している。CVE-2026-121805はBIG-IP CNFおよびBIG-IP Next for Kubernetesにも影響し、それぞれ独自の2.2.5、2.3.4、2.4.2のホットフィックスが提供される。</p>
+<p>F5は、エンジニアリングホットフィックスは定期リリースと同じ広範なテストを経ていないと指摘している。それでも、BleepingComputerは、F5がこれらの脆弱性に対する緩和策を提示していないと報じており、修正はホットフィックスまたはそれ以降のリリースのみとなる。</p>
+<h2>まだ悪用は確認されていないが、広く露出している</h2>
+<p>BleepingComputerによれば、F5は新しい問題のいずれも攻撃で悪用されたとは示していない。それでも露出は大きい。同メディアはShadowserverのデータを引用し、17万7,000を超えるBIG-IPインスタンスと、BIG-IP APMのフィンガープリントを持つ1万4,600を超えるIPアドレスがオンラインで到達可能であるとしているが、そのうちどれだけがハニーポットまたはパッチ適用済みであるかは不明である。</p>
+<p>BIG-IPは繰り返し標的にされてきた。BleepingComputerは、CISAが2021年11月以降、7件のF5の脆弱性を悪用されているものとして指定しており、そのうち4件はランサムウェア集団にも使用されていること、またF5が9月に、ゼロデイとして悪用されたAPMのリモートコード実行の脆弱性CVE-2026-94127にパッチを適用したことを指摘している。</p>
+<p>同じ11月18日の通知には、今週前半に取り上げた2件のHTTP/2の脆弱性を含むNGINXの修正も含まれていた。両方の製品を運用しているチームは、BIG-IPの項目だけでなく、索引にあるすべてのアドバイザリを確認すべきである。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://shiftdelete.net/en/f5-big-ip-critical-rce-hotfixes" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15846'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

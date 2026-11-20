@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Azureネットワーキングの次は？ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Azureネットワーキングの次は？</h1>
+  <div class="r-orig">What’s next for Azure networking?</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-21 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>AIエージェントの利用が拡大するにつれ、ネットワークへの要求も高まっている。Microsoftは、Azure ネットワーキングに機能を追加するとともに、データセンターネットワークをよりフラットな2層設計へ移行している。</h2>
+<p>AIワークロードは、データセンター内でのトラフィックの流れ方を変える。GPUは他のGPU、サーバー、ストレージとデータを交換し、これによりトラフィックは南北方向から東西方向へ移る。AIエージェントはさらに別の層を加える。AIエージェントはコンピュート、GPU、ネットワーク、データセンターにまたがり、需要は一夜にしてある場所から別の場所へ移ることがある。</p>
+<p>今週開催のIgniteカンファレンスで、Microsoftはこの変化に向けたAzure ネットワーキングの更新を詳述した。これには企業向けの新サービスのほか、Microsoft自身がネットワーキングにエージェント型AIをどのように使っているかが含まれる。（同社はまた、Windows Server 2025以来最大のプラットフォーム更新となるWindows Server 2028のプレビューも行った。）</p>
+<p>Igniteで発表されたネットワーキング関連の発表には次のものがある。</p>
+<ul><li><strong>Azure Multicloud Interconnect:</strong> APIを通じてAzureと他のクラウド間のクロスコネクトをプロビジョニングする。Amazon Web Services（AWS）は一般提供中。Google Cloud Platform（GCP）はプレビュー中で、LumenとのAzure Last Mile Interconnectも同様にプレビュー中。AT&amp;Tは近日提供予定。</li><li><strong>Azure Kubernetes Service（AKS）向けクロスクラスターネットワーキング:</strong> Azure Kubernetes Fleet Managerを通じて、フェイルオーバーと1つのネットワークポリシーでクラスターをピアリングする。</li><li><strong>Azure Route Server ルートマップ:</strong> ルートのフィルタリングと集約を行い、自律システム（AS）パスプリペンドを適用する。</li><li><strong>Agent Grid:</strong> ネットワーク上のAIエージェントに対し、IDベースのマイクロセグメンテーション、分離、トラフィックポリシーを適用する。</li><li><strong>Azure Firewall AI アドオン:</strong> Azure Firewall Premium上で2つのインライン小規模言語モデルを実行し、マルウェアやエクスプロイト要求を検出する。</li><li><strong>Azure Adaptive Virtual Patching:</strong> 公開された脆弱性を仮想マシン上のワークロードにマッピングし、実際のパッチが届くまでインラインの緩和策を適用する。</li></ul>
+<p>Microsoftは、AIが生み出すトラフィック、場所、セキュリティの変化を指摘している。</p>
+<p>「つまり、これらすべての変化とともに、ネットワークはもはや接続性だけのものではありません。エージェント型の世界における知的な制御になりつつあります」と、Azure Networkingのコーポレートバイスプレジデント兼ゼネラルマネージャーであるIgor Sakhnov氏は、Microsoft Igniteのセッションで述べた。</p>
+<h2>Azureはファブリックをフラット化し、中空コアファイバーを追加する</h2>
+<p>AIへの移行の一環として、Microsoftはデータセンターネットワークを3層からよりフラットな2層設計へ移行している。</p>
+<p>従来の設計では、サーバーは共有アップリンクを持つ固定の枝の下に置かれる。Sakhnov氏は、5ホップかかっていた経路が今では3ホップで済むと説明した。さらに、サーバーはネットワークに制限されることなく全スループットを出せ、新しいファブリックは旧ファブリックより電力効率が20%以上高いと付け加えた。</p>
+<p>「現在のAIの世界では、電力が入手するのに最も希少なリソースであることはおそらくご存じでしょう。ですから、ネットワークが電力をコンピュートやGPUに返すことは非常に大きな意味があります」とSakhnov氏は述べた。</p>
+<p>Microsoftが自社のネットワーク接続で進めているもう1つの変化はケーブルである。「データセンターの外に出ると、物理がその次の制約になります」と同氏は述べた。「50年間、私たちはファブリックネットワークで中実のガラスの中に光を通してきました。」</p>
+<p>Microsoftは現在、中実のガラスの代わりに空気中で光を伝える中空コアファイバーの使用へ移行した。Microsoftによれば、これにより遅延が約3分の1削減され、必要な増幅器も少なくなる。データセンターは遅延のペナルティなしに、より離れて配置できる。これは、電力割り当てがサイト選定を大きく左右するため重要である。Microsoftは現在、約15,000キロメートルの中空コアファイバーを運用しており、2028年末までにその10倍を計画している。</p>
+<p>Microsoft</p>
+<p>GPU容量もAzureリージョンの外、つまりパートナーのデータセンター、拡張ゾーン、企業の拠点へと移りつつある。Microsoftはその容量を、AIポイントオブプレゼンス（PoP）を通じてAzureに接続する。プライベートトラフィックは各PoPからAzure ExpressRoute経由で流れ、PoPに接続された専用設計のセキュリティデバイスがセキュリティオーバーレイを提供する。</p>
+<p>「リージョンの外であることは、ネットワークの外であることを意味せず、制御の外であることも意味しません」とSakhnov氏は述べた。</p>
+<h2>Azureは100を超えるAIエージェントでネットワークを運用している</h2>
+<p>AIをサポートするためにネットワークを拡張することは重要だが、ネットワークを稼働させ続けるためにAIを使うことも同様に重要である。</p>
+<p>Microsoftは約160万台のネットワーク接続デバイスを運用している。100を超えるAIエージェントがすでにそのネットワークで働いている。Microsoftはそれらをデジタル同僚と呼び、それぞれが固有のIDとマネージャーを持つ。過去1年間で、エージェントは30,000件を超える案件を処理し、未処理分を約4分の3削減した。</p>
+<p>Sakhnov氏は、光ファイバー断線を専門とするMiles Dysonという名のエージェントの1つについて詳述した。（*編集者注：聞き覚えがあるなら、それはSF作品シリーズ『ターミネーター』に登場する架空のスカイネット創設者の名前である*）。6月7日、掘削作業によりジャカルタ東方で光ファイバーが切断された。約20分後、Milesはデバイスのテレメトリーを使って障害箇所を1メートル以内まで特定していた。Milesは現地パートナーの修理班と2時間ごとの更新を交渉し、修理の間その班を追跡した。班が想定された時間内に戻らなかったとき、MilesはMicrosoftのエンジニアをブリッジに参加させた。班が問題を解決した後、Milesは両端からリンクを検証し、チケットを閉じた。</p>
+<p>エージェントは、ネットワークの成長に伴う反復作業を引き受ける。Microsoftは、ネットワークの規模は指数関数的に拡大する一方、手作業は横ばいのままだと述べている。「そしてそれは、AIがなければ私たちにはそれができないということでもあります。AIが負荷を担わなければなりません」とSakhnov氏は述べた。</p>
+<h2>AzureはAIネットワークにおける運用とセキュリティのギャップを狙う</h2>
+<p>Microsoftは自社ネットワークの改善にとどまらず、AI時代に向けてネットワーキングを改善する顧客向けサービスも発表した。</p>
+<p>多くの顧客はすでに、互いにピアリングし、ExpressRouteやVPNゲートウェイを通じてオンプレミスのサイトに接続する複数の仮想ネットワーク（VNet）を運用している。「つまり、問題はこのネットワークをどう構築するかではありません。どう運用するかです」と、Azure Networkingのプロダクトマネジメント担当バイスプレジデントであるNarayan Annamalai氏は述べた。</p>
+<p>Azure Multicloud Interconnectは、その一部に対応する。Annamalai氏は、かつては数日から数週間かかっていたクラウド間のクロスコネクトが、今では数分で済むと述べた。セットアップはAPIを通じて行われる。各接続は4重の冗長性を持ち、2つのサイトと各サイトに2つの接続がある。</p>
+<p>IPv4アドレス空間も別の制約である。IPv6によるバーチャルネットワークピアリングはパブリックプレビュー中である。チームはすべてのVNetで同じIPv4範囲を再利用し、各デュアルスタックVNetに一意のIPv6アドレスを割り当てる。VNet間のトラフィックはIPv6上で流れる。Annamalai氏は、Microsoftは自社ネットワークをこの方式で運用していると述べた。</p>
+<p>Azure Route Server向けのルートマップは、大規模なルーティングを扱う。チームはルートをフィルタリングし、オンプレミスのルートをより少ないプレフィックスに集約し、ルートを破棄し、AS パスプリペンドを適用して送信元を選択できる。</p>
+<p>AKS向けクロスクラスターネットワーキングは、クラスター間の手作業によるつなぎ合わせをなくす。チームはAzure Kubernetes Fleet Managerを通じてクラスターをピアリングする。バックエンドが障害を起こすとトラフィックは他のクラスターへ移り、ネットワークポリシーは一度定義すればよい。</p>
+<p>セキュリティ制御もネットワークの中へ移る。Agent Gridは、ネットワーク上のAIエージェントに対しIDベースのポリシーを適用する。エージェントのコードは変わらない。各エージェントは、他のエージェント、モデル、Model Context Protocol（MCP）サーバー、インターネットへ外向きに接続する。</p>
+<p>「これらの1つ1つを保護しようとすれば、あらゆる地点にゲートウェイを作らなければなりません。非常に複雑になっています」とAnnamalai氏は述べた。</p>
+<p>新しいサービスは、AIワークロード向けのネットワークの接続、拡張、保護に対応する。「世界最高のAIモデルを持っていても、ネットワークが落ちれば、それは404 not foundを言うための高価な方法にすぎません」とAnnamalai氏は述べた。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4251523/whats-next-for-azure-networking.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15827'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
