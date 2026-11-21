@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>QumuloとCiscoがデータストレージとネットワークインフラを統合し、ランサムウェアから保護 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">QumuloとCiscoがデータストレージとネットワークインフラを統合し、ランサムウェアから保護</h1>
+  <div class="r-orig">Qumulo and Cisco integrate data storage and network infrastructure to protect against ransomware</div>
+  <div class="r-meta"><span class="site">NEWS.am TECH</span><span>2026-11-21 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>QumuloとCiscoは、ランサムウェア攻撃から企業データを守る共同ソリューションを発表した。このソリューションは、ストレージレベルでの脅威検知と、感染したデバイスのネットワークレベルでの自動隔離を組み合わせたものである。この技術は、悪意ある活動を検知し、その拡散を数秒以内に封じ込めることができ、情報セキュリティおよびネットワークインフラの専門家による介入を待つ必要がない。</p>
+<p>このソリューションは、Qumulo NeuralProtectプラットフォーム、Cisco Hypershieldセキュリティシステム、およびCisco N9300 Series Smart Switchesを組み合わせたものである。両社は、この統合によってランサムウェア攻撃への対処方法を変えることを意図している。すなわち、データが損傷した後に復旧するのではなく、攻撃がファイルを変更または暗号化しようとする時点で攻撃を止めることを、このシステムは目指している。</p>
+<p><strong>従来型の防御が必ずしも追いつけない理由</strong></p>
+<p>このアプローチが必要とされる背景には、現代のサイバー攻撃が、多くの従来型セキュリティシステムが対応できるよりも速く進化しているという事実がある。IBM Cost of a Data Breach Report 2026によると、ランサムウェアはデータ侵害およびセキュリティインシデントの39%に関与していた。世界全体でのインシデント1件あたりの平均コストは499万ドルに達し、米国では1,150万ドルだった。</p>
+<p>AIを活用した攻撃は新たな脅威となっており、攻撃者は大量の非構造化情報を含む本番データに数分で到達できる。</p>
+<p>一方で、既存の多くのツールは、マルウェアがファイルの変更や暗号化を始めた後になって初めて問題を検知する。例えば、振る舞い監視や異常なエントロピーの検知システム、およびバックアップは、攻撃の結果の特定には役立つことが多いものの、データへの最初の損害を防ぐものではない。</p>
+<p>QumuloとCiscoは、脅威の検知をより早い段階、すなわちファイルの書き込みと変更のプロセスそのものの中へ移すことを提案している。</p>
+<p><strong>共同防御システムの仕組み</strong></p>
+<p>このソリューションはNeuralProtectを中心に構築されており、NeuralProtectはファイルシステムの変更をリアルタイムで確認する。このプラットフォームは、人工知能と機械学習モデルを使用して、既知のランサムウェアの亜種、ゼロデイ攻撃を含む新たな脅威、およびファイルのエントロピーを操作して検知を回避しようとするマルウェアを識別する。</p>
+<p>Bitdefenderのアンチウイルスエンジンも統合されている。開発元によると、このシステムの誤検知率は0.01%未満である。</p>
+<p>不審な活動が検知されると、NeuralProtectはストレージレベルの複数の保護機構を作動させることができる。これには、改変から暗号学的に保護されたファイルシステムのスナップショットの作成、攻撃者の書き込み権限の取り消し、不審なセッションのブロック、影響を受けたデータの隔離が含まれる。</p>
+<p>同時に、このシステムは検知した脅威に関する情報をCisco Hypershieldに送信する。Hypershieldはこの情報を使用して、Cisco N9300 Series Smart Switches上のレイヤー4（L4）マイクロセグメンテーションポリシーを更新できる。これにより、攻撃元をネットワークから隔離し、他のデバイスやシステムへの拡散を制限することが可能になる。</p>
+<p>このようにして、ストレージレベルでの脅威検知が、ネットワーク防御を自動的に起動する。専門チーム間で情報を手作業で受け渡す必要はない。</p>
+<p>検知した脅威に関する情報はセキュリティ情報イベント管理（SIEM）システムにも送信され、専門家がさらなる調査およびインシデント対応に利用できる。</p>
+<p><strong>インフラ全体を再起動することなく復旧</strong></p>
+<p>このソリューションのもう一つの特徴は、攻撃後により的を絞ったデータ復旧を行える点である。</p>
+<p>NeuralProtectは影響を受けたファイルを追跡し、正常であることが確認されているスナップショットからそれらを復元できる。これにより、データセット全体をバックアップから復元する必要がなくなる。大規模な組織では、その復元に数日から数週間かかることがある。</p>
+<p>このアプローチは、攻撃で損傷を受けておらず、なお使用可能な可能性のあるファイルを上書きしてしまうリスクも低減する。</p>
+<p>Qumuloは、保護の有効性は、インシデント後に組織がどれだけ速くデータを復旧できるかだけで測るべきではないと考えている。データ損失を防ぐことのほうがはるかに重要である。</p>
+<p>「ランサムウェアは、防御側の動きが遅すぎるときに勝ちます。多くの組織は今でも、どれだけ速く復旧できるかでレジリエンスを測っています。私たちは、そもそもなぜデータ損失を許すのか、という問いのほうが適切だと考えています」と、Qumuloのプロダクト担当シニアバイスプレジデントであるBrandon Whitelawは述べた。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://tech.news.am/en/news/8180" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15866'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
