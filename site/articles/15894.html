@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>F5、AIが発見したNGINXの脆弱性に対する緊急パッチを公開 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">F5、AIが発見したNGINXの脆弱性に対する緊急パッチを公開</h1>
+  <div class="r-orig">F5 issues emergency patches for AI-uncovered NGINX flaws</div>
+  <div class="r-meta"><span class="site">news.lavx.hu</span><span>2026-11-22 21:00</span><span>発表</span></div>
+  <article class="r-body">
+<p>F5、AIが発見したNGINXの脆弱性に対する緊急パッチを公開 - news.lavx.hu</p>
+<p>F5は、オープンソースのNGINXにおける10件の脆弱性に対する修正を公開した。その中には2件の重大なリモートコード実行のバグが含まれる。これらの脆弱性は約2億2500万のウェブサイトの背後にあるシステムに影響し、個人情報を扱う組織にデータ保護上のリスクをもたらす。</p>
+<h2>何が起きたか</h2>
+<p>F5は11月18日（水）、ウェブサイトの約3分の1にサービスを提供するソフトウェアであるオープンソースのNGINXにおける10件の脆弱性に対する緊急パッチを公開した。</p>
+<p>CVE-2026-123633とCVE-2026-123007の2件の欠陥は、共通脆弱性評価システム（CVSS）で9.2のスコアを受けた。どちらも、サーバーでHTTP/2が有効になっている場合に、攻撃者が認証なしでNGINXサーバー上でコードを実行できるようにする。攻撃が成功すると、侵入者がサーバーを乗っ取り、機密データを盗み、NGINXに依存する推定2億2500万のウェブサイト全体でサービスを妨害できる可能性がある。</p>
+<p>F5の広報担当者は、同社は活発な悪用の証拠を確認していないと述べた。</p>
+<p>Wiz、Ikotas Labs、Metnir、Rapid7、Xintの研究者らが、これらの脆弱性をF5に報告した。多くのチームがバグの発見にAIツールを使用した。CVE-2026-123007は、2015年のNGINX 1.9.5以来、10年以上にわたりコード内に残っていた。Wizのエクスポージャー管理およびアプリケーションセキュリティ担当最高技術責任者であるTomer Schwartzは、Wizの研究者Nir Ohfeldおよび他の組織のチームとともに、この発見に取り組んだ。</p>
+<p>SchwartzとOhfeldは、CVE-2026-123633は、リクエストがまだ必要としている間に接続のメモリを解放すると書いた。CVE-2026-123007は、誤ったフロー制御のアカウンティングによって無効なメモリコピーを生じさせる。</p>
+<p>Rapid7は、NGINX 1.31.8を実行している脆弱なLinuxコンテナに対するリモートコード実行を示す概念実証を公開した。Xintは、他の3件のNGINXの欠陥と、別個のLinuxカーネルの脆弱性を発見した。攻撃者は、このカーネルの欠陥とNGINXのバグを連鎖させて、ホスト上でroot権限を取得できる。Xintは、これら6件の問題を「nginx2root」と呼び、Amazon Web Services、Microsoft Azure、Google Cloud Platform、およびベアメタルサーバーに対する攻撃を実演した。</p>
+<p>F5は管理者に対し、NGINX 1.31.9へ更新するよう助言した。</p>
+<h2>法的根拠</h2>
+<p>NGINXサーバーを通じて個人データを処理する組織は、欧州連合の一般データ保護規則（GDPR）やカリフォルニア州消費者プライバシー法（CCPA）などの法律の下で、そのデータを保護しなければならない。GDPR第32条は、管理者および処理者に対し、人の権利に対するリスクに見合った技術的および組織的措置を適用することを求めている。</p>
+<p>既知の脆弱性が個人データを露出させた場合、規制当局は、組織が迅速かつ注意深く行動したかどうかを調べることができる。GDPRは、最大2000万ユーロ、または年間世界売上高の4%のいずれか高い方の制裁金を認めている。CCPAは、違反1件につき最大2,500ドル、故意の違反1件につき最大7,500ドルの民事制裁金を認めている。</p>
+<p>悪用が確認されていなくても、企業にはエクスポージャーを評価し、判断を文書化し、セキュリティ修正を適用する義務がある。</p>
+<h2>ユーザーと企業への影響</h2>
+<p>NGINXはしばしばネットワークのエッジに位置し、トラフィックをアプリケーションやプログラミングインターフェースへルーティングする。侵害されると、ログイン認証情報、個人記録、その他の機密情報が露出する可能性がある。運用者がサーバーにパッチを適用しないままにすると、ウェブサイトの訪問者はデータ窃取やサービス妨害のリスクに直面する。</p>
+<p>企業にとって、作業はパッチのインストールにとどまらない。セキュリティチームは、脆弱なバージョンを特定し、更新をテストし、修正を展開し、必要に応じて一時的な措置としてHTTP/2を無効にしなければならない。「AIは、どの脆弱性が発見できるかだけでなく、長年存在するリスクがどれだけ速く現実の脅威になり得るかも変えた」とSchwartzは述べた。</p>
+<h2>何が変わるか</h2>
+<p>管理者は、NGINX 1.31.9にアップグレードし、インターネットに面したシステムのHTTP/2設定を見直すべきである。組織は、データ保護義務への準拠を示すために、パッチ適用のタイムラインとリスク評価を記録すべきである。</p>
+<p>Schwartzは、AI主導の発見のペースが既存の防御に負荷をかけていると述べた。「インターネットに接続されたすべてのシステムは、潜在的に脆弱であるものとして扱う必要がある」と彼は述べた。彼は、開示がより速く、より大規模に到来する中で、研究者、ソフトウェアのメンテナー、防御者の間の協力を求めた。</p>
+<p>出典：AI found more critical bugs in another widely used technology running 225M websites, by Jessica Lyons, theregister,</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://news.lavx.hu/article/f5-issues-emergency-patches-for-ai-uncovered-nginx-flaws" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15894'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
