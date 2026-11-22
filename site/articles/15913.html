@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>F5、リモートコード実行を可能にするNGINXの重大な脆弱性にパッチを公開 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">F5、リモートコード実行を可能にするNGINXの重大な脆弱性にパッチを公開</h1>
+  <div class="r-orig">F5 Patches Critical NGINX Flaws Enabling Remote Code Execution</div>
+  <div class="r-meta"><span class="site">cwibc.co.id</span><span>2026-11-23 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>F5、リモートコード実行を可能にする NGINX の重大な脆弱性にパッチを公開</h2>
+<p>NGINX の2件の重大なセキュリティ脆弱性により、攻撃者が認証なしでリモートからコードを実行できる可能性があり、数百万のウェブサイトとアプリケーションが侵害される恐れがある。F5 は、広く導入されているこのウェブサーバーの欠陥が独立した複数の調査チームによって特定されたことを受け、2026年11月18日に緊急のセキュリティアップデートを公開した。</p>
+<p>CVE-2026-123633 と CVE-2026-123007 として追跡されているこれら2件の脆弱性は、いずれも CVSS スコアが 9.2 で、HTTP/2 が有効なサーバーに影響する。Wiz Research によると、悪用に成功すると、攻撃者が影響を受けるサーバーの制御を奪い、機密情報を漏えいさせ、ウェブサイトを改ざんし、またはオンラインサービスを中断させる可能性がある。</p>
+<p>NGINX は世界中の約2億2500万のウェブサイトを支えており、多くのウェブインフラの中心的なコンポーネントとなっている。組織は複数のアプリケーションや API にまたがってトラフィックを振り分けるために NGINX を頻繁に使用しているため、1つの環境が侵害されると複数のサービスが同時に危険にさらされる可能性がある。</p>
+<p>F5 は11月18日の臨時セキュリティリリースで10件のセキュリティ脆弱性に対処した。The Register によると、管理者は最新の修正を適用するために NGINX 1.31.9 へアップグレードすべきである。</p>
+<p>2件の重大な欠陥は、NGINX による HTTP/2 トラフィックの処理におけるメモリ安全性のエラーに関するものである。CVE-2026-123633 は use-after-free 状態に関するもので、有効なリクエストがまだメモリに依存している間にそのメモリが解放される。</p>
+<p>CVE-2026-123007 は、不正確な HTTP/2 フロー制御の計上により、無効なメモリコピーが引き起こされる可能性があることに起因する。Wiz Research によると、この脆弱性は2015年にリリースされた NGINX 1.9.5 まで遡るバージョンに影響する。</p>
+<p>Wiz Research、Ikotas Labs、Metnir、Rapid7、Xint がそれぞれ独立してこれらの脆弱性を特定し、調査結果を F5 に報告した。Wiz は、同社の研究者が AI 支援による分析を用いて欠陥を調査し、その潜在的な影響を検証したと述べた。</p>
+<p>Wiz の Exposure Management and AppSec 担当 Chief Technology Officer である Tomer Schwartz は、AI 支援による脆弱性研究のより広範な影響について述べた。</p>
+<p>「インターネットに接続されたあらゆるシステムを、潜在的に脆弱であるものとして扱う必要があります」と Schwartz は述べた。「AI は、どの脆弱性を発見できるかだけでなく、長年存在してきたリスクがどれほど速く現実の脅威になり得るかも変えました。」</p>
+<p>Schwartz はまた、自動化された研究によって脆弱性の発見が加速する中でセキュリティチームが直面する運用上の課題も強調した。</p>
+<p>「AI はまた、既存のインフラが吸収できるように設計されている速度よりも速く脆弱性の発見を加速させています」と Schwartz は The Register に語った。「ベンダーが修正を提供した後でも、セキュリティチームは、脆弱なバージョンや構成の特定、パッチのテスト、暫定的な緩和策（HTTP/2 の無効化など）の展開、そしてこれらすべてのロールアウトの調整といった点で、多くの手作業に直面します。」</p>
+<p>同氏は、長期的な影響は基盤となるソフトウェアのセキュリティにとって好ましいものになり得ると述べた。</p>
+<p>「長期的には、AI を活用した脆弱性研究が基盤ソフトウェアを強化するでしょう」と Schwartz は述べた。</p>
+<p>F5 は、The Register への声明の時点で、新たに公開された脆弱性が積極的に悪用されている証拠は見つかっていないと報告した。</p>
+<p>「現時点では、これらの脆弱性のいずれについても、実環境で積極的に悪用されている証拠は見つかっていません」と F5 の広報担当者は The Register に語った。「当社は引き続き注意深く監視しており、新たな情報が得られ次第、myF5 を通じて最新情報を共有します。」</p>
+<p>Rapid7 はまた、NGINX 1.31.8 を実行している脆弱な Linux/amd64 の Docker イメージに対する概念実証を用いて、CVE-2026-123007 の潜在的な影響を実証した。これとは別に、Xint は、NGINX の追加の脆弱性3件と、NGINX の欠陥と組み合わせることでホストシステム上の root 権限を取得できる Linux カーネルの脆弱性1件を特定した。</p>
+<p>Wiz は、リモートコード実行の証拠を含めて、2026年10月21日に CVE-2026-123633 を F5 に報告した。F5 は11月10日にレビュー用のパッチを提供した。Wiz は11月16日に2件目の発見事項を提出し、F5 は11月18日のセキュリティリリースにそれが含まれていることを確認した。</p>
+<p>Wiz は、影響を受ける環境を特定し、インターネットからアクセス可能なサーバーを優先し、利用可能なセキュリティアップデートをインストールすることを推奨している。すぐにアップグレードできない組織は、アップデートを準備する間、一時的に HTTP/2 を無効化して露出を減らすことができる。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://cwibc.co.id/en/f5-patches-critical-nginx-flaws" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15913'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

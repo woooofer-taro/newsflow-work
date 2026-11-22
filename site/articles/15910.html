@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cisco、2017年の論文でファイバー損失0.16 DB/kmが確認されたと発表 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Cisco、2017年の論文でファイバー損失0.16 DB/kmが確認されたと発表</h1>
+  <div class="r-orig">Cisco Says 2017 Paper Found Fiber Loss Of 0.16 DB/km</div>
+  <div class="r-meta"><span class="site">Quantum Zeitgeist</span><span>2026-11-23 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>2017年の衛星論文は、最良の商用通信用ファイバーの値として0.16 dB/kmという数値を用いた。この率では、光子がLキロメートルの距離を生き残る確率は10^(-0.016 × L)である。100キロメートルでは、毎秒2億個の光子を放出する光源から発せられた場合でも、光子が目的地に無事到達する確率はわずか2.5%である。公表された結果はこれらの計算と一致しており、同社は、ネットワークには約100キロメートルを超えるとリピーターが必要であると述べている。</p>
+<h2>ファイバー内の光子損失がキュービット伝送距離を制限する</h2>
+<p>商用通信用ファイバーは1キロメートルあたり0.16 dBの光子損失率を示す。これは、進む1キロメートルごとにキュービットが失われる測定可能な確率が生じることを意味し、古典ネットワークにはない制約である。この減衰は、Yin氏らによる2017年の研究（Science誌掲載）から算出されたもので、信号強度が距離とともに予測可能な形で低下し、量子通信の到達距離が根本的に制限されることを示している。この率は定量的な影響に換算される。200キロメートルでは、光子がファイバーを無事通過する確率は0.063%、およそ1,600分の1にまで低下する。</p>
+<p>大量の光子を出す光源を用いても、ファイバー損失の影響は大きい。毎秒2億個のもつれ光子対を生成する装置でも、200キロメートル進んだ後に得られる光子は毎秒約126,000個にとどまる。これらの計算には検出器やコネクターによる追加の損失が含まれておらず、実世界での性能はさらに低くなる可能性が高いことを示している。</p>
+<p>1,203キロメートルにわたってもつれ光子対を届けた2017年の衛星実験は、こうしたファイバーの制限を回避した。著者らは、そのリンク効率が商用ファイバーでの直接伝送の効率を12桁以上上回ったと報告した。しかし、実用的な量子ネットワークには依然として距離の制約があり、Ciscoは、実用的な信号強度を維持するために約100キロメートルを超えるとリピーターが必要であると述べている。</p>
+<p>公表された結果は一貫してこれらの理論計算と一致しており、これまでチャネル損失がもつれ分配を約100キロメートルに制限していたことを裏付けている。技術者は衛星やリピーターなどの解決策を探っているが、ファイバー内の光子損失という本質的な制限は、長距離量子ネットワーク構築における中心的な課題であり続けている。</p>
+<h2>衛星によるもつれ分配がネットワークの範囲を拡大する</h2>
+<p>Ciscoによるこの損失率の分析は、大量の光子を出す光源を用いても、距離にわたって信号の完全性を維持することが、実用的な量子応用にとって大きな障害であり続けることを示している。光子を生成しても、平均すると光子が到達するのは2,800年に1回にすぎず、伝送中の量子状態が極めて脆弱であることが浮き彫りになる。これらのリピーターは、より短いリンクをつなぎ合わせてより長いリンクにすることで、光子損失の影響を効果的に軽減する。</p>
+<p>この研究を推進する応用の可能性は安全な通信にとどまらず、連結されたプロセッサーが1台のより強力なマシンとして機能しうる分散量子コンピューティングや、広大な距離にわたる協調的な測定を可能にするネットワーク化されたセンシングも含む。これらの進歩によって実現される量子インターネットは、クラウド上の量子コンピューティング資源への安全なアクセスを可能にし、この新興技術の可能性をさらに広げるだろう。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://quantumzeitgeist.com/cisco-fiber-loss-0-16-dbkm-paper/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15910'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
