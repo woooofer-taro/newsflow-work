@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>CiscoとOpenAI、エージェント型AIを保護する新プロジェクトShirudoを開始 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">CiscoとOpenAI、エージェント型AIを保護する新プロジェクトShirudoを開始</h1>
+  <div class="r-orig">Cisco and OpenAI Launch Shirudo, A New Project to Safeguard Agentic AI</div>
+  <div class="r-meta"><span class="site">Cisco Newsroom</span><span>2026-11-24 07:00</span><span>発表</span></div>
+  <article class="r-body">
+<h2>Cisco と OpenAI、エージェント型 AI を守る新プロジェクト Shirudo を発表</h2>
+<p>業界初のオープンソースプロジェクト Shirudo は、システムが機械の速度で自らを防御できるよう支援する</p>
+<p><strong>ニュース概要</strong></p>
+<ul><li><strong>防御側は、恒久的なパッチが適用される前にシステムの保護を開始できる。</strong> Cisco と OpenAI は、デフォルトで安全であり、自らを防御するインフラを構築するオープンソースの取り組みを通じて、これを可能にしている。</li></ul>
+<ul><li><strong>業界をリードする eBPF を基盤としたオープンソースプロジェクトである Shirudo は</strong>、チームがパッチを展開する間、再起動することなく稼働中の Linux システムの保護を支援する。</li></ul>
+<ul><li><strong>これは、人間のペースによるポリシー更新から、自己防御型でエージェント駆動のセキュリティへの転換を示すものである。</strong> AI エージェントがモデルやデータからカーネルやハードウェアに至るフルスタック全体で実務を担い、人間は鍵を保持し、境界を設定する。</li></ul>
+<p><strong>カリフォルニア州サンノゼ、2026年11月23日</strong> – Cisco（NASDAQ: CSCO）と OpenAI は本日、インフラをデフォルトで安全にし、今日の高度なサイバー攻撃に対して自らを防御できるようにするためのオープンソースの取り組みを開始した。あまりにも長い間、セキュリティは塗装の一層のようなものだった。Cisco は、世界が依存するシステムを構築し保護してきた数十年の経験を活かし、インフラそのものに保護を組み込んでいる。OpenAI は、最先端のフロンティア AI 研究と、次に来る攻撃に関する知見をもたらす。両社は共に、それぞれの知見を組み合わせ、AI 駆動の脅威を予測し、それを止める制御力を持てるよう支援する。</p>
+<p>防御側は、インフラのあらゆる部分を常に保護しなければならない。攻撃者に必要なのは、パッチが適用されていない1台のマシンだけである。Shirudo は、そのギャップを埋めるための重要な一歩である。目標は、構築された瞬間から堅牢化され、攻撃されにくくなり続け、侵害された場合には既知の正常な状態へ復元できるインフラである。</p>
+<p>「セキュリティチームが直面している AI 駆動の脅威の速度に対抗するために必要なツールを提供すること以上に重要なことはありません。私たちに必要なのは、コードの速度で動作し、リアルタイムで学習し、パッチが安全に展開されるまで自らを守る、自己防御型のインフラです」と、Cisco の社長兼最高製品責任者である Jeetu Patel は述べた。「本日、OpenAI と共に Shirudo を発表できることを誇りに思います。これは、AI の安全性とセキュリティに固有の課題を解決するために、より広いコミュニティと引き続き協力していく中で、そのビジョンに向けた重要な一歩です。」</p>
+<p>「私たちは防御側に、脆弱性をより速く発見し修正するための、より優れたモデルとツールを提供していますが、今日バグを見つけたからといって、明日にはすべてのシステムにパッチを適用できるわけではありません」と、OpenAI の社長兼共同創業者である Greg Brockman は述べた。「私たちは Shirudo で Cisco と緊密に提携し、チームが修正を構築して展開する間、稼働し続ける必要があるシステムを保護できるよう支援します。非常に多くのチームが同じソフトウェアに依存しているため、これらのツールをオープンに構築することは理にかなっています。あるチームがシステムを保護するより良い方法を見つけたとき、他のチームはゼロから始める必要がなくなります。」</p>
+<p><strong>Shirudo：Cisco と OpenAI によるオープンソースプロジェクト</strong></p>
+<p>Shirudo は日本語で「盾」を意味し、ソースコードを変更することなく、オペレーティングシステムのカーネル内で小さなカスタムプログラムを実行する技術である eBPF を使用する。これにより、AI エージェントは脆弱性を見つけ、シールドを構築し、サービスを中断することなく攻撃を阻止することをテストできる。シールドは、安全であることを証拠が示した場合にのみ有効になる。すべてのシールドは暗号署名されており、攻撃者が管理者権限を取得していても、ホストは実行前にそれを検証できる。</p>
+<p>最近の重大な脆弱性である「Java4shell」と PHP の欠陥に対するテストにおいて、Shirudo は両方の脅威を悪用しようとする試みを検知し阻止するコードを作成することができた。エージェント型フレームワークを利用することで、Shirudo は脆弱性が特定されるとすぐに、AI 駆動の攻撃の速度に対応する。Shirudo の詳細はこちら。</p>
+<p>Cisco と OpenAI は、開発者、研究者、企業に、次に何が起こるかを形作る手助けをするよう呼びかけている。脆弱性を再現するテストを提供する、使用しているカーネルビルドに対してシールドを実行する、あるいは正当なトラフィックを妨げる箇所を示してほしい。Shirudo の詳細については、https://github.com/shirudo-dev/shirudo をご覧ください。</p>
+<p><strong>関連情報：</strong></p>
+<ul><li>Cisco ブログ：Cisco and OpenAI Launch Shirudo</li></ul>
+<ul><li>OpenAI ブログ：OpenAI and Cisco Introduce Shirudo</li></ul>
+<ul><li>12月15日開催のディープダイブ・ウェビナーにご参加ください。登録はこちら。</li></ul>
+<p><strong>Cisco について</strong></p>
+<p>Cisco（NASDAQ: CSCO）は、AI 時代における組織の接続と保護の方法を革新している世界的なテクノロジーリーダーである。40年以上にわたり、Cisco は世界を安全に接続してきた。業界をリードする AI 搭載のソリューションとサービスにより、Cisco は顧客、パートナー、コミュニティがイノベーションを解き放ち、生産性を高め、デジタルレジリエンスを強化できるようにしている。目的を中核に据え、Cisco はすべての人にとってより接続された包括的な未来を創造することに引き続き取り組んでいる。詳細は The Newsroom をご覧になり、X の @Cisco をフォローしてください。</p>
+<p>Cisco および Cisco ロゴは、米国およびその他の国における Cisco および/またはその関連会社の商標または登録商標である。Cisco の商標の一覧は http://www.cisco.com/go/trademarks で確認できる。言及されているサードパーティの商標は、それぞれの所有者の財産である。「パートナー」という語の使用は、Cisco と他の会社との間のパートナーシップ関係を意味するものではない。</p>
+<p><strong>OpenAI について</strong></p>
+<p>OpenAI は、汎用人工知能が全人類に利益をもたらすことを保証するという使命を持つ、AI の研究・展開企業である。私たちは、より高性能な AI システムを開発し、ChatGPT や API といった製品を通じて提供することで、その使命に取り組んでいる。人々はこれらのツールを学習、創作、問題解決に使い、企業や開発者は製品を構築し、仕事の進め方を改善するために使っている。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m11/cisco-and-openai-launch-shirudo-a-new-project-to-safeguard-agentic-ai.html?source=rss" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('15982'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
