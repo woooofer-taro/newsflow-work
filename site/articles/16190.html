@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Broadcom、新たな23件のVMware脆弱性の修正を公開、うち3件は重大 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Broadcom、新たな23件のVMware脆弱性の修正を公開、うち3件は重大</h1>
+  <div class="r-orig">Broadcom issues fixes for 23 new VMware flaws, three critical</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-26 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>最も深刻なもの：vCenterの認証バイパスのバグであり、米国のサポートチームの感謝祭の休日を台無しにするのにちょうど間に合うタイミングである。</h2>
+<p>Broadcomは火曜日、VMwareにおける新たなセキュリティ脆弱性をほぼ24件報告した。これは、今月だけでも多数にのぼる修正の一覧に加わるものである。</p>
+<p>今回のアドバイザリーにある脆弱性のうち最も深刻なものは、vCenterの認証バイパスの脆弱性であるCVE-2026-123903で、CVSSv3基本スコアは9.8（Critical）と評価されている。「vCenterにネットワークアクセスできる悪意ある攻撃者は、この問題を悪用して認証を回避し、システムへの不正アクセスを得る可能性がある」と同アドバイザリーは述べている。</p>
+<p>Broadcomは、アラートに付属する補足文書の中で、協調的開示とリリースパイプラインのタイミングの都合により、このアドバイザリーが米国の感謝祭の休日のわずか2日前になったと記し、「このタイミングは最適ではない」と認めた。</p>
+<p>同社によれば、このアドバイザリーは合計23件の問題を対象としており、そのうち7件はvCenterにある。内訳は、VMware Directory Serviceにおける認証バイパス1件とサービス拒否の問題3件、特定のアーカイブの処理中における任意ファイル書き込み、vpxdサービススクリプトにおけるローカル権限昇格、そしてvSphere Distributed Switch（vDS）におけるセキュリティポリシー適用の失敗である。</p>
+<p>さらに7件はESXにあり、I/Oフィルターサービスにおけるヒープの境界外書き込みと use-after-free、Extensible Host Controller Interface（XHCI）USBコントローラーにおける境界外書き込み、VMkernelにおけるスタックベースのバッファオーバーフロー、ホスト構成ストアにおけるセキュリティバイパス、署名検証のバイパス、そしてゲストRPCにおけるサービス拒否である。</p>
+<p>残りの脆弱性は、VMware Workstation、VMware Fusion、VMware Tools、VMware Avi Load Balancerに影響する。</p>
+<p>ただし同社は、先週のアドバイザリーの脆弱性に対処するために提供された修正が、今回の一群で強調されている問題のいくつかを解決していると述べた。</p>
+<p>「VMSA-2026-0009 向けに vCenter 8.0 U3m を適用済みの場合（VCF 5.2.x 上を含む）、vCenterを再度更新する必要はないが、vCenter 9.1.x には本アドバイザリーの更新が必要である」とBroadcomは述べた。</p>
+<p>「ESXはVMSA-2026-0009の対象ではなく、本アドバイザリーの更新が必要である。VMSA-2026-0009ではSDDC Managerの問題も解決されたが、本アドバイザリーはこれを更新しない。VMSA-2026-0009のSDDC Manager更新を適用していない場合は、別途適用すること。本アドバイザリーにはVMware Toolsの更新も含まれる。vCenterとESXを更新しても、仮想マシン内のVMware Toolsは更新されないため、その更新は別途計画すること。」</p>
+<p>同社はさらに、「自社が影響を受けるかどうかについて疑問がある場合、影響を受けている可能性が高く、直ちに対応すべきである」と付け加えた。</p>
+<h2>パッチ適用の緊急性をめぐる意見の相違</h2>
+<p>では、これらの脆弱性に対処するために米国の感謝祭の休日を中断すべきというシグナルなのだろうか。意見は分かれている。</p>
+<p>Fortraのセキュリティ研究開発担当アソシエイトディレクターであるTyler Regulyは、9.8というスコアは最高に近いものの、これらの欠陥の性質は極端なスケジュール対応に値しないかもしれないと主張した。今回の一群には深刻度9.8と評価された脆弱性が3件あり、VMware vCenterとESXに影響する。</p>
+<p>彼は次のように指摘した。「これら［影響を受ける］システムはどちらも外部インターフェース上に存在すべきではなく、したがってリスクは内部からのものである必要がある。つまり、内部脅威、あるいはすでに進行中の侵害の話をしているということだ。これらは重要な脆弱性であり、その点に疑いはないが、誰かが週末の休日を中断すべきほど重要ではない。」</p>
+<p>Regulyは、これらのパッチが緊急対応に値しない可能性があるという自身の主張を裏付けるため、CISAのガイダンスの厳格な解釈を示した。</p>
+<p>「この件のガイダンスとしてCISA BOD-26-04を見るなら、そのサービスは公開されているか。公開されているべきではないので、いいえとしよう。この脆弱性はKEV［Known Exploited Vulnerabilities catalog］に含まれているか。いいえ。自動化できるか。不明なので、念のため可能と仮定しよう」と彼は述べた。「いいえ、いいえ、はいという結果は、BOD-26-04の修復期限の13行目に相当し、問題の修正に60日が認められている。」</p>
+<p>彼は、最近の脆弱性の猛攻により、私たちは「少しパブロフの犬のよう」になっていると述べた。CVSS 9.8を目にするたびに反応するよう条件づけられてしまっているのである。</p>
+<p>「これは危険で、潜在的に有害な条件づけであり、断ち切るためにあらゆる努力をする必要がある」と彼は述べた。「ベルが食べ物を表していなかったのと同様に、脆弱性の深刻度は組織にとってのリスクを反映しないということを、私たちは自分自身に思い出させる必要がある。」</p>
+<p>Dickson ResearchのプリンシパルアナリストであるFrank Dicksonは、これに異を唱えた。</p>
+<p>彼は今回のアドバイザリーVMSA-2026-0011について、「すべての仮想マシンを動かす2つのシステムであるvCenterとESXに、パスワードを必要としない欠陥で影響するため、大きな問題だ。パッチを適用しなければ、1人の攻撃者が、あなたが運用するすべての仮想マシンを停止させる、あるいは乗っ取ることができる。あなたは基本的にもう終わりだ。今すぐパッチを適用せよ」と見なした。</p>
+<p>Dicksonは、この一群のアラートには複数の問題のあるセキュリティ上の問題が含まれていると指摘した。それらには、vCenterにおける認証バイパス、ネットワークアクセスを持つ攻撃者がハイパーバイザー自体でコードを実行できること、そしてWorkstationまたはFusion上の仮想マシン内の管理者がホストコンピューター上でコードを実行できるもう1つのバグが含まれる。「正直に言おう。AIは脆弱性を連鎖させるのを好む」と彼は述べた。</p>
+<p>彼はまた、今月だけでVMwareのパッチが多数あること、特にvCenterのものについて懸念している。「VMwareのvCenterの欠陥の頻度は懸念事項だ。同じ場所に何度も現れ続けているからだ」と彼は述べた。「新しい欠陥は先週のものとは別物である。別物であることは安心材料にならない。同じ壁に3つの異なる穴があるのは、壁の問題だ。」</p>
+<p>彼は次のように指摘した。「ディレクトリサービスはvCenterのアキレス腱になっている。このアドバイザリーは、念のため、同じサービスにさらに3つのサービス拒否の欠陥を加えている。」</p>
+<p>*この記事はもともとCSOonlineに掲載された。*</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4253395/broadcom-issues-fixes-for-23-new-vmware-flaws-three-critical-2.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16190'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
