@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Kubernetesの適合性はワークロードに到達する必要がある — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Kubernetesの適合性はワークロードに到達する必要がある</h1>
+  <div class="r-orig">Kubernetes Conformance Needs to Reach the Workload</div>
+  <div class="r-meta"><span class="site">Cloud Native Now</span><span>2026-11-27 13:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>Kubernetes Conformance は workload に到達する必要がある</h2>
+<p>準拠した Kubernetes クラスターであっても、その上で動くすべてのアプリケーションが自動的にポータブルになるわけではない。ソフトウェアベンダーやプラットフォームチームは、ワークロードの移行を複雑にするディストリビューション間や環境間の違いに、依然として直面しうる。そうした組み合わせをプラットフォームごとに一つずつ認証することは、作業を増やすだけで、ユーザーが Kubernetes に期待する一貫性を必ずしももたらさない。Workload conformance は、共有されたクラスターの基準と、その上を横断して実際に動作できるアプリケーションとの間にあるこのギャップを狙っている。</p>
+<p>Broadcom のエンジニアリング担当シニアディレクターである Dilpreet Bindra は、Salt Lake City で開催された KubeCon + CloudNativeCon で Alan Shimel とこの取り組みについて語っている。同氏は Workload Conformance Working Group を、独立系ソフトウェアベンダーとワークロードチームを、Kubernetes 環境をまたぐポータビリティを軸に結集させる手段として説明している。個々のプラットフォーム認証を各パートナーシップの中心に据えるのではなく、ワークロードがどこで動いても Kubernetes が一貫して振る舞うことが目標である。Bindra は、一つのベンダーのディストリビューションにとどまらない問題に対処するうえで、企業間の協力が果たす役割を強調している。</p>
+<p>議論はその後、Kubernetes の desired state モデルを仮想マシンに適用する話題に移る。Bindra は、Broadcom の VM Operator の取り組みによって、ユーザーが VM とそれに必要なリソースを YAML ドキュメントで記述できるようになることを説明している。これにより、コンテナやクラスターだけでなく仮想マシンにも GitOps スタイルのワークフローを適用できる。同氏はまた、VM API の作業を CNCF を通じてアップストリームに持ち込み、Broadcom 独自の実装を超えて Kubernetes ネイティブなインターフェースを利用可能にすることを目指していると述べている。</p>
+<p>Bindra の説明では、企業がセキュリティと運用上の保証を手放すことなくより速い開発を求める中で、AI がこれらのプラットフォームに関する課題に切迫感を加えている。同氏は、社内の開発者による AI の利用を追跡し、その費用を個々の機能に帰属させて、後の予算編成に役立てていることを述べている。しかし、インタビューの核心は依然としてインフラストラクチャーの話である。より予測可能なワークロードの挙動と宣言的な VM インターフェースによって、チームが管理しなければならない環境固有の判断の数を減らせる可能性がある。提案されている conformance の取り組みはその一貫性に向けた努力であり、すべての Kubernetes ワークロードがすでにポータブルであるという主張ではない。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://cloudnativenow.com/video-interviews/kubernetes-conformance-needs-to-reach-the-workload/" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16294'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
