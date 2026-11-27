@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>OpenAIとCisco、Linuxをエクスプロイトから守るShirudoを発表 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">OpenAIとCisco、Linuxをエクスプロイトから守るShirudoを発表</h1>
+  <div class="r-orig">OpenAI and Cisco launch Shirudo to shield Linux from exploits</div>
+  <div class="r-meta"><span class="site">Pasquale Pillitteri</span><span>2026-11-27 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>OpenAI と Cisco、Linux をエクスプロイトから守る Shirudo を公開</h2>
+<h3>OpenAI と Cisco は、AI エージェントも作成できる一時的なシールドを備えたオープンソースの Linux ランタイム、Shirudo を公開した。Java4Shell のテスト、制限事項、要件。</h3>
+<p>2026年11月23日、OpenAI と Cisco は <strong>Shirudo</strong> を発表した。これは Linux 向けのオープンソースソフトウェアで、恒久的なパッチがまだ提供されていない間、小さな一時的な「シールド」で脆弱性の悪用を阻止する。シールドは AI エージェントが作成でき、その後オペレーターが署名する。現時点ではプレリリースである。</p>
+<p>ChatGPT を手がける OpenAI は、コードを書いて実行するエージェントである Codex も提供している。米国のネットワーキング・セキュリティ企業グループである Cisco は、2024年に買収した Isovalent のエンジニアを投入している。Isovalent は eBPF（オペレーティングシステム内で、再コンパイルせずに、検証済みの小さなプログラムを実行できるようにする Linux カーネルの技術）に取り組む企業である。コードは BSD 2-Clause ライセンスで GitHub に公開されており（eBPF プログラムは BSD と GPL のデュアルライセンス）、11月26日時点でスター数は 2,232 だった。</p>
+<p>JetBrains が IntelliJ と PyCharm 向けの Java4Shell アップデートをリリースしたため、開発者は自分のマシンも確認する必要がある。</p>
+<p>コードは無料である。公式のトライアルはソフトウェア TPM を備えた仮想マシン上で動作し、KVM を備えた Linux（x86-64 または arm64）、または Lima 経由で M3 チップ以降を搭載し macOS 15 以上が動作する Mac が必要である。Isovalent はガイド付きラボも提供している。これはラボ用の素材であり、本番サーバー向けのものではない。</p>
+<h2>Shirudo とは何か、何のためのものか</h2>
+<p>Shirudo（日本語で「シールド」）は、Linux 向けの eBPF ベースのセキュリティランタイムである。既知の攻撃手法を阻止する、対象を絞った署名付きの保護を読み込む。通常、すでにセットアップ済みのマシンを再起動せずに行える。その役割は、欠陥の発見から修正のインストールまでの日数をカバーすることである。</p>
+<p>こうした日数が存在するのは、パッチをサーバーに届ける前にテストする必要があるためで、OpenAI の発表によればそれには数日から数週間かかることがある。一方、攻撃者は待たない。Google の部門でサイバーインシデントを調査する Mandiant の M-Trends 2026 レポートは、2025年の平均エクスプロイト所要時間を -7 日と見積もっている。マイナス記号は、攻撃が平均してパッチが利用可能になる1週間前に始まることを意味する。2018年には同じ指標が、パッチ後 63 日だった。</p>
+<p>欠陥が未修正のままの場合、従来の選択肢は厄介なものである。エクスプロイトと正当なリクエストが、同じ Linux の操作を通ることがあるからだ。完全にブロックすれば、サービスも停止する。Ubuntu と Debian の nginx2root では、修正済みパッケージを待つ間にできることは設定の変更だけであり、Linux カーネルの NoisyTCP でも同様だった。シールドは、危険な挙動だけを狙うことを目指している。</p>
+<p>Shirudo の仕組みに関する Isovalent の公式動画</p>
+<h2>AI エージェントはどのようにシールドを作成するのか</h2>
+<p>ドキュメントでは、シールドを <strong>upatches</strong>、すなわち署名付きのマイクロパッチと呼んでいる。これには2つの種類がある。eBPF のものは、実行中のカーネルの特定のポイントにフックする。Java のものはエージェント（.jar ファイル）で、Java 仮想マシン上で動作するアプリケーションの内部にチェックを追加する。</p>
+<p>Isovalent が説明する例では、Codex が全体を進行する。エージェントは脆弱性を探すか、外部のアドバイザリから受け取り、それを緩和するコードを書き、エクスプロイトに対してテストし、署名付きのシールドを影響を受けるマシンに配布し、その後それが何回作動したかを確認する。OpenAI は、何を本番環境に入れるかはセキュリティチームが決定し、シールドはオペレーターの承認後にインストールされると明記している。</p>
+<p>承認は署名鍵を通じて行われる。仕組みの概要によれば、鍵を保持するのはオペレーターのコンピューターのみで、署名には将来の量子コンピューターにも耐性のあるアルゴリズムである ML-DSA-87 が使われる。保護対象のサーバーは OCI レジストリ（コンテナイメージに使われるものと同種のリポジトリ）からパッケージをダウンロードし、カーネルは eBPF プログラムを読み込む前に署名を検証する。読み込みはすべてマザーボード上のセキュリティチップである TPM に記録されるため、オペレーターはどの保護が有効と表示されているかをリモートで検証できる。</p>
+<p>基盤となっているのは、Isovalent が 2022年にオープンソース化した eBPF セキュリティツール Tetragon である。作者らは Shirudo を、エージェントの時代のために設計された書き直しだと説明している。</p>
+<p>We’re introducing Shirudo, an open-source Linux runtime allowing agents to defend systems without downtime. It lets agents write dynamic eBPF controls to shield systems from exploits, giving defenders more time to test and roll out patches. Built by @cisco together with OpenAI.</p>
+<p>— OpenAI (@OpenAI) 2026年11月23日</p>
+<p>エージェントからサーバーまで、そして保護が有効になるとき</p>
+<h2>Java4Shell と Elasticsearch のテスト</h2>
+<p>デモンストレーションでは Java4Shell が使われている。これは Oracle が 11月17日に修正した OpenJDK の欠陥である（CVE-2026-114938、10点満点中 9.2 のスコア）。このバグは Base64 形式をデコードする最適化されたコードにあり、意図された範囲を超えてメモリに書き込むことを可能にする。AVX-512 VBMI 命令を備えた x86-64 プロセッサにのみ影響するため、ARM チップは影響を受けない。これを文書化したスタートアップの Calif は、このバグは、ログや社内検索に使われる Java で書かれた検索・データ分析エンジンである Elasticsearch でも悪用可能だと述べている。</p>
+<p>テストでは、Codex で生成されたシールドが Java の Base64 デコーダーに入力チェックを追加し、実行中の Elasticsearch 9.5.5 にアタッチされた。これはカーネル内の eBPF プログラムではなく、Java バイトコードである。Isovalent が公開したログには、まずガードがインストールされる様子が示され、その数ミリ秒後に、バグを引き起こす形である 65 文字の文字列が拒否される様子が示されている。OpenAI によれば、サービスは再起動なしで稼働し続けた。</p>
+<p>留意すべき制限事項</p>
+<ul><li>証拠はプロジェクトを構築した人々によるものであり、シールドがあなたのトラフィックに対してどう振る舞うかは示していない。ログはラボのノードのものであり、Cisco 自身も、正当なリクエストをブロックした場合は報告するようコミュニティに求めている。</li><li>署名が保証するのはシールドを誰が作成したかであり、それが正しいことではない。ドキュメントはこれを明示している（「provenance, not correctness」）ため、エージェントが生成したコードは、署名する前に人が確認する必要がある。</li><li>OpenAI は、有効化する前にシールドの効果を観察できることを、プロジェクトが設計の基盤としている機能の一つに挙げている。shirudo upatch load コマンドには、現時点ではシミュレーションのオプションが記載されていないため、テストは別のマシンで行う必要がある。</li></ul>
+<h2>Java のシールドは、すでに稼働中のサービスで機能するか</h2>
+<p>現在文書化されている手順では、機能しない。Java エージェントに関するページは、仮想マシンはオプションを起動時に読み取り、すでに稼働中のプロセスは再起動されるまで、起動時のエージェントを保持し続けると説明している。load コマンドは .jar ファイルをマシンに書き込み、その後に起動されるプロセス向けに JAVA_TOOL_OPTIONS 変数を更新する。</p>
+<p>さらに、systemd のユーザーマネージャーを経由しないシステムサービスやコンテナはこの変数を認識しないため、-javaagent オプションを手動でその設定に追加する必要がある。サービスとしてインストールされた Elasticsearch はこの区分に該当する。</p>
+<p>デモンストレーションでは別の経路が取られた。ログでは、ガードは「Attach Listener」スレッドによってインストールされたものとして表示されている。これは JVM が、エージェントを稼働中のプロセスに接続するチャネルに使う名前である。ドキュメントのページはこの手順を説明していない。Java アプリケーションについて再起動不要の保護を同僚に約束する前に、2つの経路のうちどちらを実際に再現できるかを確認する価値がある。</p>
+<h2>Elasticsearch を運用している場合は、修正がすでに出ている</h2>
+<p>Java4Shell に対処するために Shirudo を待つ必要はない。Elastic のセキュリティアドバイザリには、JDK 27.0.1.1+4 を含む修正済みバージョンが記載されている。バージョン 9.5.7 のリリース日は 11月23日、つまり Shirudo が公開されたのと同じ日となっており、テストで使われた 9.5.5 は脆弱である。公開されているノードでは、読み取り専用権限を持つ認証済みユーザーがコード実行に至ることができ、認証情報を持たない攻撃者はサービス拒否を引き起こすことができる。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://pasqualepillitteri.it/en/news/36779/openai-cisco-launch-shirudo-linux-exploit-shield" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16327'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
