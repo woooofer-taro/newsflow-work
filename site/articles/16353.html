@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Linux NFSファイル共有の欠陥によりサーバーがリモートで乗っ取られる恐れ — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Linux NFSファイル共有の欠陥によりサーバーがリモートで乗っ取られる恐れ</h1>
+  <div class="r-orig">Flaw in Linux NFS file sharing exposes servers to remote takeover</div>
+  <div class="r-meta"><span class="site">Network World</span><span>2026-11-28 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>脆弱性は12年間Linuxカーネルで検出されず、サーバーのファイル共有ポートに到達できる者なら誰でも、パスワードなしでroot権限を取得できる。</h2>
+<p>研究者らは、Linuxカーネルの NFS ファイル共有サーバーに重大な欠陥を発見した。この欠陥により、認証されていない攻撃者が影響を受けるシステム上でrootシェルを取得できる。この欠陥は12年間カーネル内で検出されないままだったが、2人の研究者が、うち1人はAIエージェントを使って、それぞれ独立に発見した。</p>
+<p>NFS は通常、Kubernetes クラスターのコンテナネットワークや開発環境のビルドサーバーを含む、ローカルネットワーク内で使用される。しかし、多くの組み込みデバイスやネットワーク接続ストレージ（NAS）デバイスでも有効になっており、これらは古いカーネルバージョンを実行している可能性があり、ファームウェア更新によってのみパッチを適用できる。</p>
+<p>CVE-2026-99362 として追跡され、NFS2ROOT と名付けられたこの欠陥は、多くの Linux ディストリビューションでデフォルトとなっている Network File System プロトコルの NFSv4.1 または NFSv4.2 バージョンを実行するシステムに影響する。この脆弱性により、サーバーのポート 2049 に到達できる者なら誰でも、NFS リクエストを処理するカーネルコンポーネントである *nfsd* プロセスのメモリを破壊できる。深刻度は 9.8 と評価されている。</p>
+<p>フランスのセキュリティ機関 ANSSI の研究者 Jérémy Jean が8月にこのバグを発見し、その修正は9月14日にメインラインカーネルにマージされた。</p>
+<p>このヒープオーバーフロー脆弱性も発見し、今週その技術的詳細を公開したセキュリティ企業 OpenSec Intelligence によれば、この欠陥はroot権限のシェルを取得するために悪用され得る。OpenSec は、AI を活用したセキュリティテストハーネスを使ってこのバグを発見し、9月22日に独自のパッチを Linux カーネルのメンテナーに提出した。</p>
+<p>しかし、サポートされているすべてのカーネルブランチが修正をバックポートするには時間がかかるため、このバグは11月19日まで公開されず、CVE ID も割り当てられなかった。</p>
+<p>この欠陥は2014年に Linux 3.16 で導入され、現在は8つの安定版カーネルブランチでパッチが適用されている: 5.10.275、5.15.226、6.1.193、6.6.163、6.12.117、6.18.61、7.3.2、および 7.4-rc1。</p>
+<p>すぐにパッチを適用できないシステムでは、管理者は信頼できないシステムからのポート 2049 へのアクセスをブロックするファイアウォールルールを使用することが推奨される。別の選択肢として、*nfsd* の設定で NFSv4.1 と 4.2 を無効にしてからサービスを再起動する方法があるが、これにより pNFS といくつかの機能が無効になる。</p>
+<p>*この記事は元々 CSOonline に掲載された。*</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.networkworld.com/article/4254119/flaw-in-linux-nfs-file-sharing-exposes-servers-to-remote-takeover-2.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16353'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

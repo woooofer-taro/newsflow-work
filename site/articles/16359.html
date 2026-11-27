@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>⚡ 週間まとめ: VMwareのゼロデイ、Java4Shell、NGINX2Root、Ruby2Shell、そして大量のシェル関連トラブル — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">⚡ 週間まとめ: VMwareのゼロデイ、Java4Shell、NGINX2Root、Ruby2Shell、そして大量のシェル関連トラブル</h1>
+  <div class="r-orig">⚡ Weekly Recap: VMware 0-Day, Java4Shell, NGINX2Root, Ruby2Shell, and a Whole Lot of Shell Trouble</div>
+  <div class="r-meta"><span class="site">The Hacker News</span><span>2026-11-28 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>⚡ 週刊まとめ: VMware 0-Day、Java4Shell、NGINX2Root、Ruby2Shell、そして大量のシェル関連トラブル - The Hacker News</h2>
+<p>盗まれた鍵。信頼されたメッセージ。定例の更新。これらのどれも、大きなセキュリティ問題の始まりには見えない。それが、これらが通用する理由の一部でもある。攻撃者は必ずしもドアを破る必要はない。時には、すでに開いているドアを使うだけである。</p>
+<p>今週の話題は、小さな突破口がいかに素早くはるかに大きな混乱に変わりうるかを示している。ある侵害が、攻撃者が別の標的に到達する助けとなる。人々が頼りにしているツールが、内部に侵入する手段になる。安全のために作られた機能でさえ、間違った人物を助けることになりかねない。そして最新の研究の一部は、ある種の攻撃がいかにわずかな労力で済むかを示している。</p>
+<p>奇妙なのは、何かがうまくいかなくなるまで、すべてがいかに普通に見えるかということだ。巧妙な攻撃もある。ほとんど恥ずかしいほど単純な攻撃もある。どちらも実害を与えうる。今週私たちの目を引いたものを以下に示す。</p>
+<h2><strong>⚡ 今週の脅威</strong></h2>
+<p><strong>脅威アクターが VMware vCenter の脆弱性を 0-Day として悪用</strong> — Armory Castle（旧 UNC5221）として知られる、中国と関係があると疑われるサイバースパイ集団が、2026年9月初旬の VMware vCenter Server における重大なセキュリティ欠陥のゼロデイ悪用の実行者とされた。CVE-2026-123890（CVSSスコア: 9.8）として追跡されているこの脆弱性は、VMware Directory Service における認証バイパスの事例であり、システムへの不正アクセスを得るために悪用されうる。10月、Google は、Armory Castle が BeyondTrust の Remote Support ツールを通じて組織を悪用するキャンペーンについて説明した。このキャンペーンでは、ゼロデイを使ってエッジアプライアンスに侵入し、ネットワーク偵察や組織内での下流の侵害に役立つ機密情報を盗んでいた。最新の調査結果は、BeyondTrust が、Linux マシンへのバックドアの展開を伴う、より深く複雑なキャンペーンへの単なる入口にすぎなかったことを示している。</p>
+<h2><strong>🔔 注目ニュース</strong></h2>
+<ul><li><strong>Cursor、悪意ある Claude 拡張機能のリリースを Fireworks AI のインシデントに関連付け</strong> — Cursor は、同社のマーケットプレイスにおける Anthropic の Claude Code 拡張機能の悪意あるバージョンに関わるセキュリティインシデントの発端を、AI インフラストラクチャプロバイダーである Fireworks における侵害にまでたどった。「攻撃者は、私たちが Fireworks に発行していたアクセスキーを入手した」と Cursor は述べた。「そのキーは Fireworks によって露出しており、攻撃者はそれを使って、私たちが彼らとデータを共有するために使っていた読み取り専用のストレージバケットからデータをコピーした」。Cursor のインシデントは、AI を活用した開発ツールの急速な採用と、ますます相互接続が進むソフトウェアエコシステムが、ソフトウェアサプライチェーンのリスクをいかに悪化させたかを示すもう一つの兆候である。</li><li><strong>Cold Relic、クラウド侵害を悪用して組織を標的に</strong> — Cold Relic として知られるロシアのサイバースパイ集団は、クラウド侵害を、被害組織のより広範な信頼関係のネットワークを標的にするための足がかりに変えている。昨年末に確認された最初の侵入では、攻撃者はクラウド管理者アカウントの制御を獲得し、社内通信、従業員の詳細情報、その他の組織記録を収集した。Cold Relic はその後、その情報を使って最初の組織の従業員になりすまし、2番目の組織の個人に対してソーシャルエンジニアリング攻撃を行った。これらのキャンペーンは「人間中心のソーシャルエンジニアリングとクラウドアイデンティティの悪用の収束を示している」と Google は述べた。「戦略的な人員名簿や業務文書へのアクセスを得ることで、ロシアの情報機関は正当な業務上の通信を、信頼されたパートナーに対する攻撃ベクトルに変えている」。</li><li><strong>悪意ある Web ページが Meta Muse を乗っ取り可能</strong> — NebuSec の研究チームによる新たな研究は、攻撃者が制御する Web ページを悪用して、Meta Muse に関連するユーザーデータへの不正アクセスを得て、それが動作する基盤の仮想マシン（VM）を侵害できることを実証した。「攻撃者は、Muse のネットワーク承認プロンプトを発生させることなく、会話履歴と保存された記憶を取得できる可能性がある」と NebuSec は述べた。「この攻撃では、保存された記憶と会話履歴を改変することもでき、不正なデータアクセスを超えるリスクを生んだ。共有 Linux カーネルの脆弱性を悪用することで、私たちはエージェントのランタイムコンテナから脱出し、基盤のユーザー VM で root 権限を取得した」。Meta はその後この問題に対処している。</li><li><strong>新たな FastUnlock Windows Narrator ロック画面バイパスの詳細</strong> — セキュリティ研究者の Abdelhamid Naceri（別名 Chaotic Eclipse）は、FastUnlock を公開した。これは未修正の新しい Windows 11 ゼロデイで、Narrator スクリーンリーダーを悪用してロック画面を通過し、ロック画面アカウント「WsiAccount」としてコードを実行する。この攻撃には物理的なアクセスと、オンラインの Microsoft アカウントにリンクされた少なくとも1つのアカウントが必要である。</li><li><strong>GL.iNet GoodCloud が悪用されリバースシェルやバックドアを配布</strong> — ハッカーが GL.iNet の GoodCloud クラウド管理プラットフォームの脆弱性を悪用し、顧客のルーターや KVM デバイスにマルウェア、バックドア、リモートアクセスツールをインストールした。「許可されていない第三者がこの脆弱性を悪用し、一部の GL.iNet ルーターおよび KVM デバイスにアクセスして悪意あるソフトウェアをインストールした」と GL.iNet は述べた。「攻撃経路は遮断された。私たちはクラウドの脆弱性を修正し、このインシデントで使用されたアクセスを遮断した。この攻撃経路でデバイスが新たに感染することはもうない。クラウド側の修正だけでは、すでに感染したデバイスからマルウェアは除去されない」。GL.iNet は、攻撃者がどのようにしてクラウドプラットフォームを悪用したのか、何人の顧客が影響を受けたのか、またこれらの侵害の結果として情報が盗まれたかどうかを明らかにしていない。RemoteToHome は、183台のルーターを調べ、152台で不審な活動を発見したと述べた。その内訳は、root 権限のリバースシェルが24台、古い永続的バックドアが47台、攻撃者が与えたコマンドが実行された証拠を示すものが81台である。同社はまた、GoodCloud クライアントにおけるコマンドインジェクションの可能性がある脆弱性も特定しているが、GL.iNet は、これが攻撃で使われたものと同じ脆弱性かどうかを確認していない。</li></ul>
+<h2><strong>️🔥 注目の CVE</strong></h2>
+<p>バグは毎週公開され、パッチとエクスプロイトの間の隔たりは急速に縮まっている。以下は今週の主要なものである: 重大度が高い、広く使われている、またはすでに実環境で突かれているもの。</p>
+<p>リストを確認し、手元にあるものにパッチを当て、緊急と記されたものを最初に対処すること — CVE-2026-14978、CVE-2026-45110、CVE-2026-49401、CVE-2026-59890（macOS の Unicode Normalization Collision）、CVE-2026-114938 別名 Java4Shell（Java 17、21、25、27）、CVE-2026-28400（Docker Model Runner）、CVE-2026-123633、CVE-2026-123007、CVE-2026-123634、CVE-2026-121810、CVE-2026-113425 別名 NGINX2Root（NGINX および NGINX Plus）、CVE-2026-120718（F5 BIG-IP）、CVE-2026-126822、CVE-2026-126336、CVE-2026-121812、CVE-2026-123637、CVE-2026-125272（F5 BIG-IP APM）、CVE-2026-120722、CVE-2026-121805、CVE-2026-120285、CVE-2026-120292、CVE-2026-116953（F5 BIG-IP iRule）、CVE-2026-125274（F5 BIG-IP および BIG-IQ）、CVE-2026-114819（Oracle AI Database）、CVE-2026-132825 別名 Ruby2Shell（Ruby）、CVE-2026-130963、CVE-2026-131031、CVE-2026-131060、CVE-2026-131008、CVE-2026-131054、CVE-2026-130975（Google Chrome）、CVE-2026-132165（Drupal）、CVE-2026-123890、CVE-2026-119618（Broadcom VMware）、CVE-2026-114202、CVE-2026-114204、CVE-2026-114205（ASUS Control Center Express Agent）、CVE-2026-126574（ASUS Control Center）、CVE-2026-112115（ASUS Armoury Crate）、CVE-2026-99312、CVE-2026-99362（Linux カーネル）、CVE-2026-132798（Temenos Application Framework Java）、CVE-2026-134624（N-able Mail Assure および SpamExperts Hosted Cloud）、CVE-2026-131914（Idunno.AntiCsrf）、CVE-2026-125396 別名 Upload2Shell（Ghostscript）、CVE-2026-129975（GPGME）、GHSA-qc22-rmgc-vg94（MONAI Label）、CVE-2026-23871（WhatsApp for Android および WhatsApp Business for Android）、CVE-2026-134814（binary-parser）。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://thehackernews.com/2026/11/weekly-recap-vmware-0-day-java4shell.html" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16359'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>

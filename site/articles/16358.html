@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Palo Alto製品の複数の脆弱性 - 香港コンピュータ緊急対応調整センター — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">Palo Alto製品の複数の脆弱性 - 香港コンピュータ緊急対応調整センター</h1>
+  <div class="r-orig">Palo Alto Products Multiple Vulnerabilities - Hong Kong Computer Emergency Response Team Coordination Centre</div>
+  <div class="r-meta"><span class="site">F5 (news)</span><span>2026-11-28 07:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>Palo Alto 製品の複数の脆弱性</h2>
+<p>リスク: 中リスク</p>
+<p>種類: セキュリティソフトウェアおよびアプリケーション - セキュリティソフトウェア＆アプライアンス</p>
+<p>Palo Alto 製品において複数の脆弱性が確認された。リモートの攻撃者がこれらの脆弱性の一部を悪用し、標的のシステム上でサービス拒否状態およびリモートコード実行を引き起こす可能性がある。</p>
+<p><strong>注:</strong></p>
+<p>CVE-2026-123007 については、概念実証（Proof of Concept）のエクスプロイトコードが公開されている。これは NGINX の HTTP/2 フロー制御における整数アンダーフローの脆弱性であり、フロー制御ウィンドウが許容されるしきい値を超える可能性がある。リモートの認証不要の攻撃者は、悪意のある HTTP/2 トラフィックを送信してヒープベースのバッファオーバーフローを引き起こし、ワーカープロセスをクラッシュさせるか、任意のコードを実行できる。そのため、リスクレベルは中リスクと評価されている。</p>
+<h2>影響</h2>
+<ul><li>リモートコード実行</li><li>サービス拒否</li></ul>
+<h2>影響を受けるシステム／技術</h2>
+<ul><li>12.2.4-h3 より前のバージョンの PAN-OS 12.2</li><li>PAN-OS 12.1 のバージョン 12.1.5 以降で、12.1.7-h15 または 12.1.10-h6 より前のバージョン</li><li>PAN-OS 11.2 のバージョン 11.2.8 以降で、11.2.10-h19、11.2.13-h6、または 11.2.16-h3 より前のバージョン</li></ul>
+<h2>解決策</h2>
+<p><strong>ソフトウェアをインストールする前に、詳細についてベンダーのウェブサイトを参照すること。</strong></p>
+<p>ベンダーが公開した修正を適用すること:</p>
+<h2>脆弱性識別子</h2>
+<h2>情報源</h2>
+<h2>関連リンク</h2>
+<p>共有</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.hkcert.org/security-bulletin/palo-alto-products-multiple-vulnerabilities_20261123" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16358'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
