@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>UnkernelとTrynixがコンピューティングを2035年へ移した — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">UnkernelとTrynixがコンピューティングを2035年へ移した</h1>
+  <div class="r-orig">Unkernel and Trynix just transported computing to 2035</div>
+  <div class="r-meta"><span class="site">The Register (Networks)</span><span>2026-11-28 21:00</span><span>報道</span></div>
+  <article class="r-body">
+<h2>Unkernel と Trynix が、コンピューティングを2035年へ運んだ</h2>
+<p>単なる遊び半分のデモ的ハックと、慎重に設計された大規模ソフトウェアアーキテクチャとの違いは何か。コンピューティングを変えてしまうのは、手早く雑に作られた仕事の方である。</p>
+<p>今週初めのブログ記事「2035 came early」は、Reg FOSS デスクを、私たちが魅力的で、おそらくかなり恐ろしいと考えたウサギの穴へと導いた。しかしそれは巣穴全体であることが分かった。私たちはまだ2026年にいると思っていたが、ある面では、技術が10年先へ跳躍したことが判明した。</p>
+<p>このブログ記事の要点を伝えるために、つまり、単なる楽しく賢い小さなハックだったものが、なぜ半世紀にわたる OS とハイパーバイザー設計を最寄りの窓から投げ捨てる可能性を持っているのかを伝えるために、かなりの解きほぐしが必要になる。お付き合いいただければ、順を追ってご案内する。始めるには、10年以上前に遡る必要がある。最後までお付き合いいただきたい。笑いもあれば、大切にされてきた考えにハンマーが振るわれる場面もある。</p>
+<p>2035年と、それをめぐる考えは、Destroy All Software の Gary Bernhardt による注目すべき講演に由来する。この講演は面白く、かつ非常に教育的である。この記事とこの技術が何についてのものかを理解する上で、時間があればその講演を見ることが大いに助けになる。Reg FOSS デスクは、映像という話し言葉の媒体をまったく好まない。聞くよりも読む方がずっと好きである。しかし、これから挙げる3つの講演は金に値し、今世紀のコンピューティングと IT における最高水準のプレゼンテーションに数えられる。本当に、時間を割く価値がある。</p>
+<p>前置きとして、Bernhardt の30分に及ぶ情報密度の高い講演に入る前に、4分間の面白い講演でウォームアップしよう。しかしまず、その背景を見てみよう。</p>
+<h2>ステップ0：JavaScript はウェブプログラミングの言語である</h2>
+<p>それは今日でも現実になり続けている。ソフトウェアは縁がひどく曖昧になってきている。SaaS 産業全体によって、巨大な組織がウェブアプリ上で動いている。Electron のような技術は、Node.js で構築された JavaScript アプリの内部にウェブブラウザを埋め込み、Progressive Web Apps はウェブサイトをローカルのプログラムのウィンドウのように見せる。世界で最も人気のあるデスクトップ Linux は ChromeOS Flex であり、これはローカルのネイティブアプリケーションをまったくサポートしない。すべてがブラウザのウィンドウであり、デスクトップさえもそうである。</p>
+<p>すべてが JavaScript で構築されている。それなのに…</p>
+<h2>ステップ1：JavaScript はどこか奇妙で、どこか悪い。</h2>
+<p>Bernhardt は2012年に、CodeMash カンファレンスでの Wat という有名なライトニングトークでこの主張を行った。</p>
+<p>Wat は、JavaScript がいかに非常に奇妙なプログラミング言語であり、期待するものとはまったく異なる非常に奇妙なことをするかの例を、一通り順に見ていく。いくつかのジョークはプログラマーの方がよく分かるだろうが、手に負えないソフトウェアと格闘したことのある人なら誰でも笑えるだろうと私たちは考える。そして、それはおそらく The Register のすべての読者に当てはまる。</p>
+<h2>ステップ2：JavaScript は世界を征服しつつある。</h2>
+<p>ご覧になることをお勧めする。映像を右クリックして、お望みなら再生速度を上げることもできる。しかしまず、背景を説明する。</p>
+<p>この講演は見た目どおりのものではない。これは2014年に行われた講演であり、この記事を書いている時点で12年前である。しかし、この講演は、過去20年間にソフトウェアがどう発展したかを振り返る、2035年に行われた歴史的な講演であるという体裁をとっている。これを読んでいる時点で、2035年は私たちの未来のほぼ10年先である。しかし、この講演の趣向は、21年先から振り返っているというものである。</p>
+<p>したがって、Bernhardt の空想的な講演の視点は、2014年から2035年までの期間の歴史である。この講演は JavaScript の普及について途方もない予測をしており、2035年までに JavaScript はほとんど忘れ去られた歴史的遺物となっている。Bernhardt はその名前を一貫して誤って発音することでそれを強調している。現在、2026年は、年代的にはその中間あたりである。しかし驚くべき点の一つは、講演中の技術予測のかなり多くがすでに現実になっていることである。この2014年の講演は、すでに不気味なほど予言的に見える。そうは言っても、この講演は、第三次世界大戦か何か別のものかもしれない、特定されない世界的災害の後に行われると述べている。それもまた、ありそうもないことではないように見える。</p>
+<p>講演によれば、JavaScript は悪く、かつ非常に人気があるため、Asm.js が可能になり、あらゆる言語のコンパイラがブラウザの Javascript ランタイムを対象にできるようになった。2015年に、Asm.js は Wasm へと進化し、これは実在する。The Register が Wasm を紹介した際、私たちの見出しはほとんど Bernhardt のものへの敬意を表していた。私たちは JavaScript の生みの親である Eich の最新プロジェクトを「KILL JAVASCRIPT」と呼んだ。</p>
+<h2>ステップ3：Wasm が JavaScript に取って代わり、すべてのプラットフォーム間の対立を終わらせる</h2>
+<p>私たちが報じたとおり、2022年までに Wasm は LibreOffice をサポートできるようになった。数年後、これがウェブページのプラグインとして動作するデモを私たちは見た。Wasm はここにあり、驚くほど高速であり、Bernhardt の講演の一部を現実にしている。Wasm は JavaScript の実際のプログラミング言語レベルの部分を省き、あらゆるクロスプラットフォームランタイムの母へと変える。</p>
+<p>これは実用上の帰結、そして Bernhardt の予測が当たり続ける仕方につながる。LibreOffice は今や Linux カーネルより大きい。1ギガバイトの LibreOffice を、わずか数秒の中断でウェブページ内で実行できるなら、システム全体のエミュレーターを実行することは問題ではない。Internet Archive はこれを使って古いゲームを実行しており、2022年に私たちが報じたとおり、かつての MacOS9.app サイトは、エミュレーションを使って、クラシック MacOS の本物の古いバージョンをブラウザ内で起動して実行した。それは今や Infinite Mac になり、Classic MacOS に限定されなくなった。現在では NeXTstep や、Mac OS X になったものの初期の開発版を実行でき、先月からは BeOS さえ実行する。</p>
+<p>より洞察力のある読者は、これがどこへ向かうのかすでに予見しているかもしれない。</p>
+<h2>ステップ4：Wasm がコンテナとハイパーバイザーに取って代わる</h2>
+<p>11月15日、イラン人開発者の Pooya Parsa は X で自身の Unkernel プロジェクトを発表した。11月19日までに、彼は v0.2 を公開した。（Github 上の長い README が示すとおり、これは LLM の支援を受けている。）Unkernel は、Zig で書かれ Wasm にコンパイルされた Arm64 ランタイムの内部で、本物の Linux カーネルを起動する。</p>
+<p>Unkernel.dev のページを訪れると、あなたのブラウザのタブ内で動作する本物の Linux カーネル上で、Debian 13 が起動する。RAM は 2 GB、仮想 CPU コアは2つである。Wayland を使った非常に単純な GUI があり、Super+K でアプリランチャーが開く。つまり、そう、その上で Doom を実行できる。</p>
+<p>これは12年前の Bernhardt の講演における中核的な技術予測の一つである。Wasm にコンパイルして、同一のバイナリを Arm、x86、RISC-V など何の上でも起動できるのに、なぜハイパーバイザーにわざわざ手間をかけるのか。ドラッグレース仲間が言うように「Run what ya brung（持ってきたもので走れ）」である。</p>
+<p>Bernhardt は、2020年代の終わりまでに、誰もが METAL と彼が呼ぶプラットフォームを対象にするだろうと予測した。それは現在 Wasm と呼ばれているもので、OS カーネルの中に直接あり、旧式の20世紀のオペレーティングシステムを対象にするのではない。さて、開発者が実装の退屈な「コードを書く」段階を高速化するために LLM を利用できるようになった今、これによって、彼らは熱に浮かされた夢をこれまで以上に速く現実にできる。</p>
+<p>Farid Zakaria は、自身の記事 2035 came early で Trynix を紹介している。Unkernel 上で Debian を実行する代わりに、これは NixOS を実行し、ほぼ30万ものプログラムとバージョンからなる広大な Nix のマルチバースをすべて備える。Wayland があり、OpenGL と ALSA サウンドをサポートするため、GUI やメディアのソフトウェアを実行できる。そして FOSS デスクの15年前の iMac では、Doom が動く。もう少し新しいマシンでは、Linux 上の Firefox を、Linux 上の Chrome の内部で起動することに成功した。</p>
+<p>確かに、Doom はこの技術のきわめて有用な応用ではないが、別の例が Michael Lohr の SideBySide である。ブラウザの単一のタブの中に3つの並列ペインがあり、Firefox、Chromium、そして WebKit ベースの Epiphany が入っている。URL を入力すると、3大ブラウザエンジンで同時にそれが開く。</p>
+<p>2019年、Docker の創設者 Solomon Hykes は「もし2008年に WASM+WASI が存在していたら、Docker を作る必要はなかっただろう」と述べた。そう、Bernhardt が予測したよりかなり早く、それが現実になり始めているように見える。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://www.theregister.com/software/2026/11/28/unkernel-and-trynix-just-transported-computing-to-2035/5313200" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16380'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
