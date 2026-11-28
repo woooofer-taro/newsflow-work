@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>週間まとめ: VMwareのゼロデイ、Java4Shell、NGINX2Root、そしてシェルエクスプロイトの波 — 仕事まとめ</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="r-wrap">
+  <nav class="r-nav"><a href="../index.html" class="back">← 一覧へ</a></nav>
+  <h1 class="r-title">週間まとめ: VMwareのゼロデイ、Java4Shell、NGINX2Root、そしてシェルエクスプロイトの波</h1>
+  <div class="r-orig">Weekly Recap: VMware Zero-Day, Java4Shell, NGINX2Root and a Wave of Shell Exploits</div>
+  <div class="r-meta"><span class="site">news.lavx.hu</span><span>2026-11-28 13:00</span><span>報道</span></div>
+  <article class="r-body">
+<p>疑われる中国関連のグループが VMware vCenter のゼロデイ脆弱性を悪用した一方で、ベンダー各社は Java、NGINX、Ruby などの中核ソフトウェアにある重大度の高い脆弱性にパッチを適用した。この週には、クラウドなりすましキャンペーン、ルーターの侵害、そして一連のサプライチェーンおよび AI 関連のセキュリティインシデントもあった。</p>
+<p>疑われる中国関連のスパイグループが、2026年9月に重大な VMware vCenter Server の脆弱性をゼロデイとして悪用し、ベンダー各社はこの週、Java、NGINX、Ruby などの中核ソフトウェアにある重大度の高いバグへのパッチ適用に費やした。以前は UNC5221 と呼ばれていた Armory Castle は、CVSS スコア 9.8 の VMware Directory Service の認証バイパスである CVE-2026-123890 を使用して、vCenter Server システムへの不正アクセスを得た。Google は以前に、同じグループによる BeyondTrust Remote Support アプライアンスに対するキャンペーンについて説明しており、その中で攻撃者はゼロデイを使ってエッジアプライアンスに侵入し、偵察および後続の侵害のためにシークレットを盗んでいた。vCenter の発見は、BeyondTrust が、Linux マシンにバックドアを設置したより深いキャンペーンへの入口として機能したことを示している。</p>
+<h2>Armory Castle に関連付けられた VMware vCenter ゼロデイ</h2>
+<p>以前は UNC5221 として知られていた、疑われる中国関連のサイバースパイグループ Armory Castle は、2026年9月上旬に VMware vCenter Server の CVE-2026-123890 を悪用した。この脆弱性は VMware Directory Service の認証バイパスである。10月、Google は同じグループによる BeyondTrust の Remote Support ツールに対するキャンペーンについて説明した。その中で攻撃者はエッジアプライアンスに侵入し、組織内のネットワーク偵察および後続の侵害に有用なシークレットを盗んでいた。最新の調査結果は、BeyondTrust が、Linux マシンへのバックドアを伴うより深いキャンペーンへの入口であったことを示している。</p>
+<h2>Cursor、悪意ある拡張機能を Fireworks に関連付け</h2>
+<p>Cursor は、自社のマーケットプレイスにおける Anthropic の Claude Code 拡張機能の悪意あるバージョンに関わるセキュリティインシデントを、AI インフラプロバイダーである Fireworks での侵害に突き止めた。Fireworks がキーを露出させた後、攻撃者は Cursor が Fireworks に発行したアクセスキーを入手した。攻撃者はそのキーを使って、Cursor が Fireworks とデータを共有するために使用していた読み取り専用のストレージバケットからデータをコピーした。このインシデントは、AI を活用した開発ツールおよび相互接続されたソフトウェアエコシステムの急速な普及が、ソフトウェアサプライチェーンのリスクをいかに悪化させたかを示している。</p>
+<h2>Cold Relic、クラウドアクセスをパートナー攻撃に変える</h2>
+<p>ロシアのサイバースパイグループ Cold Relic は、クラウドの侵害を、被害組織の信頼関係の広範なネットワークを標的にするための足がかりに変えている。昨年末に観測された最初の侵入では、攻撃者はクラウド管理者アカウントの制御を奪い、社内コミュニケーション、従業員の詳細情報、その他の組織記録を収集した。Cold Relic は後にその情報を使って、最初の組織の従業員になりすまし、2番目の組織の個人に対するソーシャルエンジニアリング攻撃を行った。Google は、これらのキャンペーンは、人間中心のソーシャルエンジニアリングとクラウドアイデンティティの悪用の融合を示しており、攻撃者が正当なビジネスコミュニケーションを信頼されたパートナーに対する攻撃ベクトルに変えていると述べた。</p>
+<h2>Meta Muse の脆弱性、メモリを露出しコンテナを突破</h2>
+<p>NebuSec の研究者は、攻撃者が制御するウェブページが、Meta Muse に関連するユーザーデータへの不正アクセスを得て、それが動作する仮想マシンを侵害できることを実証した。攻撃者は、Muse のネットワーク承認プロンプトを発動させることなく、会話履歴と保存されたメモリを取得できた。この攻撃では、保存されたメモリと会話履歴の変更も可能だった。共有 Linux カーネルの脆弱性を悪用することで、研究者はエージェントのランタイムコンテナを脱出し、基盤となるユーザー VM で root 権限を得た。Meta はこの問題を修正した。</p>
+<h2>FastUnlock、Windows 11 のロック画面を回避</h2>
+<p>Chaotic Eclipse というハンドルを使用するセキュリティ研究者の Abdelhamid Naceri は、ナレーター スクリーンリーダーを悪用してロック画面を突破し、WsiAccount として知られるロック画面アカウントとしてコードを実行する、未パッチの Windows 11 ゼロデイ FastUnlock を公開した。この攻撃には物理的なアクセスと、オンラインの Microsoft アカウントにリンクされた少なくとも1つのアカウントが必要である。</p>
+<h2>GL.iNet GoodCloud 攻撃、デバイスが感染したまま</h2>
+<p>ハッカーは GL.iNet の GoodCloud クラウド管理プラットフォームの脆弱性を悪用して、顧客のルーターおよび KVM デバイスにマルウェア、バックドア、リモートアクセスツールをインストールした。GL.iNet は、クラウドの脆弱性を修正し、インシデントで使用されたアクセスをブロックしたと述べており、したがってデバイスがその攻撃経路で新たに感染することはもうない。クラウド側の修正は、すでに感染したデバイスからマルウェアを除去しない。GL.iNet は、攻撃者がどのようにプラットフォームを悪用したか、何人の顧客が影響を受けたか、情報が盗まれたかどうかを開示しなかった。RemoteToHome は 183 台のルーターを調査し、152 台で不審な活動を発見した。その内訳は、root レベルのリバースシェルがある 24 台、古い永続バックドアがある 47 台、攻撃者が提供したコマンドが実行された証拠を示す 81 台である。RemoteToHome はまた、GoodCloud クライアントにコマンドインジェクションの可能性がある脆弱性を特定したが、それが攻撃で使用された脆弱性と同じものかどうかは GL.iNet は確認していない。</p>
+<h2>名前付きの脆弱性: Java4Shell、NGINX2Root、Ruby2Shell</h2>
+<p>この週、いくつかの脆弱性にニックネームが付けられた。Java4Shell（CVE-2026-114938）は Java 17、21、25、27 に影響する。NGINX2Root（CVE-2026-113425）は NGINX および NGINX Plus に影響する。Ruby2Shell（CVE-2026-132825）は Ruby に影響する。Upload2Shell（CVE-2026-125396）は Ghostscript に影響する。その他の注目されたバグには、macOS における Unicode 正規化の衝突（CVE-2026-59890）、Docker Model Runner の脆弱性（CVE-2026-28400）、および複数の F5 BIG-IP の問題がある。この週のリストには、Oracle AI Database、Drupal、Google Chrome、Linux カーネル、ASUS ソフトウェア、その他の製品の脆弱性も含まれていた。管理者は完全なリストを確認し、緊急とマークされたシステムを最初にパッチ適用すべきである。</p>
+<h2>この週のその他のインシデント</h2>
+<p>Google Cloud が所有する VirusTotal は、Windows および macOS のサンドボックス全体で、暗号方式に依存しないファイル暗号化の検証を導入した。この変更により、75 の静的アンチウイルスエンジンが見逃した .k404 恐喝キャンペーンが検出され、その付随バイナリは 75 中 10 の検出があった。</p>
+<p>I4C として知られるインドサイバー犯罪調整センターは、攻撃者が認証済みの WhatsApp Web セッションを悪用して、メッセージを読み取り、ユーザーになりすましてメッセージを送信し、アカウントを詐欺、フィッシング、またはソーシャルエンジニアリングに悪用できると警告した。ユーザーは、必要ないときはセッションからログアウトし、公共のコンピューターでサインインしないようにすべきである。</p>
+<p>大規模なマルバタイジング作戦である MoldyRoost は、Coruna、DarkSword、SilkPath、GhostWave などの iPhone エクスプロイトチェーンを配信した。脆弱な iPhone で MoldyRoost の広告のランディングページを読み込むだけでデバイスが感染するのに十分で、おとりのダウンロードや貼り付けるコマンドはなかった。この作戦は 2026年5月12日から11月17日の間に 480 を超えるドメインを使用し、主に香港、日本、シンガポール、米国、韓国、英国、インドを含む 47 を超える国を標的にした。Safari を実行している iOS デバイスのみがエクスプロイトチェーンを受け取り、他のデバイスにはおとりのウェブサイト、空のフレーム、または無害なランディングページが表示された。</p>
+<p>Elastic Security Labs は、インフォスティーラーの感染から、脅威アクターが同じ認証情報でログインするまでの平均時間が、場合によっては 8 分になりうると報告した。</p>
+<p>攻撃者は Crédit Mutuel Arkéa 自身のアカウントを使って、推定 1億3300万ドルを他の銀行に送金し、そこから資金は暗号通貨に変換された可能性がある。銀行は、攻撃者が連合会または子会社の顧客アカウントを経由しなかったと述べた。</p>
+<p>Uber は、AI サプライヤーの1社にハッカーが侵入した後、149,346 人の個人情報が侵害されたことを確認した。露出したデータには、運転免許証の画像と、そこから抽出された情報（氏名、自宅住所、生年月日、免許証番号を含む）が含まれる。</p>
+  </article>
+  <nav class="r-foot">
+    <a href="https://news.lavx.hu/article/weekly-recap-vmware-zero-day-java4shell-nginx2root-and-a-wave-of-shell-exploits" target="_blank" rel="noopener">原文を読む →</a>
+    <a href="../index.html" class="back">← 一覧へ</a>
+  </nav>
+</main>
+<script>
+// 直接開かれても既読に（一覧と同じ localStorage）。一覧から来たなら戻る＝読んでいた場所に戻る
+try { const k = 'nfw-read', s = new Set(JSON.parse(localStorage.getItem(k) || '[]')); s.add('16375'); localStorage.setItem(k, JSON.stringify([...s].slice(-3000))); } catch (e) {}
+document.querySelectorAll('a.back').forEach((el) => el.addEventListener('click', (e) => {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) { e.preventDefault(); history.back(); }
+  } catch (err) {}
+}));
+</script>
+</body>
+</html>
